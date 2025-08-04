@@ -1,0 +1,580 @@
+
+     body{
+         background-color: rgb(233, 231, 231);
+        margin: 0;
+            padding-top: 67px; /* Push page content down so it's not hidden under the fixed header/nav */
+
+       }
+
+span{
+    color:white;
+}
+
+.Logo{
+    display: inline;
+    margin: 30px;
+    cursor: pointer;
+     color: rgb(130, 137, 240);
+
+}
+
+
+ a{
+    text-decoration: none;
+    margin: 20px;
+    color: white;
+  
+}
+
+   
+    .fa-user{
+        background-color: white;
+        color: grey;
+        border-radius: 20px;
+        width: 30px;
+        height:24px;
+        text-align: center;
+        
+    }
+   
+nav ul{
+    list-style-type: none;
+    display: flex;
+    margin-left: 320px;
+    margin-top: 10px;
+
+}
+
+.mini-container{
+    display: flex;
+    background-color:darkblue;
+    padding: 9px;
+     box-shadow:  8px 2px 11px rgb(130, 137, 240);
+     width: 98.6%;
+      position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Keep it on top of everything */
+}
+
+.Top-Image{
+    position: relative;
+}
+
+.cover-sec img{
+    width: 100%;
+    height: 250px;
+}
+
+.changePicture{
+position: absolute; 
+right:20px;
+top:20px;
+padding:10px;
+border:2px solid darkblue;
+cursor: pointer;
+}
+
+.changePicture:hover {
+background-color: rgb(36, 87, 134);
+color: white;
+}
+
+/**Bottom Profile*/
+
+.ProfileView img{
+    width: 28vh;
+    height: 28vh;
+    border-radius: 20vh;
+    position: absolute;
+    top:180px;
+    left:90px;
+
+
+}
+
+.Profile-Container{
+ /*border: 1px solid blue;   */
+ background-color: white;
+  width:270px;
+    height: 428px;
+    margin: 0 40px;
+    
+}
+
+.Below-Profile{
+position: absolute;
+bottom:220px;
+   
+}
+
+.Below-Profile p{
+    display: inline-block;
+    margin: 0 50px 10px 76px;
+font-size: 17px;
+color:grey;
+
+
+}
+
+hr{
+    width: 260px;
+    margin-right: 21px;
+}
+
+.Links{
+    position: absolute;
+bottom:100px;
+margin-left: 42px;
+
+}
+
+.Links a{
+    color:rgb(26, 11, 170);
+display: block;
+}
+
+.ProfileView{
+    display: flex;
+}
+
+.Side-Detail{
+    display: inline-block;
+margin-top: 30px;
+position: relative;
+}
+.Description {
+list-style: none;
+display: flex;   
+color: darkblue; 
+border: 4px solid rgb(201, 197, 197);
+padding: 10px;
+border-radius: 10px;
+
+}
+
+.Description a{
+color: rgb(29, 53, 75);; 
+}
+
+.Description a:hover{
+    color: darkblue;
+}
+
+.PostandSet {
+    margin-left: 720px;
+   /* background-color: rgb(29, 53, 75);*/
+position: absolute;
+/*margin-top: -80px;*/
+
+}
+
+/*The Feed*/
+
+/**/
+
+#feedSection,
+#infoSection,
+#jobSection {
+  display: none;
+}
+
+.ContainerX {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease-in-out;
+  display: none;
+}
+
+.ContainerX.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+/**/
+
+
+
+
+.body{
+    width: 520px;
+    height: 530px;
+    background-color: white;
+    margin-left: 400px;
+    margin-top: -190px;
+    border-radius: 10px;
+    margin-bottom: 160px;
+}
+
+.body img{
+     width: 50px;
+  height: 50px;
+    border-radius: 30px;
+    margin: 20px;
+    display: inline-block;
+}
+
+.body span{
+    color:black;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.body p{
+    margin-bottom: 0px;
+    
+}
+
+.actions {
+margin: 28px;
+}
+
+.actions button{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: rgb(73, 69, 69);
+    margin-left: 40px;
+}
+
+/*Post Section*/
+
+.PopupPost {
+  display: none;
+  position: fixed;
+  top: 100px;
+  right: 150px;
+  background-color: rgb(131, 131, 177);
+  border: 3px solid #f1f1f1;
+  padding: 15px;
+  width: 500px;
+  height:300px;
+  color: white;
+  z-index: 9; /* Makes sure it stays on top */
+  border-radius: 8px;
+
+}
+
+
+
+.PopupPost textarea{
+
+    border: none;
+    background-color: transparent;
+    width: 500px;
+    height:100px;
+    display: block;
+    margin-top: 20px;
+    outline-color:rgb(86, 86, 143);
+}
+
+::placeholder{
+    color:white;
+}
+
+
+
+.Plus-btn{
+    margin: 100px 0px 0px 450px; 
+    background-color: rgb(86, 86, 143);
+    color: white;
+    padding:15px;
+    border-radius: 20px;
+    border:2px solid white;
+    cursor:pointer;
+}
+
+
+.popup1 {
+      background: #131b61;
+      border-radius: 15px;
+      padding: 20px;
+      width: 100px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: none;
+     
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      z-index: 1;
+    }
+
+    .popup-item {
+margin-bottom: 10px;      
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /*.popup-item span {
+      margin-top: 6px;
+    }*/
+
+    .popup-item i {
+      font-size: 14px;
+    }
+
+    .popup-item:hover {
+      color: #5c6bc0;
+    }
+
+    /*Suggestion section*/
+
+    .Suggestions{
+        background-color: white;
+        width: 280px;
+        height: 370px;
+        float:right;
+        margin-right:30px;
+        margin-top:-676px;
+        border-radius: 12px;
+        
+    }
+
+    .Box-Suggest h4{
+        font-size: 16px;
+        display: inline-block;
+       
+    }
+
+    
+
+    .People img{
+        width:30px;
+        height:30px;
+        border-radius: 30px;
+        display: inline-block;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .People{
+        display: flex;
+        justify-content:space-between;
+        margin-top: -10px;
+    }
+
+    .People button{
+        margin-top: 30px;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        background-color:rgb(224, 224, 224);
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .People p{
+        margin-top: -0px;
+        color: gray;
+    }
+
+    /**User Info*/
+
+    .ExperinceC{
+        background-color: white;
+        width: 500px;   
+        margin-top:-200px;
+        margin-left: 450px;
+        height: 400px;
+        padding:8px;
+ }
+
+ .EducationD{
+     background-color: white;
+        width: 500px; 
+          margin-left: 450px;
+margin-top: 50px;
+        height: 300px;
+        padding:8px;
+ }
+
+ .SkillsC{
+        background-color: white;
+        width: 500px; 
+        margin-left: 450px;
+        margin-top: 50px;
+        height: 250px;
+        padding:8px;
+ }
+
+ .SkillsC ul{
+    list-style-type: none;
+
+ }
+
+ .SkillsC ul li{
+    text-align: center;
+    display: inline-block;
+    padding:6px ;
+   margin-bottom: 18px;
+   margin-left: 10px;
+    border-radius: 10px;
+    color: rgb(124, 124, 124);
+     background-color: lightgrey;
+
+    
+ }
+
+ .Btn-pencil{
+
+    margin-left:290px;
+    margin-top:-50px; 
+    font-size: 16px; 
+    color:rgb(202, 197, 197);
+    border: none;
+    cursor: pointer;
+     background-color: white;
+ }
+
+
+ /*Setting Style*/
+ .Side-Infor{
+    background-color: white;
+    width: 300px;
+    margin-top: 90px;
+    margin-left: 40px;
+    border-radius: 6px;
+    
+ }
+
+ .Side-Infor ul{
+    list-style-type: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+ .Side-Infor ul li{
+    padding:27px;
+
+ }
+
+ .Side-Infor ul li a{
+    color: rgb(0, 46, 88); 
+ }
+
+ /*inner setting info*/
+
+
+.Account {
+  background: white;
+  padding: 20px;
+  margin-top: -470px;
+  border-radius: 8px;
+  width: 860px;
+  margin-left: 400px;
+}
+
+.fa-arrow-right{
+    float: right;
+    color: rgb(0, 39, 97);
+}
+
+.Account-item {
+  padding: 15px;
+  border-top: 1px solid #eee;
+  cursor: pointer;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: #000850;
+}
+
+.Account-item:first-of-type {
+  border-top: none;
+}
+
+.Account-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+
+
+
+input, button {
+  margin: 10px 0;
+  padding: 8px;
+ /* width: 100%;*/
+}
+
+.display-section{
+    margin-left: 400px;
+    background-color: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+  width: 860px;
+  
+}
+
+/*popUp section*/
+
+
+.IntroPopUp{
+    width: 500px;
+    position: relative;
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 260px;
+}
+
+label{
+    color: #000a42;
+}
+
+input{
+        outline-color: rgb(130, 137, 240);
+        border-radius: 10px;
+border-color: whitesmoke;
+}
+
+textarea{
+    width: 250px;
+    height:100px;
+            outline-color: rgb(130, 137, 240);
+
+}
+
+
+
+
+
+/*.Popup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  width: 50%;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #ccc;
+  z-index: 1000;
+
+}*/
+
+.Popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+  width: 100%;
+  height: 80vh; /* Limit height to 80% of screen */
+  overflow-y: auto; /* Enable vertical scroll */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+ background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect */
+
+  align-items: center;
+  justify-content: center;
+}
+
+ 
+
+

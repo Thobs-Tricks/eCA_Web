@@ -1,0 +1,234 @@
+<head>
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+      <link rel="stylesheet" href="StyleProfile.css">
+      <link rel="stylesheet" href="StyleCompany.css">
+</head>
+
+<body>
+     <div class="mini-container">
+        <header>
+         <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
+
+        </header>
+      <nav>
+            <ul>
+                <li><a href="Index.html"> <i class="fa fa-home"></i>  Home</a></li>
+                <li><a href="Index.html"> <i class="fa fa-question"></i> About</a></li>
+                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
+                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
+                <li> <a href="Company.html" ><i class="fa fa-user"></i> Company</a></li>
+            </ul>
+        </nav>  
+     </div>
+
+
+      <section class="cover-sec">
+      <div class="Top-Image">
+            <img src="Image/comp.webp" alt="">
+            
+            <button class="changePicture"><input type="file">Change Image</button>
+                
+            <div class="ProfileView">
+               <img src="Image/company.webp" alt=""> 
+               <div class="Profile-Con">
+
+
+                  <div  class="Detail">
+                 
+                    <h2 style="margin-top: 130px;">Company ltd</h2>
+
+                    <div style="color: rgb(109, 102, 102); font-size: 20px;">
+                    <p >We connect South African professionals with global companies to build world-class, high-performing remote and public teams.</p>
+                    <p>Staffing and Recruiting || Rye 148K followers || 11-50 employees</p>
+                    </div>
+                    <div class="PostandSetting"> 
+                    <a style="width: 40px;text-decoration: none;background-color: rgb(29, 53, 75); padding:8px;" href="AccountSetting.html">Setting</a> 
+                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid rgb(29, 53, 75);" onclick="PostFeature()">Post</button>
+               
+                    <div class="PopupPost" id="PostForm">
+                     
+                        <input style=" border:none; margin-left: 400px; margin-top:0px; background-color: rgb(86, 86, 143);color: white; cursor: pointer; border-radius: 9px; padding: 4px 10px;" type="submit" value="Post" >
+                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); ;cursor: pointer; padding: 4px 10px" onclick="ClosePopUp()"> <b>X</b></button>
+                        <textarea name="" placeholder="Share your thoughts.." id=""></textarea>
+                        
+                        <button onclick="MoreOptions()" class="Plus-btn">+</button>
+                         
+                        <!--The inner popUp-->
+                         <div class="popup1" id="popup1">
+                            <div class="popup-item"><i class="fas fa-image"></i><span>Media</span></div>
+                            <div class="popup-item"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
+                            <div class="popup-item"><i class="fas fa-award"></i><span>Celebrate</span></div>
+                            <div class="popup-item"><i class="fas fa-briefcase"></i><span>Job</span></div>
+                            <div class="popup-item"><i class="fas fa-poll"></i><span>Poll</span></div>
+                            <div class="popup-item"><i class="fas fa-file-alt"></i><span>Document</span></div>
+                            <div class="popup-item"><i class="fas fa-tools"></i><span>Services</span></div>
+                        </div>
+                    </div>
+               
+                </div>
+                 
+                    <ul class="Section-Descrip">
+                       
+                        <li><a id="Home" href="#" onclick="showSection(this)" >Home</a></li>
+                        <li><a id="About" href="#" onclick="showSection(this)" > About</a></li>
+                        <li><a id="Post" href="#"  onclick="showSection(this)">Post</a></li>
+                         <li><a id="People" href="#"  onclick="showSection(this)">People</a></li>
+
+                    </ul>
+                </div>
+
+
+               </div>  
+
+                
+          
+
+                 <!--<div  class="Detail">
+                 
+                    <h2>Ally Dowson</h2>
+                    <p style="color: rgb(109, 102, 102); font-size: 20px;">Accountent</p>
+                     
+                    <div class="PostandSet"> 
+                    <a style="width: 40px;text-decoration: none;background-color: rgb(29, 53, 75); padding:8px; margin-left: 70px;" href="AccountSetting.html">Setting</a> 
+                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid rgb(29, 53, 75);" onclick="PostFeature()">Post</button>
+               
+                    <div class="PopupPost" id="PostForm">
+                     
+                        <input style=" border:none; margin-left: 400px; margin-top:0px; background-color: rgb(86, 86, 143);color: white; cursor: pointer; border-radius: 9px; padding: 4px 10px;" type="submit" value="Post" >
+                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); ;cursor: pointer; padding: 4px 10px" onclick="ClosePopUp()"> <b>X</b></button>
+                        <textarea name="" placeholder="Share your thoughts.." id=""></textarea>
+                        
+                        <button onclick="MoreOptions()" class="Plus-btn">+</button>
+                         
+                        
+                         <div class="popup" id="popup">
+    <div class="popup-item"><i class="fas fa-image"></i><span>Media</span></div>
+    <div class="popup-item"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
+    <div class="popup-item"><i class="fas fa-award"></i><span>Celebrate</span></div>
+    <div class="popup-item"><i class="fas fa-briefcase"></i><span>Job</span></div>
+    <div class="popup-item"><i class="fas fa-poll"></i><span>Poll</span></div>
+    <div class="popup-item"><i class="fas fa-file-alt"></i><span>Document</span></div>
+    <div class="popup-item"><i class="fas fa-tools"></i><span>Services</span></div>
+  </div>
+                    </div>
+               
+                </div>
+                 
+                    <ul class="Section-Descrip">
+                       
+                        <li><a href="#" onclick="showSection('feedSection', this)" >Home</a></li>
+                        <li><a href="#" onclick="showSection('infoSection', this)" > About</a></li>
+                        <li><a href="#"  onclick="showSection('jobSection', this)">Post</a></li>
+                         <li><a href="#"  onclick="showSection('jobSection', this)">People</a></li>
+
+                       
+                    </ul>
+                </div>-->
+
+            </div>
+        
+       </div>
+
+	</section>
+
+    <!--Follow section-->
+
+    <section>
+        <div class="AsidePanel">
+           <img style="width: 12%;height: 9%; border-radius: 30px; margin: 10px 0 0 -70px;" src="Image/company.webp" alt="">       
+             <div style="margin-right: -100;">
+                <p>followers</p>
+                <p>128k</p>
+             </div>
+             <div>
+                  <p>following</p>
+                  <p>2</p>
+             </div>
+        </div>
+    </section>
+
+
+    <!--Suggestion-->
+
+    <div class="Suggested">
+        <h3>Activity</h3>
+
+        <div class="Activity-Container">
+            <img src="Image/cBackground.webp" alt="picture">
+            <div style="margin:-20px 0px 0 20px;">
+            <span style="margin-top: 10px; font-size: 17px;"> <b>CompanyN</b> </span>
+            <span>Internship & Job Opportunities For You</span>
+            <span>2hr</span>
+
+            <div class="inner-ActContainer" style="margin-left: -60px;">
+             <p >Stuff with it hs hd h dsj shj sjh shgf hs hs jhds u dhv shzjsc szhj sjzv czjh cjz jchvzz ...more</p>
+            
+             <img src="Image/news3.webp" alt="">
+                 <div class="actions">
+                        <button onclick="OnLikeBtn();" id ="like-btn"><i class="fa fa-thumbs-up"></i> Like</button>
+                        <button class="comment-btn"><i class="fa fa-commenting"></i> Comment</button>
+                        <button><i class="fa fa-retweet"></i> Repost</button>
+                        <button><i class="fa fa-paper-plane"></i> Send</button>
+                    </div>
+            </div>
+            
+            </div>
+            
+            
+        </div>
+        <div style="border-top: 1px solid lightgray; padding: 20px;">
+        <a href="#"><i style="margin-right: 180px;" class="fa fa-arrow-right"></i>Show all Activity</a>
+          </div>
+    </div>
+
+    <script>
+  function showSection(clickedLink) {
+    // Get all links inside .Section-Descrip
+    var links = document.querySelectorAll(".Section-Descrip a");
+    
+    // Reset color of all links
+    links.forEach(function(link) {
+        link.style.color = 'black'; // or 'black' or your default color
+    });
+
+    // Highlight the clicked link
+    clickedLink.style.color = 'blue';
+}
+
+
+
+
+function OnLikeBtn(){
+    document.getElementById("like-btn").style.backgroundColor = "darkblue";
+    document.getElementById("like-btn").style.color = "White";
+        document.getElementById("like-btn").style.borderRadius = "2px";
+}
+
+function PostFeature(){
+    document.getElementById("PostForm").style.display = "block";
+}
+
+function MoreOptions(){
+    document.getElementById("popup1").style.display = "block";
+}
+
+// Close popup when clicking outside of it
+function ClosePopUp(){
+    document.getElementById("PostForm").style.display="none";
+}
+
+// Close inner popup when clicking outside of it
+const PostForm= document.getElementById("PostForm");
+  const popup = document.getElementById('popup1');
+  
+  document.addEventListener('click', function(event) {
+    if (!PostForm.contains(event.target)) {
+      popup.style.display = 'none';
+    }
+  });
+
+
+    </script>
+
+</body>

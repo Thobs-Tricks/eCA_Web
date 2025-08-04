@@ -1,0 +1,117 @@
+<head>
+<link rel="stylesheet" href="StyleProfile.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+     <div class="mini-container">
+    <header>
+      <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
+      
+    </header>
+      <nav>
+            <ul>
+                <li><a href="Index.html"> <i class="fa fa-home"></i>  Home</a></li>
+                <li><a href="Index.html"> <i class="fa fa-question"></i> About</a></li>
+                <li><a href="#"><i class="fa fa-briefcase"></i>  Jobs</a></li>
+                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
+                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
+                <li> <a href="profile.html" ><i class="fa fa-user"></i> Ally</a></li>
+            </ul>
+        </nav>  
+     </div>
+
+     <div class="Side-Infor">
+      <h2 style="text-align: center;padding: 10px 0px 0px 0px;">Settings</h2> <hr>
+        <ul>
+            <li><a href=""><i class="fa fa-info"></i> Account Preference</a></li>
+            <li><a href=""><i class="fa fa-eye"></i> Visibility</a></li>
+            <li><a href=""> <i class="fa fa-lock"></i> Security and Login</a></li>
+            <li><a href=""><i class="fa fa-shield"></i>  Data Privacy</a></li>
+            <li><a href=""><i class="fa fa-sign-out"></i> Deactivate Account</a></li>
+        </ul>
+     </div>
+
+     <section class="Side-View-Infor">
+
+       <div class="Everything-PartOne">
+
+        <div class="Account">
+
+          <h2>Profile information</h2>
+          <div class="Account-item" onclick="openPopup()">Name, location, and industry <i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup('demographicPopup')">Personal demographic information <i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup('verificationPopup')">Verifications <i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup('LanguagePopup')">Language<i class="fa fa-arrow-right"></i></div>
+        </div>
+
+        <div id="popupOverlay" class="popup-overlay">
+        <div class="Popup" id="profilePopup">
+              <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('profilePopup')">&times;</span>
+
+        <div class="IntroPopUp" >
+          <h2 style="margin-bottom: 40px;text-align: center;">Name,Location and industry</h2>
+          <form action="">
+            <label for="">First Name*</label>
+            <input type="text" name="" id="" required>
+
+            <label for="">Last Name*</label>
+            <input type="text" name="" id="" required>
+
+              <label for="">Additional Name</label>
+            <input type="text" name="" id="" required>
+
+            <label style="display: block;" for="">Headline*</label>
+            <textarea  name="---" id="" >---</textarea>
+
+           <h3> Current position</h3>
+
+           <label for="">Industry*</label>
+           <input type="text">   
+           
+           <h3>Education</h3>
+           <label for="">School*</label>
+           <input type="text" name="" id="" required>
+
+           <button style="border: none; background-color: white;text-align:left;color: blue;cursor:pointer;"> + Add new ducation</button>
+
+           <input style="display: inline-block; margin-left: -220px; margin-top: 30px; " type="checkbox" name=""  id="" >
+           <label style="margin-left: -230px;" for="">Show school in bio</label>
+         
+         
+           <h3>Location</h3>
+           <label for="">Country/Region*</label>
+           <input type="text" name="" id="" required> 
+
+            <label for="">City</label>
+           <input type="text" name="" id="" > 
+
+           <button style="width: 50px; cursor: pointer; border: 1px solid blue; border-radius: 10px; margin-left: 430px; background-color: blue; color: white;" type="submit">Save</button>
+          </form>
+        </div>
+</div>
+</div>
+          <div class="display-section">
+            <h2>Display</h2>
+            <div class="Account-item" onclick="openPopup('displayPopup')">Dark mode</div>
+          </div>
+
+         
+      </div>
+   
+  </section>
+
+
+  <script>
+    function openPopup(){
+
+      document.getElementById("profilePopup").style.display='block'
+
+    }
+
+    function closePopup(id) {
+  document.getElementById(id).style.display = 'none';
+}
+  </script>
+</body>

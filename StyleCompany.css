@@ -1,0 +1,114 @@
+.Section-Descrip{
+    list-style-type: none;
+    display: flex;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ border:2px solid rgb(92, 89, 89);
+ padding: 10px;
+ border-radius: 20px;
+ margin-top: 10%;
+ 
+ 
+}
+
+
+
+.Section-Descrip a{
+    color: black;
+    
+}
+
+.Section-Descrip a:hover{
+    color: blue;
+}
+
+.Profile-Con{
+    background-color: white;
+    width:50%;
+    height: 40%;
+    margin: 0px 40px;
+    padding: 15px;
+    
+}
+
+.Details{
+    display: inline-block;
+position: relative; 
+ margin-left: -50%;
+}
+
+.PostandSetting{
+    margin-top: -14%;
+    margin-left: 30%;
+    position: absolute;
+}
+
+
+.AsidePanel{
+    background-color: white;
+    width: 36%;
+    padding: 10px;
+    display: flex;
+    justify-content:space-around;
+    float: right;
+    margin-top: -30%;
+    border-top: 3px solid blue;
+    margin-right: 40px;
+}
+
+.Suggested{
+    background-color:white;
+    width:40%;
+    height: 100%;
+    float: right;
+    margin: -220px 20px 0 0;
+    
+}
+
+.Suggested img{
+    width: 40px;
+    height:30px;
+    border-radius: 20px;
+
+}
+
+.Suggested h3{
+    margin-left: 40px;
+}
+
+.Activity-Container{
+    background-color: white;
+    width: 80%;
+    height: 70%;
+    margin-left: 23px;
+    padding: 20px;
+    display: flex;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    
+}
+
+.Suggested a{
+    color: rgb(80, 80, 80);
+   margin-left: 170px;
+}
+
+.Activity-Container span{
+    color: black;
+    display: block;
+    
+}
+
+.inner-ActContainer img{
+    width: 100%;
+    height: 63%;
+    
+}
+
+
+.actions button{
+       margin:-4px 10px;
+
+}
+
+

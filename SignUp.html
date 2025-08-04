@@ -1,0 +1,87 @@
+<head>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+  <div class="container" id="container">
+    <div class="OtherSide">
+      <h1><a href="SignIn.html"><i>Logo<span>Name</span></i></a></h1>
+      <img style="width: 360px; margin-top: 100px; opacity:0.7;" src="Image/wrtiting-tools.jpg" alt="wrtiting-tools">
+    </div>
+
+    <aside>
+      <h2 class="SignUpDecore"><b>Sign Up</b></h2>
+
+      <select id="roleSelect" class="role-selector">
+        <option value="student">Select role</option>
+        <option value="company">Company</option>
+        <option value="mentor">Mentor</option>
+      </select>
+
+      <form action="#" id="signupForm">
+
+        <div id="dynamicFields">
+          <!-- Common Fields -->
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <input type="password" placeholder="Confirm Password" required>
+        </div>
+
+        <label>
+          <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+
+        <div class="SubCancel">
+          <input style="background-color: darkblue; color: white; margin-top: 20px;" type="submit" name="Submit">
+          <input style="background-color: rgb(241, 0, 0); color: white; cursor: pointer;" type="button" value="Cancel">
+        </div>
+
+      </form>
+    </aside>
+  </div>
+
+
+  
+  <script>
+    const roleSelect = document.getElementById('roleSelect');
+    const dynamicFields = document.getElementById('dynamicFields');
+
+    function updateFormFields(role) {
+      let additionalFields = '';
+
+      if (role === 'company') {
+        additionalFields = `
+          <input type="text" placeholder="Company Name" required>
+          <input type="text" placeholder="Industry" required>
+          <input type="text" placeholder="Company Reg. Number" required>
+        `;
+            document.getElementById("container").style.height= 400;
+
+      } else if (role === 'mentor') {
+        additionalFields = `
+          <input type="text" placeholder="Full Name" required>
+          <input type="text" placeholder="Expertise Area" required>
+          <input type="text" placeholder="Years of Experience" required>
+        `;
+            document.getElementById("container").style.height= 400;
+
+      }
+
+      dynamicFields.innerHTML = `
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Confirm Password" required>
+        ${additionalFields}
+      `;
+    }
+
+    roleSelect.addEventListener('change', function () {
+      updateFormFields(this.value);
+    });
+
+    /*Container size change*/
+
+   
+  </script>
+
+</body>

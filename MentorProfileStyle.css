@@ -1,0 +1,200 @@
+.ProfileContainer{
+    position: relative;
+}
+
+.PictureLabel {
+    position: absolute;
+    margin-top: -40vh;
+margin-left: 160vh;
+border: 3px solid darkblue;
+
+}
+
+.PictureLabel label{
+    color: white;
+    cursor:pointer;
+}
+
+.PictureLabel:hover{
+    background-color: rgb(4, 4, 116);
+}
+
+.TheDescritionss{
+    background-color: white;
+    width:120vh;
+    height:35vh;
+    margin:0px 10px 10px 90px 
+}
+
+
+.profile-Follow span{
+    padding: 10px;
+    color: gray;
+}
+
+.Numfollow span{
+    padding: 30px;
+    color: gray;
+
+}
+
+
+
+.AboutProfile span{
+    margin-left: 30vh;
+    
+}
+
+.AboutProfile h2,h4{
+    margin-left: 30vh;
+ margin-bottom: 6px;
+}
+
+.AboutProfile span{
+    color: gray;
+}
+
+.PostandSetting{
+    margin-left: -40vh;
+    margin-top: 5vh;
+
+}
+
+.ActivitySection ul{
+ display: flex;
+ list-style-type: none;
+ border-top: 2px solid lightgray;
+ padding-top: 10px;
+ width: 80vh;
+ border-radius: 15px;
+}
+.ActivitySection a{
+    color: black;
+    padding: 0px 24px;
+
+}
+
+.ActivitySection{
+        margin-top: -13vh;
+        margin-left: 20vh;
+        font-size: 17px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    position: absolute;
+
+}
+
+
+/*Suggestions*/
+.ThePicture img{
+    width:7vh;
+    height:7vh;
+    margin-left: 20px;
+    border-radius: 70px;
+}
+
+.TheWords span{
+    color: black;
+    display: block;
+    margin-left:10px ;
+}
+
+.SuggestionsGroup{
+    background-color:rgb(253, 253, 255) ;
+    width:50vh;
+    height:56vh;
+    margin: -30vh 2vh 2vh 150vh;
+    border-radius: 10px;
+      
+    
+}
+
+.SuggestionsGroup h3{
+    text-align: center;
+    margin-bottom: 6vh;
+    padding-top: 13px;
+    padding-bottom: 10px;
+    background-color: darkblue;
+    color:white;
+    border-radius: 6px;
+
+}
+
+.SuggestGroup{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 3vh;
+    border-radius: 10px;
+    margin-bottom: 3vh;
+}
+
+.More2 span{
+    color: black;
+    margin-left: 14vh;
+}
+
+.Thefollow span{
+    color:rgb(53, 51, 51);
+    margin-left: 10vh;
+    background-color: lightgray;
+    padding:2px 9px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+/*The feed Modified from the compny style*/
+
+
+.FeedGroup{
+    background-color:white;
+    width:46%;
+    height: 82%;
+    float: right;
+    margin: -18vh 90vh 0 10vh;
+    
+}
+
+.FeedGroup img{
+    width: 40px;
+    height:30px;
+    border-radius: 20px;
+
+}
+
+
+
+.Activity-Container{
+    background-color: white;
+    width: 80%;
+    height: 70%;
+    margin-left: 23px;
+    padding: 20px;
+    display: flex;
+    border-radius: 8px;
+    margin-top: 30px;
+    
+}
+
+.FeedGroup a{
+    color: rgb(80, 80, 80);
+   margin-left: 170px;
+}
+
+.Activity-Container span{
+    color: black;
+    display: block;
+    
+}
+
+.inner-ActContainer img{
+    width: 100%;
+    height: 63%;
+    
+}
+
+
+.actions button{
+       margin:-4px 10px;
+
+}
+
+

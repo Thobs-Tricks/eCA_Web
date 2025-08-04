@@ -1,0 +1,73 @@
+.Job-Tab{
+    background-color: white;
+    width:60%;
+    height:75%;
+    padding: 40px;
+    margin:30px 40px 20px 200px;
+    border-radius: 10px;
+    
+}
+
+.TheJobs{
+    display: flex;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(228, 221, 221);
+}
+
+.theImage img{
+    width:60px;
+    height:60px;
+
+}
+.Heading{
+    margin-bottom: 55px;
+    text-align: center;
+}
+
+.Heading h3{
+     margin: 0;
+     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.TheWords h3{
+    padding: 2px;
+    margin-left:-20px;
+    margin-top:4px;
+}
+
+.TheWords{
+    margin-left: 20px;
+}
+
+.TheWords a{
+    color:rgb(50, 156, 192);
+    
+}
+.X{
+    font-size: 20x;
+    color: gray;
+    margin-left: 56%;
+    margin-top: 18px;
+}
+
+
+.theImage{
+
+    padding: 10px 0 0 10px;
+}
+
+.Job-Tab span{
+    color: gray;
+}
+
+.Job-Tab p{
+    margin-bottom:5px;
+    margin-top: -17px;
+}
+
+.Extra p{
+margin-left:51%;
+color: rgb(85, 81, 81);
+}

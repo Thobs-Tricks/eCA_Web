@@ -1,0 +1,81 @@
+body{
+           background-color:darkblue;
+
+}
+        .container{
+            border-radius: 5px;
+            background-color :white;
+           display: flex;
+           width:710px;
+           height:300px;
+           margin: 60px 270px ;
+           padding :5px 50px 215px 40px;
+
+
+        }
+
+      
+
+        aside{
+           margin-left: 125px;
+           margin-top: 70px;
+        }
+
+       
+        input{
+            outline-color: rgb(130, 137, 240);
+            padding: 10px 30px;
+            margin-bottom: 15px;
+            border-radius: 20px;
+            border-style: hidden;
+            background-color: rgb(218, 220, 250);
+        }
+
+         .SignU{
+            
+            margin-top: 17px;
+        }
+
+        .ForgotP{
+           margin-top: 23px;
+
+        }
+
+
+
+        .OtherSide{
+            align-items: center;
+        }
+
+        span{
+            color:rgb(10, 21, 172) ;
+        }
+
+        .SignInDecore, .SignUpDecore{
+       margin-bottom: 40px; 
+       color: rgb(0, 0, 0);  
+        text-decoration: underline;
+        text-decoration-thickness: 4px;
+        text-decoration-color:rgb(130, 137, 240) ;
+        text-underline-offset: 10px;
+          
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+
+        }
+
+ ::placeholder{
+    color: rgb(0, 0, 0);
+ }
+
+.role-selector {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  background-color: rgb(218, 220, 250);
+  border-style: hidden;
+  outline-color: rgb(130, 137, 240);
+}

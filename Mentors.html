@@ -1,0 +1,227 @@
+<head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+      <style>
+
+span{
+    color:white;
+}
+
+.Logo{
+    display: inline;
+    margin: 30px;
+    cursor: pointer;
+     color: rgb(130, 137, 240);
+
+}
+
+
+ a{
+    text-decoration: none;
+    margin: 20px;
+    color: white;
+  
+}
+
+   
+    .fa-user{
+        background-color: white;
+        color: grey;
+        border-radius: 20px;
+        width: 30px;
+        height:24px;
+        text-align: center;
+        
+    }
+   
+
+
+
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    margin-left: 320px;
+    margin-top: 10px;
+
+}
+
+.mini-container{
+    display: flex;
+    background-color:darkblue;
+    padding: 9px;
+     box-shadow:  8px 2px 11px rgb(130, 137, 240);
+}
+
+
+
+
+        /**The grid mentors*/
+       *{
+        box-sizing: border-box;
+       }
+       body{
+         background-color: rgb(248, 248, 248);
+        margin: 0;
+       }
+
+       .Search-Bar button {
+          padding:5px 8px ;
+          border: none;
+          background-color: darkblue;
+          border-radius: 5px;
+          color: white;
+       }
+
+       /*.SearchBar input{
+        padding:5px 8px ;
+        border-radius: 5px;
+        border: none;
+        font-size: 17px;
+        background-color: white;
+       }*/
+
+       
+input
+{
+    width: 100px;
+     transition: width 0.4s ease-in-out;
+     padding: 10px;
+     border: none;
+     border-radius: 10px;
+     margin-top: 48px;
+     margin-left: 980px;
+      outline-color: rgb(130, 137, 240);
+     
+}
+
+
+
+input:hover{
+    width: 160px;
+    
+}
+
+
+
+       
+.Cards{
+    margin-top: 60px;
+}
+.mini-card{
+    width: 270px;
+    height:320px;
+    text-align: center;
+    margin: 20px;
+    display:inline-block;
+   /* border: 1px solid blue;*/
+    background-color: white;
+    box-shadow: 4px 5px 9px rgb(194, 201, 235) ;
+}
+
+.mini-card img{
+    margin-top: 20px;
+    /*padding: 20px;*/
+    border-radius:40px;
+    border: 1px solid rgb(181, 181, 226);
+    width: 80px;
+    height: 80px;
+}
+
+.mini-card button{
+    padding:5px 9px;
+    margin: 5px 5px 0px 5px;
+    border-radius: 6px;
+    border: none;
+}
+
+.mini-card a{
+    text-decoration: none;
+    color:black;
+}
+
+.Follow{
+    background-color: rgb(0, 37, 92);
+    color: white;
+}
+
+.hire{
+     background-color: rgb(36, 179, 0);
+    color: white;
+}
+       hr{
+        margin: 40px 0 14px 0;
+       }
+
+
+     
+      </style>
+</head>
+
+<body>
+    <div class="mini-container">
+    <header>
+      <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
+      
+    </header>
+      <nav>
+            <ul>
+                <li><a href="Index.html"> <i class="fa fa-home"></i>  Home</a></li>
+                <li><a href="Index.html"> <i class="fa fa-question"></i> About</a></li>
+                <li><a href="Jobs.html"><i class="fa fa-briefcase"></i>  Jobs</a></li>
+                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
+                                <li><a href="Company.html"><i class="fa fa-building"></i> Company</a></li>
+                 <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
+                <li> <a c href="profile.html" ><i class="fa fa-user"></i> Ally</a></li>
+            </ul>
+
+        </nav>
+       
+        </div>
+
+        <div class="Search-Bar">
+            <form action="#">
+               <input type="search" name="search"  placeholder="Search..">
+              <button>Submit</button>    
+        </form>
+        </div>
+    <div class="Cards">
+        <div class="mini-card">
+            <img src="Image/bob.webp" alt="">
+            <h3>Mike Dot</h3>
+            <h4>Graphic Designer</h4>
+            <button class="Follow">Follow</button>
+            <button class="Hire">Hire</button> <hr>
+            <a href="MentorProfile.html">View Profile</a>
+        </div>
+
+          <div class="mini-card">
+            <img src="" alt="">
+            <h3>john Brick</h3>
+            <h4>CA</h4>
+            <button class="Follow">Follow</button>
+            <button class="Hire">Hire</button> <hr>
+            <a href="MentorProfile.html">View Profile</a>
+        </div> 
+        
+        <div class="mini-card">
+            <img src="" alt="">
+            <h3>Bob B</h3>
+            <h4>softwere Enginer</h4>
+            <button class="Follow">Follow</button>
+          <button class="Hire">Hire</button> <hr>
+            <a href="MentorProfile.html">View Profile</a>
+        </div>
+
+         <div class="mini-card">
+            <img src="" alt="">
+            <h3>Hope Dot</h3>
+            <h4>CA</h4>
+            <button class="Follow">Follow</button>
+            <button class="Hire">Hire</button> <hr>
+            <a href="MentorProfile.html">View Profile</a>
+        </div>
+        
+        
+    </div>
+</body>

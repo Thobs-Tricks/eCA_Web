@@ -1,0 +1,309 @@
+<head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+      <link rel="stylesheet" href="StyleProfile.css">
+
+</head>
+<body>
+
+       <div class="mini-container">
+    <header>
+      <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
+      
+    </header>
+      <nav>
+            <ul>
+                <li><a href="Index.html"> <i class="fa fa-home"></i>  Home</a></li>
+                <li><a href="Index.html"> <i class="fa fa-question"></i> About</a></li>
+                <li><a href="Jobs.html"><i class="fa fa-briefcase"></i>  Jobs</a></li>
+                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
+                  <li><a href="Mentors.html"><i class="fa fa-building"></i> Company</a></li>
+                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
+                <li> <a href="profile.html" ><i class="fa fa-user"></i> Ally</a></li>
+            </ul>
+        </nav>  
+     </div>
+
+
+    <section class="cover-sec">
+      <div class="Top-Image">
+            <img src="Image/background.webp" alt="">
+            
+            <button class="changePicture"><input type="file">Change Image</button>
+                
+            <div class="ProfileView">
+               <img src="Image/Ally.jpg" alt=""> 
+               <div class="Profile-Container"></div>  
+
+                <div class="Below-Profile">
+                    <p>Followers</p>
+                    <p style="margin-left: 10px;">Following</p>
+                    <div class="Numbers">
+                        <p style="margin-left:90px;">12</p>
+                        <p >23</p>
+                    </div><hr>
+                    
+                </div>  
+                 <div class="Links">
+                    <a href="#">https://gambolthemes.net/gg</a> <hr>
+                          <a href="#">https://moviepire.net/watch/60735?</a> <hr>     
+                </div> 
+
+                  <div  class="Side-Detail">
+                 
+                    <h2>Ally Dowson</h2>
+                    <p style="color: rgb(109, 102, 102); font-size: 20px;">Accountent</p>
+                     
+                    <div class="PostandSet"> 
+                    <a style="width: 40px;text-decoration: none;background-color: rgb(29, 53, 75); padding:8px; margin-left: 70px;" href="AccountSetting.html">Setting</a> 
+                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid rgb(29, 53, 75);" onclick="PostFeature()">Post</button>
+               
+                    <div class="PopupPost" id="PostForm">
+                     
+                        <input style=" border:none; margin-left: 400px; margin-top:0px; background-color: rgb(86, 86, 143);color: white; cursor: pointer; border-radius: 9px; padding: 4px 10px;" type="submit" value="Post" >
+                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); ;cursor: pointer; padding: 4px 10px" onclick="ClosePopUp()"> <b>X</b></button>
+                        <textarea name="" placeholder="Share your thoughts.." id=""></textarea>
+                        
+                        <button onclick="MoreOptions()" class="Plus-btn">+</button>
+                         
+                        <!--The inner popUp-->
+                         <div class="popup1" id="popup1">
+                            <div class="popup-item"><i class="fas fa-image"></i><span>Media</span></div>
+                            <div class="popup-item"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
+                            <div class="popup-item"><i class="fas fa-award"></i><span>Celebrate</span></div>
+                            <div class="popup-item"><i class="fas fa-briefcase"></i><span>Job</span></div>
+                            <div class="popup-item"><i class="fas fa-poll"></i><span>Poll</span></div>
+                            <div class="popup-item"><i class="fas fa-file-alt"></i><span>Document</span></div>
+                            <div class="popup-item"><i class="fas fa-tools"></i><span>Services</span></div>
+                           </div>
+                    </div>
+               
+                </div>
+                 
+                    <ul class="Description">
+                        <li><a href="#" onclick="showSection('feedSection', this)" ><i class="fa fa-newspaper"></i> Feed</a></li>
+                        <li><a href="#" id="Infor" onclick="showSection('infoSection', this)" ><i class="fa fa-info-circle"></i> Info</a></li>
+                        <li><a href="#"  onclick="showSection('jobSection', this)"><i class="fa fa-bookmark"></i> Bursaries / Jobs</a></li>
+
+                    </ul>
+                </div>
+
+            </div>
+        
+       </div>
+
+	</section>
+
+ <div class="tab-content"  id="feedSection">
+<section class="FeedSection" id="feedsSection" >
+
+    <div class="body">
+      <img src="Image/bob.webp" alt="">
+      <div style="margin-left: 90px;margin-top: -80px;">
+        <p> <b>John Break</b> </p>
+        <span >Mentor in CA</span>
+       <!--<i style="margin-left: 390px;margin-top: -30px;" class="fa fa-ellipsis-v"></i>--> 
+        <p style="margin-top: -1px;">4 months ago</p>
+
+        <div style="margin-left: 290px;margin-top:-55px; ">
+        <i class="fa fa-bookmark"></i>
+        <button style="border: none; cursor:pointer;background-color: white; color:rgb(6, 141, 185); margin-left:20px;" >+ Follow</button>
+        </div>
+      </div>
+     
+        <div class="Head">
+            <p style="margin-top:37px;">Fun facts about CA blhs hjak jhav jhs jha hjas jha jh sakhd
+            ghavshga jhdskhKj jhs  ...more</p>
+                  <!--  <video src="Image/6916293_Motion_Graphics_Motion_Graphic_1080x1920.mp4" width="500" height="299px;" autoplay loop></video>-->
+                    <iframe width="520" height="315" src="https://www.youtube.com/embed/Jm3jp1l1qH8?si=9QeBsMpyQ46aILAJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+             
+                    <div class="actions">
+                        <button onclick="OnLikeBtn();" id ="like-btn"><i class="fa fa-thumbs-up"></i> Like</button>
+                        <button class="comment-btn"><i class="fa fa-commenting"></i> Comment</button>
+                        <button><i class="fa fa-retweet"></i> Repost</button>
+                        <button><i class="fa fa-paper-plane"></i> Send</button>
+                    </div>
+   
+        </div>
+        
+    </div>
+
+</section>
+</div>
+
+
+<section class="Suggestions">
+    <div class="Box-Suggest">
+        <h3 style="text-align: center;">Suggestions</h3><hr style="width:270px">
+        <div class="People">
+            <div>
+                <img src="Image/bob.webp" alt="">
+                <h4 > <b>john Down</b>
+                <p >CA</p> </h4>
+                
+           </div>
+           <div>
+              <button type="submit">+</button>
+           </div>
+        </div>
+         <div class="People">
+            <div>
+                <img src="Image/john.webp" alt="">
+                <h4> <b>jim Down</b>
+                <p>CA</p> </h4>
+               
+           </div>
+           <div>
+              <button type="submit">+</button>
+           </div>
+        </div>
+         <div class="People">
+            <div>
+                <img src="Image/bob.webp" alt="">
+                <h4 > <b>Blake Hunter</b>
+                <p >Enginer</p> </h4>
+                
+           </div>
+           <div>
+              <button type="submit">+</button>
+           </div>
+        </div>
+        <div style="border-top: 2px solid lightgray; margin-bottom: 30px;">
+        <a style=" text-align: center; margin-left: 110px;color:black">See more <i style="margin-right: 75px;" class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+</section>
+
+ <div class="tab-content"  id="infoSection">
+<section class="ContainerX" id="infoSection" >
+   
+  <div class="user-profile" >
+     <div  class="ExperinceC">
+      <h3 style="text-align: center;padding:10px;">Experince</h3>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+
+      <div>
+      <h4>Web developer</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. <br>
+         Vivamus consectetur aliquam lectus commodo viverra.</p>
+    </div>
+
+           <div style="margin-top:38px;">
+              <h4>Leadership</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. <br>
+                Vivamus consectetur aliquam lectus commodo viverra.
+              </p>
+           </div>
+        </div>
+
+
+         <div  class="EducationD">
+      <h3 style="text-align: center;padding:10px;">Education</h3>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+
+      <div>
+      <h4>University of Cape Town</h4>
+      <label for="user-date">Select a date:</label>
+        <input type="date" id="user-date" name="user-date">
+      <p>2022-2025</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. <br>
+         Vivamus consectetur aliquam lectus commodo viverra.</p>
+    </div>
+
+        
+        </div>
+
+
+         <div  class="SkillsC">
+      <h3 style="text-align: center;padding:10px;">Skills</h3>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+                   
+     
+                       <ul>
+												<li><a href="#" title=""></a>HTML</li>
+												<li><a href="#" title=""></a>PHP</li>
+												<li><a href="#" title=""></a>CSS</li>
+												<li><a href="#" title=""></a>Javascript</li>
+												<li><a href="#" title=""></a>Wordpress</li>
+												<li><a href="#" title=""></a>Photoshop</li>
+												<li><a href="#" title=""></a>Illustrator</li>
+											</ul>
+                 
+        </div>
+  </div>
+
+</section>
+
+</div>
+
+
+
+
+<script>
+
+function OnLikeBtn(){
+    document.getElementById("like-btn").style.backgroundColor = "darkblue";
+    document.getElementById("like-btn").style.color = "White";
+        document.getElementById("like-btn").style.borderRadius = "2px";
+}
+
+function PostFeature(){
+    document.getElementById("PostForm").style.display = "block";
+}
+
+function MoreOptions(){
+    document.getElementById("popup1").style.display = "block";
+}
+
+// Close popup when clicking outside of it
+function ClosePopUp(){
+    document.getElementById("PostForm").style.display="none";
+}
+
+// Close inner popup when clicking outside of it
+const PostForm= document.getElementById("PostForm");
+  const popup = document.getElementById('popup1');
+  
+  document.addEventListener('click', function(event) {
+    if (!PostForm.contains(event.target)) {
+      popup.style.display = 'none';
+    }
+  });
+
+
+
+
+
+
+function showSection(sectionId, clickedLink) {
+  const sections = ['feedSection', 'infoSection', 'jobSection'];
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.style.display = id === sectionId ? 'block' : 'none';
+    }
+  });
+
+  // Hide Suggestions when not on feed
+  const suggestions = document.querySelector('.Suggestions');
+  if (suggestions) {
+    suggestions.style.display = sectionId === 'feedSection' ? 'block' : 'none';
+  }
+
+  // Optional: Highlight the active tab link
+  const tabLinks = document.querySelectorAll(".Description li a");
+  tabLinks.forEach(link => link.style.color = "");
+  if (clickedLink) clickedLink.style.color = "blue";
+}
+
+// Show feed by default on page load
+window.onload = function () {
+  showSection('feedSection');
+};
+
+
+
+
+</script>
+
+</body>
