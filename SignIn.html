@@ -20,11 +20,11 @@
     <aside>
         <h2  class="SignInDecore" > <b>Sign In</b> </h3> 
 
-        <form action="#" id="SignInForm">
+        <form action="#" id="loginForm">
 
-            <input type="email" placeholder="Email / Username" required>
+            <input type="email"  id="loginEmail"  placeholder="Email / Username" required>
            <div>
-               <input type="password"  placeholder="Password" required> 
+               <input type="password" id="loginPassword"  placeholder="Password" required> 
            </div>
           
            <input style="background-color: darkblue; color: white; margin-top: 20px; "  type="submit" name="Submit" id="">
@@ -43,6 +43,39 @@
     </aside>
    </div>
     
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const storedData = localStorage.getItem("userData");
+      if (!storedData) {
+        alert("No user found. Please sign up first.");
+        return;
+      }
+
+      const user = JSON.parse(storedData);
+
+      if (user.email === email && user.password === password) {
+        // Save session info (e.g., role)
+        localStorage.setItem("userRole", user.role);
+
+        // Redirect based on role
+        if (user.role === "mentor") {
+          window.location.href = "MentorProfile.html";
+        } else if (user.role === "company") {
+          window.location.href = "Company.html";
+        }
+      } else {
+        alert("Incorrect email or password.");
+      }
+    });
+  </script>
+
+
 </body>
 
 </html>
