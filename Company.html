@@ -1,30 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile</title>
+
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
       <link rel="stylesheet" href="StyleProfile.css">
       <link rel="stylesheet" href="StyleCompany.css">
       <script src="Script.js"></script>
 </head>
 
+
 <body>
      <div class="mini-container">
         <header>
-         <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
+              <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
 
         </header>
       <nav>
             <ul>
-                <li><a href="Index.html"> <i class="fa fa-briefcase"></i> Jobs</a></li>
                 <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
                 <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
                 <li> <a class="nav-profile" href="Company.html"><img src="Image/company.webp" alt="pic"></a></li>
-<li class="dropdown"> 
-  <div class="dropdown-toggle" onclick="toggleDropdown()">Company Itd<i class="fa fa-caret-down"></i>
-  </div>
-  <div class="dropdown-menu" id="dropdownMenu">
-    <a href="#" onclick="logout()">Log out</a>
-  </div>
-</li>
+    <li class="dropdown"> 
+          <div class="dropdown-toggle" onclick="toggleDropdown()">Company Itd<i class="fa fa-caret-down"></i>
+        </div>
+      <div class="dropdown-menu" id="dropdownMenu">
+       <a href="#" onclick="logout()">Log out</a>
+      </div>
+    </li>
             </ul>
         </nav>  
      </div>
@@ -79,7 +84,7 @@
                        
                         <li><a id="Home" href="#" onclick="showSection(this)" >Home</a></li>
                         <li><a id="About" href="#" onclick="showSection(this)" > About</a></li>
-                        <li><a id="Post" href="#"  onclick="showSection(this)">Post</a></li>
+                        <li><a id="Post" href="#"  onclick="showSection(this)">Activities</a></li>
                          <li><a id="People" href="#"  onclick="showSection(this)">People</a></li>
 
                     </ul>
@@ -146,3 +151,5 @@
 
  
 </body>
+
+</html>

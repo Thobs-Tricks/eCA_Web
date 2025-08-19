@@ -1,24 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="StyleProfile.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Setting</title>
+
+  <link rel="stylesheet" href="StyleProfile.css">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
+  
+</body>
+</html>
+<body>
 
      <div class="mini-container">
     <header>
-      <h1 class="Logo"><i>Logo<span>Name</span></i> </h1>
-      
+              <img src="Image/LogoCA-white.png" alt="" class="LogoImg">      
     </header>
       <nav>
             <ul>
-                <li><a href="Index.html"> <i class="fa fa-home"></i>  Home</a></li>
-                <li><a href="Index.html"> <i class="fa fa-question"></i> About</a></li>
                 <li><a href="#"><i class="fa fa-briefcase"></i>  Jobs</a></li>
                 <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
                 <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
-                <li> <a href="profile.html" ><i class="fa fa-user"></i> Ally</a></li>
-            </ul>
+
+                <!--Profile and Name change accoding to loggin-->
+                <li> <a class="nav-profile" href="MentorProfile.html"><img src="Image/bob.webp" alt="pic"></a></li>
+                <li class="dropdown"> 
+                    <div class="dropdown-toggle" onclick="toggleDropdown()">Mike Dot<i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                      <a href="#" onclick="logout()">Log out</a>
+                     </div>
+                </li>
+              </ul>
         </nav>  
      </div>
 

@@ -6,12 +6,7 @@ span{
     color:white;
 }
 
-.Logo{
-    display: inline;
-    margin: 30px;
-    cursor: pointer;
-    color: rgb(130, 137, 240);
-}
+
 
 
 input
@@ -34,13 +29,24 @@ input:hover{
   
 }
 
+.LogoImg{
+   width:30%; 
+   display: inline;
+   margin-top:-8vh;
+}
+
+header{
+    display: inline-block;
+    height:10vh;
+}
+
 .InButton{
      color: rgb(0, 0, 0);
     background-color: rgb(32, 2, 204);
      cursor: pointer; 
-    border-radius: 9px;
-    border-color: rgb(70, 73, 241);
     padding:3px 0 3px 0;
+    border: none;
+
 }
 .InButton:hover{
         background-color:  rgb(130, 137, 240);
@@ -51,7 +57,7 @@ input:hover{
 nav ul{
     list-style-type: none;
     display: flex;
-    margin-left: 340px;
+    margin-left: 300px;
     margin-top: 10px;
 
 }

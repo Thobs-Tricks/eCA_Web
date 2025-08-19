@@ -2,6 +2,11 @@ body{
            background-color:darkblue;
 
 }
+
+.LogoImg{
+       width:30%; 
+   display: inline;
+}
         .container{
             border-radius: 5px;
             background-color :white;
