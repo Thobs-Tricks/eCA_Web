@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mentor list</title>
 
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="StyleProfile.css">
 <link rel="stylesheet" href="MentorProfileStyle.css">
@@ -27,7 +27,7 @@
             <ul>
                 <li><a href="Jobs.html"> <i class="fa fa-briefcase"></i> Jobs</a></li>
                 <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                 <li><a href="#"><i class="fa fa-users"></i> Company</a></li>
+                 <li><a href="Company.html"><i class="fa fa-users"></i> Company</a></li>
                 <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
                           <li> <a class="nav-profile" href="MentorProfile.html"><img src="Image/bob.webp" alt="pic"></a></li>
 <li class="dropdown"> 
@@ -46,7 +46,7 @@
     <div class="ProfileContainer">
 
         <div class="BackgroundImage">
-           <img src="Image/m.webp" alt="picture" style="width:100%; height:50%;" >
+           <img src="Image/landbackground.jpeg" alt="picture"  >
         </div>
 
           <div class="PictureLabel">
@@ -71,20 +71,20 @@
                  </div>
 
 
-                   <div class="PostandSetting"> 
-                    <a style="width: 40px;text-decoration: none;background-color: rgb(29, 53, 75); padding:8px;" href="AccountSetting.html">Setting</a> 
-                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid rgb(29, 53, 75);" onclick="PostFeature()">Post</button>
+                   <div class="PostandSetting" > 
+                    <a style="width: 40px;text-decoration: none;background-color: rgb(11, 70, 146); padding:8px;" href="AccountSetting.html">Setting</a> 
+                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid #d36907;background: white;" onclick="PostFeature()">Post</button>
                
-                    <div class="PopupPost" id="PostForm">
+                    <div class="PopupPost" id="PostForm" >
                      
-                        <input style=" border:none; margin-left: 400px; margin-top:0px; background-color: rgb(86, 86, 143);color: white; cursor: pointer; border-radius: 9px; padding: 4px 10px;" type="submit" value="Post" >
-                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); ;cursor: pointer; padding: 4px 10px" onclick="ClosePopUp()"> <b>X</b></button>
+                        <input style="  border: 2px solid rgb(86, 86, 143); margin-left: 400px;  background-color: rgb(86, 86, 143);color: white; cursor: pointer;  padding: 4px 10px;" type="submit" value="Post" >
+                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); cursor: pointer; padding: 4px 10px;" onclick="ClosePopUp()"> <b>X</b></button>
                         <textarea name="" placeholder="Share your thoughts.." id=""></textarea>
                         
                         <button onclick="MoreOptions()" class="Plus-btn">+</button>
                          
                         <!--The inner popUp-->
-                         <div class="popup1" id="popup1">
+                         <div class="popup1" id="popup1" >
                             <div class="popup-item"><i class="fas fa-image"></i><span>Media</span></div>
                             <div class="popup-item"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
                             <div class="popup-item"><i class="fas fa-award"></i><span>Celebrate</span></div>
@@ -103,8 +103,8 @@
           <div class="ActivitySection">
      
              <ul>
-              <li><a href="">Feed</a></li>
-              <li><a href="">Info</a></li>
+              <li><a href="#" onclick="openFile('FeedID');return false;">Feed</a></li>
+              <li><a href="#" onclick="openFile('information');return false;">Info</a></li>
               <li><a href="">Post</a></li>
              </ul>
           </div>
@@ -119,7 +119,6 @@
 
       <div class="ThePicture">
         <a href=""> <img src="Image/Ally.jpg" alt=""></a>
-       
       </div>
 
       <div class="TheWords">
@@ -133,43 +132,39 @@
 
         <div class="SuggestGroup">
 
-      <div class="ThePicture">
-        <a href="Company.html"> <img src="Image/company.webp" alt=""></a>
-       
-      </div>
+          <div class="ThePicture">
+            <a href="Company.html"> <img src="Image/company.webp" alt=""></a>
+          </div>
 
-      <div class="TheWords">
-        <a href="Company.html"><span>Company ltd</span></a>
-         <span>What they do</span>
-         
-      </div>
-      
+            <div class="TheWords">
+              <a href="Company.html"><span>Company ltd</span></a>
+              <span>What they do</span>
+            </div>
       </div>
 
 
           <div class="SuggestGroup">
 
-      <div class="ThePicture">
-        <a href=""> <img src="Image/companyprofile.webp" alt=""></a>
-       
-      </div>
+           <div class="ThePicture">
+             <a href=""> <img src="Image/companyprofile.webp" alt=""></a>
+            </div>
 
-      <div class="TheWords">
-        <a href="#"><span>Name Surname</span></a>
-         <span>What they do</span>
-      </div>
-      
+            <div class="TheWords">
+               <a href="#"><span>Name Surname</span></a>
+               <span>What they do</span>
+            </div>
       </div>
        
       <div class="More2">
        <a href=""><span>See more</span><i style="margin-right: 18vh;" class="fa fa-arrow-right"></i></a>
        </div>
-    </div>
+      </div>
 
      
   <!--The feed section-->
 
-   <div class="FeedGroup">
+  <div class="tab-content" id="FeedID">
+   <div class="FeedGroup" >
 
         <div class="Activity-Container">
             <img src="Image/cBackground.webp" alt="picture">
@@ -190,12 +185,97 @@
                     </div>
             </div>
             
-            </div>
-            
-            
+            </div> 
         </div>
-      
     </div>
+</div>
+
+
+    <!--User Information -->
+ <div class="tab-content"  id="information" >
+<section class="ContainerX"  >
+   
+  <div class="user-profile" >
+     <div  class="ExperinceC">
+      <h3 >Experince</h3> <hr>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+
+      <div class="TheExperinceGroup">
+      <h4>1. Web developer</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. 
+         Vivamus consectetur aliquam lectus commodo viverra.</p>
+    </div>
+
+           <div class="TheExperinceGroup">
+              <h4>2. Leadership</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt.
+                Vivamus consectetur aliquam lectus commodo viverra.
+              </p>
+           </div>
+        </div>
+
+
+         <div  class="EducationD">
+      <h3 >Education</h3> <hr>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+
+      <div>
+      <h4>University of Cape Town</h4>
+      <label for="user-date">Select a date:
+        <input type="date" id="user-date" name="user-date">
+      2022-2025
+      </label>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. 
+         Vivamus consectetur aliquam lectus commodo viverra.</p>
+    </div>
+
+        
+        </div>
+
+
+         <div  class="SkillsC">
+      <h3 >Skills</h3> <hr>
+      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
+                   
+     
+                       <ul>
+												<li><a href="#" title=""></a>HTML</li>
+												<li><a href="#" title=""></a>PHP</li>
+												<li><a href="#" title=""></a>CSS</li>
+												<li><a href="#" title=""></a>Javascript</li>
+												<li><a href="#" title=""></a>Wordpress</li>
+												<li><a href="#" title=""></a>Photoshop</li>
+												<li><a href="#" title=""></a>Illustrator</li>
+                        
+											</ul>
+                 
+        </div>
+  </div>
+
+</section>
+
+</div>
     
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  openFile('FeedID');
+});
+  //Feed, Info and post
+ function openFile(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.tab-content').forEach(sec => {
+      sec.style.display = "none";
+    });
+
+ 
+
+    // Show clicked one
+    document.getElementById(sectionId).style.display = "block";
+  }
+
+</script>
+
 </body>
 </html>

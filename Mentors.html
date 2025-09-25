@@ -53,17 +53,18 @@ span{
 nav ul{
     list-style-type: none;
     display: flex;
-    margin-left: 160px;
-    margin-top: 10px;
+    flex-wrap: wrap;
+   justify-content: space-evenly;
 
 }
 
 .mini-container{
     display: flex;
+    flex-wrap: wrap;
     background-color:darkblue;
     padding: 9px;
      box-shadow:  8px 2px 11px rgb(130, 137, 240);
-         height: 13vh;
+         height: 100px;
 
 }
 
@@ -80,36 +81,36 @@ nav ul{
        }
 
        .Search-Bar button {
-          padding:5px 8px ;
-          border: none;
-          background-color: darkblue;
-          border-radius: 5px;
-          color: white;
+         padding: 8px 12px;
+  border: none;
+  background-color:rgb(238, 121, 12);;
+  border-radius: 5px;
+  color: white;
+  margin-left: 5px;
+  cursor: pointer;
        }
 
-       /*.SearchBar input{
-        padding:5px 8px ;
-        border-radius: 5px;
-        border: none;
-        font-size: 17px;
-        background-color: white;
-       }*/
-
+   
+.Search-Bar{
+     text-align: center;
+  margin: 40px 0;
+}
        
-input
+.Search-Bar input
 {
-    width: 100px;
-     transition: width 0.4s ease-in-out;
+    width: 200px;
+     transition: width 0.3s ease;
      padding: 10px;
      border: none;
      border-radius: 10px;
-     margin-top: 48px;
-     margin-left: 980px;
+   
       outline-color: rgb(130, 137, 240);
      
 }
 
-
+.Search-Bar input:focus {
+  width: 250px;
+}
 
 input:hover{
     width: 160px;
@@ -121,16 +122,18 @@ input:hover{
        
 .Cards{
     margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .mini-card{
-    width: 270px;
-    height:320px;
-    text-align: center;
-    margin: 20px;
-    display:inline-block;
-   /* border: 1px solid blue;*/
-    background-color: white;
-    box-shadow: 4px 5px 9px rgb(194, 201, 235) ;
+      flex: 1 1 250px; /* responsive width */
+  max-width: 270px;
+  background-color: white;
+  box-shadow: 4px 5px 9px rgb(194, 201, 235);
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
 }
 
 .mini-card img{
@@ -138,8 +141,9 @@ input:hover{
     /*padding: 20px;*/
     border-radius:40px;
     border: 1px solid rgb(181, 181, 226);
-    width: 80px;
+   width: 80px;
     height: 80px;
+    object-fit: contain;
 }
 
 .mini-card button{
@@ -155,15 +159,15 @@ input:hover{
 }
 
 .Follow{
-    background-color: rgb(0, 37, 92);
+    background-color: rgb(2, 150, 170);/*original :rgb(0, 37, 92);*/
     color: white;
 }
 
-.hire{
-     background-color: rgb(41, 155, 12);
+.hires{
+     background-color: rgb(20, 187, 123);
     color: white;
-    cursor:pointer;
 }
+ 
        hr{
         margin: 40px 0 14px 0;
        }
@@ -224,8 +228,41 @@ input:hover{
  
 
 
+@media (max-width: 768px) {
 
-     
+  .mini-container {
+    flex-direction: column;
+    height: auto; /* remove fixed height */
+    align-items: center;
+  }
+
+  .mini-card{
+        margin: 20px;
+
+  }
+
+  
+
+  nav ul {
+    flex-direction: column;
+    margin-top: 0;
+    padding:0;
+    margin: 10px 0;
+    gap:10px;
+
+  }
+
+ 
+}
+
+    @media (max-width: 480px) {
+ .mini-card{
+ flex: 1 1 100%;
+ max-width: 100%;
+ margin-bottom:50px;
+ }
+
+} 
       </style>
 </head>
 
@@ -267,7 +304,7 @@ input:hover{
             <h3>Mike Dot</h3>
             <h4>Graphic Designer</h4>
             <button class="Follow">Follow</button>
-            <button class="Hire">Hire</button> <hr>
+            <button class="hires">Hire</button> <hr>
             <a href="MentorProfile.html">View Profile</a>
         </div>
 
@@ -276,7 +313,7 @@ input:hover{
             <h3>john Brick</h3>
             <h4>CA</h4>
             <button class="Follow">Follow</button>
-            <button class="Hire">Hire</button> <hr>
+            <button class="hires">Hire</button> <hr>
             <a href="MentorProfile.html">View Profile</a>
         </div> 
         
@@ -285,7 +322,7 @@ input:hover{
             <h3>Bob B</h3>
             <h4>softwere Enginer</h4>
             <button class="Follow">Follow</button>
-          <button class="Hire">Hire</button> <hr>
+          <button class="hires">Hire</button> <hr>
             <a href="MentorProfile.html">View Profile</a>
         </div>
 
@@ -294,7 +331,7 @@ input:hover{
             <h3>Hope Dot</h3>
             <h4>CA</h4>
             <button class="Follow">Follow</button>
-            <button class="Hire">Hire</button> <hr>
+            <button class="hires">Hire</button> <hr>
             <a href="MentorProfile.html">View Profile</a>
         </div>
         

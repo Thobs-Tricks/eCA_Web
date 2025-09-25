@@ -8,7 +8,8 @@
     
       <link rel="stylesheet" href="StyleProfile.css">
       <link rel="stylesheet" href="StyleCompany.css">
-      <script src="Script.js"></script>
+
+     <!--<script src="Script.js"></script>-->
 </head>
 
 
@@ -82,10 +83,11 @@
                  
                     <ul class="Section-Descrip">
                        
-                        <li><a id="Home" href="#" onclick="showSection(this)" >Home</a></li>
-                        <li><a id="About" href="#" onclick="showSection(this)" > About</a></li>
-                        <li><a id="Post" href="#"  onclick="showSection(this)">Activities</a></li>
+                        <li><a id="About" href="#" onclick="openFile('SectionAbout', this);return false;"  > About</a></li>
+                        <li><a id="Post" href="#"  onclick="openFile('SugActivity', this);return false;" >Activities</a></li>
+                         <li><a id="Home" href="#" onclick="showSection(this)" >Jobs</a></li>
                          <li><a id="People" href="#"  onclick="showSection(this)">People</a></li>
+
 
                     </ul>
                 </div>
@@ -116,8 +118,9 @@
     </section>
 
 
-    <!--Suggestion-->
+    <!--Suggestions of activities-->
 
+    <div class="SectionTittles"  id="SugActivity">
     <div class="Suggested">
         <h3>Activity</h3>
 
@@ -148,7 +151,80 @@
         <a href="#"><i style="margin-right: 180px;" class="fa fa-arrow-right"></i>Show all Activity</a>
           </div>
     </div>
+    </div>
 
+
+    <!--About the Company-->
+    <div class="SectionTittles"  id="SectionAbout">
+
+    <div class="SectionTittlesAbout">
+        <div class="AboutCompany">
+            <div>
+            <h1>Overview</h1>
+            <p>Company(ltd) has forged a new way of getting things done, driven by bravery and passion, with the readiness to realise growth on the African continent and beyond. 
+               We are a truly African brand, inspired by the people we serve in Botswana, Ghana, Kenya, Mauritius, Mozambique, Seychelles, South Africa, Tanzania, Uganda, and Zambia.
+              We also have representative offices in China, Namibia, Nigeria and the United States, as well as securities entities in the United Kingdom and the United States, along with technology support colleagues in the Czech Republic.</p>
+            </div>
+
+            <div>
+                <h3>Website</h3>
+                <a href="http://">https://www.bing.com/search?pglt=299&q</a>
+            </div>
+
+              <div >
+                <h3>Industry</h3>
+                <p>Technology distribution </p>
+               
+            </div>
+
+            <div>
+                <h3>Company size</h3>
+                <p>148K  employees</p>
+            </div>
+
+            <div>
+                <h3>Founded</h3>
+                <p>2025</p>
+            </div>
+             
+            <div>
+                <h3>Location</h3>
+                <p>Johannesburg, Kwa-Zulu Natal</p>
+            </div>
+         </div>
+    </div>
+
+    </div>
+
+
+
+    <script>
+         document.addEventListener("DOMContentLoaded", () => {
+  openFile('SugActivity');
+});
+
+  //About, Act, Jobs and People
+ function openFile(sectionId, clickedLink) {
+  // Hide all sections
+  document.querySelectorAll('.SectionTittles').forEach(sec => {
+    sec.style.display = "none";
+  });
+
+  // Show clicked section
+  document.getElementById(sectionId).style.display = "block";
+
+  // Remove highlight from all links
+  document.querySelectorAll('.Section-Descrip li a').forEach(link => {
+    link.classList.remove("active");
+  });
+
+  // Add highlight to the clicked link
+  if (clickedLink) {
+    clickedLink.classList.add("active");
+  }
+}
+
+    </script>
  
 </body>
 

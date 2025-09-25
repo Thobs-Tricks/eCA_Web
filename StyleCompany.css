@@ -17,8 +17,9 @@
     
 }
 
-.Section-Descrip a:hover{
-    color: blue;
+.Section-Descrip li a.active {
+  color: rgb(11, 73, 207);
+
 }
 
 .Profile-Con{
@@ -111,3 +112,130 @@ position: relative;
 
 }
 
+/*About Section*/
+
+.SectionTittlesAbout{
+  max-width: 100%;
+  width: 950px;
+  background-color: white;
+  word-wrap: break-word;
+ margin: 70px 140px;
+ padding :20px;
+ border-radius: 8px;
+}
+
+.SectionTittlesAbout p{
+      color: rgb(90, 89, 89);
+    font-size: 18px;
+}
+
+.SectionTittlesAbout a{
+  color:rgb(84, 84, 235);
+  margin-left: 0px;
+}
+
+.SectionTittlesAbout a:hover{
+  border-bottom: 1px solid blue;
+}
+
+#SugActivity,#SectionAbout{
+  display: none;
+}
+
+
+
+/* --- Responsive Fixes --- */
+
+/* Make all images scale */
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 768px) {
+  .ProfileView img {
+margin-left: -50px; 
+width: 150px;
+height: 150px; }
+}
+
+
+/* Fix layout on smaller screens */
+@media (max-width: 1024px) {
+
+  
+  .Profile-Con, .AsidePanel, .Suggested {
+    width: 100%;
+    margin: 30px 0;
+    float: none;
+  }
+
+  .Activity-Container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+   .SectionTittlesAbout{
+     flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+ 
+  nav ul {
+    margin-left:  180px;
+    margin-top: -10px;
+  }
+
+  .ProfileView {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .PostandSetting {
+    position: static;
+    margin: 20px 0;
+  }
+
+  .Section-Descrip {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .SectionTittlesAbout{
+     flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+    width: 95%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 14px;
+  }
+  .actions button {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+   nav ul {
+    flex-direction: column;
+    margin-top: -22px;
+    gap:10px;
+  }
+
+  .changePicture{
+    width: 190px;
+    height: 80px;
+    font-size: 10px;
+    word-wrap:break-word;
+    padding: 0;
+  }
+}

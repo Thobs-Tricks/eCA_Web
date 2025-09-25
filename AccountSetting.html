@@ -6,7 +6,7 @@
   <title>Setting</title>
 
   <link rel="stylesheet" href="StyleProfile.css">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -41,9 +41,9 @@
      <div class="Side-Infor">
       <h2 style="text-align: center;padding: 10px 0px 0px 0px;">Settings</h2> <hr>
         <ul>
-            <li><a href=""><i class="fa fa-info"></i> Account Preference</a></li>
-            <li><a href=""><i class="fa fa-eye"></i> Visibility</a></li>
-            <li><a href=""> <i class="fa fa-lock"></i> Security and Login</a></li>
+            <li><a href=""  onclick=" event.preventDefault();showSection('accountSection')"><i class="fa fa-info"></i> Account Preference</a></li>
+            <li><a href="" onclick="event.preventDefault();showSection('visibilitySection')"><i class="fa fa-eye"></i> Visibility</a></li>
+            <li><a href=""onclick="event.preventDefault();showSection('securitySection')"> <i class="fa fa-lock"></i> Security and Login</a></li>
             <li><a href=""><i class="fa fa-shield"></i>  Data Privacy</a></li>
             <li><a href=""><i class="fa fa-sign-out"></i> Deactivate Account</a></li>
         </ul>
@@ -52,74 +52,428 @@
      <section class="Side-View-Infor">
 
        <div class="Everything-PartOne">
-
+  
+        <div class="settings-section" id="accountSection">
         <div class="Account">
 
           <h2>Profile information</h2>
           <div class="Account-item" onclick="openPopup()">Name, location, and industry <i class="fa fa-arrow-right"></i></div>
-          <div class="Account-item" onclick="openPopup('demographicPopup')">Personal demographic information <i class="fa fa-arrow-right"></i></div>
-          <div class="Account-item" onclick="openPopup('verificationPopup')">Verifications <i class="fa fa-arrow-right"></i></div>
-          <div class="Account-item" onclick="openPopup('LanguagePopup')">Language<i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup1()">Personal information <i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup2()">Verifications <i class="fa fa-arrow-right"></i></div>
+          <div class="Account-item" onclick="openPopup3()">Language<i class="fa fa-arrow-right"></i></div>
+        </div>
+
+        <div class="display-section">
+            <h2>Display</h2>
+            <div class="Account-item" onclick="openPopup4()">Dark mode</div>
+          </div>
+
         </div>
 
         <div id="popupOverlay" class="popup-overlay">
         <div class="Popup" id="profilePopup">
               <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('profilePopup')">&times;</span>
 
-        <div class="IntroPopUp" >
+        <div class="IntroPopUp3" >
           <h2 style="margin-bottom: 40px;text-align: center;">Name,Location and industry</h2>
           <form action="">
-            <label for="">First Name*</label>
+            
+            <div class="FormNames">
+              <div>
+            <label for="">First Name <i class="fa fa-star" ></i></label>
             <input type="text" name="" id="" required>
+            </div>
 
-            <label for="">Last Name*</label>
+            <div>
+            <label for="">Last Name <i class="fa fa-star" ></i></label>
             <input type="text" name="" id="" required>
-
-              <label for="">Additional Name</label>
+            </div>
+            </div>
+            
+            <div class="FormNames2">
+            <div>
+            <label for="">Additional Name</label>
             <input type="text" name="" id="" required>
+            </div>
 
-            <label style="display: block;" for="">Headline*</label>
+            <div>
+              <div>
+            <label style="display: inline-block;margin-top: 0px;" for="">Headline<i class="fa fa-star" ></i></label>
+            </div>
             <textarea  name="---" id="" >---</textarea>
-
+            </div>
+             </div>
            <h3> Current position</h3>
-
-           <label for="">Industry*</label>
+<div>
+           <label for="">Industry<i class="fa fa-star" ></i></label>
            <input type="text">   
-           
+ </div>          
            <h3>Education</h3>
-           <label for="">School*</label>
+           <div>
+           <label for="">School <i class="fa fa-star" ></i></label>
            <input type="text" name="" id="" required>
+          </div>
+           <button style="border: none; background-color: white;text-align:left;color: blue;cursor:pointer;"> + Add another education</button>
+            
 
-           <button style="border: none; background-color: white;text-align:left;color: blue;cursor:pointer;"> + Add new ducation</button>
-
-           <input style="display: inline-block; margin-left: -220px; margin-top: 30px; " type="checkbox" name=""  id="" >
-           <label style="margin-left: -230px;" for="">Show school in bio</label>
-         
+           <div>
+           <input type="checkbox" name=""  id="checkboxS" >
+           <label for="">Show school in bio</label>
+         </div>
          
            <h3>Location</h3>
-           <label for="">Country/Region*</label>
+           <div class="FormNames">
+           <div>
+           <label for="">Country/Region<i class="fa fa-star" ></i></label>
            <input type="text" name="" id="" required> 
+            </div>
 
+            <div>
             <label for="">City</label>
            <input type="text" name="" id="" > 
+            </div>
+            </div>
 
-           <button style="width: 50px; cursor: pointer; border: 1px solid blue; border-radius: 10px; margin-left: 430px; background-color: blue; color: white;" type="submit">Save</button>
+           <button class="PopUpBtn"  type="submit">Save</button>
           </form>
         </div>
 </div>
-</div>
-          <div class="display-section">
-            <h2>Display</h2>
-            <div class="Account-item" onclick="openPopup('displayPopup')">Dark mode</div>
-          </div>
 
-         
+
+
+
+<!-- Demographic Popup -->
+<div class="Popup" id="demographicPopup">
+  <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('demographicPopup')">&times;</span>
+  <div class="IntroPopUp">
+    <h2 style="text-align:center;">Personal Demographic Information</h2>
+    <h5>The information you provide about yourself here, will not be displayed on your profile.</h5>
+    <form>
+      <div>
+        <label for="">Gender</label>
+          <select name="Genders" id="gender">
+            <option value="Select">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="Other">Other</option>
+            <option value="PNS">Prefer not to say</option>
+          </select>
+      </div>
+      <div>
+        <label for="">Date of Birth</label>
+        <input type="date">
+      </div>
+      <div>
+        <label for="">Nationality</label>
+        <input type="text" id="Nationality">
+      </div>
+
+      <div>
+        <label for="disability">Disability</label>
+        <select name="Dis" id="">
+          <option value="Select">Select</option>
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+          <option value="PNS">Prefer not to say</option>
+        </select>
+      </div>
+      <button class="PopUpBtn" type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Verification Popup -->
+<div class="Popup" id="verificationPopup">
+  <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('verificationPopup')">&times;</span>
+  <div class="IntroPopUp">
+    <h2 style="text-align:center;">Verifications</h2>
+    <form>
+      <div>
+        <label for="">Email Verification</label>
+        <input type="email" placeholder="Enter your email">
+      </div>
+      <div>
+        <label for="">Phone Verification</label>
+        <input type="text" placeholder="Enter phone number">
+      </div>
+      <div>
+        <label for="">ID Document</label>
+        <input type="file">
+      </div>
+      <button  class="PopUpBtn"type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<!-- Language Popup -->
+<div class="Popup" id="LanguagePopup">
+  <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('LanguagePopup')">&times;</span>
+  <div class="IntroPopUp">
+    <h2 style="text-align:center;">Languages</h2>
+    <h5>Provide language to you on CA Pulse Network</h5>
+    <form>
+       
+<div>
+  <label for="Language">Language</label>
+
+<select name="Languages" id="languages">
+      <option value="Select">Select</option>
+
+      <option value="Arab">العربية (Arabic) </option>
+      <option value="Bangla">বাংলা (Bangla) </option>
+      <option value="CZech" > Čeština (Czech) </option>
+      <option value="German" > Deutsch (German)</option>
+      <option value="Grek" > Ελληνικά (Greek)</option>
+      <option value="US-English">English (English) </option>
+      <option value="Span" >Español (Spanish)</option>
+      <option value="Fin" > Suomi (Finnish) </option>
+      <option value="French"> Français (French)</option>
+      <option value="Hindi" >  हिंदी (Hindi)</option>
+      <option value="Indo"> Bahasa Indonesia (Indonesian)</option>
+      <option value="Italian" > Italiano (Italian)</option>
+      <option value="heb">עברית (Hebrew)</option>
+      <option value="jap" >日本語 (Japanese) </option>
+      <option value="korean" >한국어 (Korean)</option>
+      <option value="Dutch"> Nederlands (Dutch)</option>
+      <option value="Punjabi" > ਪੰਜਾਬੀ (Punjabi)</option>
+      <option value="poli"> Polski (Polish)</option>
+      <option value="port" >Português (Portuguese)</option>
+      <option value="Romanian">Română (Romanian)</option>
+      <option value="ru_RU" >Русский (Russian)</option>
+      <option value="Swed" >Svenska (Swedish)</option>
+      <option value="thai" >ภาษาไทย (Thai)</option>
+      <option value="tag" >Tagalog (Tagalog)</option>
+      <option value="turk"> Türkçe (Turkish)</option>
+      <option value="ukrai" >Українська (Ukrainian)</option>
+      <option value="viet" >Tiếng Việt (Vietnamese)</option>
+      <option value="Chinese">简体中文 (Chinese (Simplified)) </option>
+      <option value="trad-chinese" >正體中文 (Chinese (Traditional))</option>
+  
+    </select>
+</div>
+      <button  class="PopUpBtn" type="submit" style="margin-top:20px;">Save</button>
+    </form>
+  </div>
+</div>
+
+
+
+          </div>  
       </div>
    
   </section>
 
+<!--Visibility-->
+  <div id="visibilitySection" class="settings-section">
+       <div class="VisiContainer">
+        <h2>Visibility</h2>
+
+        <div class="statusContainer">
+        <div onclick="openPopupV()">
+          <p>Manage active status</p>
+        </div>
+        <div>
+          <p>My Connections only <i class="fa fa-arrow-right"></i></p>
+        </div>
+        </div>
+
+
+         <div class="statusContainer">
+        <div onclick="openPopupP()">
+          <p>Page visititation</p>
+        </div>
+        <div>
+          <p> On  <i class="fa fa-arrow-right"></i></p>
+        </div>
+        </div>
+
+      
+        <div class="statusContainer">
+        <div onclick="openPopupF()">
+          <p>Who can see people you follow</p>
+        </div>
+        <div>
+          <p> Anyone on CA Pulse Network  <i class="fa fa-arrow-right"></i></p>
+        </div>
+        </div>
+
+       </div>
+
+  </div>
+
+              <div id="popupOverlay" class="popup-overlay">
+
+<!--Active status-->
+        <div class="Popup" id="VisibilityPopUp">
+              <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('VisibilityPopUp')">&times;</span>
+
+        <div class="IntroPopUp" >
+          <h3>Manage active status</h3>
+          <p class="Pwrd-P">Who can see that you are active while in CA Pulse Network?</p>
+                 
+                               <label class="Labelcontainer">No one
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label><hr class="HR1">
+<label class="Labelcontainer">My Connections only
+  <input type="radio" checked="checked"  name="radio">
+  <span class="checkmark"></span>
+</label><hr>
+<label class="Labelcontainer">All CA Pulse Network people
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+
+
+
+
+        </div>
+        </div>
+
+<!--Page Visitation-->
+
+        <div class="Popup" id="PageVPopUp">
+              <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('PageVPopUp')">&times;</span>
+
+        <div class="IntroPopUp2" >
+            <h3>Page visit visibility</h3>
+          <p class="Pwrd-P">Do you want to allow organizations to see that you visited their CA Pulse Network?</p>
+          <div class="WholeSwitch">
+          <div>
+          <label class="SwitchQuestion" for="text">Allow organizations to see when you visit their CA Pulse Network Page</label>
+             </div>
+
+             <div>
+          <label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider round"></span>
+</label>
+</div>
+</div>
+<div class="WordP">
+  <p>When this setting is on, organizations will be able to see that you visited their Page. Information from your profile will also be shown, including your profile photo, name, location, job title, and industry, subject to your visibility settings. <span class="learnSpan">Learn more</span></p>
+</div>
+        </div>
+        </div>
+
+
+        <!--People you follow-->
+
+         <div class="Popup" id="FollowMPopUp">
+              <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('FollowMPopUp')">&times;</span>
+
+               <div class="IntroPopUp2" >
+                     <h3>Follow visibility</h3>
+                     <p >Who is able to see the people you follow? </p>
+              
+       <label class="Labelcontainer">Only visible to me
+        <input type="radio" name="radio">
+         <span class="checkmark"></span>
+    </label>
+
+    <label class="Labelcontainer">Anyone on CA Pulse Network
+         <input type="radio" checked="checked"  name="radio">
+        <span class="checkmark"></span>
+    </label>
+           
+    <div class="WordP2">
+      <p>This setting only affect your follow visibility for other members you don't follow If you follow a member, that member can always see that you follow them.</p>
+    </div>
+              
+                 </div>
+         </div>
+
+    </div>
+
+ <!-- Security -->
+  <div class="Everything-PartTwo">
+     <div id="securitySection" class="settings-section">
+         <div class="SecuritY">
+         <h2>Security and Login</h2>
+      <div class="SecurityContainer">
+          <div onclick="openPopup5()">
+             <p>Change password</p>
+           </div>
+          
+             <div><i class="fa fa-arrow-right"></i></div>
+        </div>
+
+              <div class="SecurityContainer">
+
+                   <div >
+                     <p>Two step Verification</p>
+                   </div>
+                     <div><i class="fa fa-arrow-right"></i></div>
+
+              </div>
+  </div>
+</div>
+
+
+<div class="Popup" id="SecurityPopUp">
+  <span style="font-size: 40px; cursor: pointer;" class="close" onclick="closePopup('SecurityPopUp')">&times;</span>
+  <div class="IntroPopUp">
+       <h3>Change Password</h3>
+          <p class="Pwrd-P">Create a new password that is atleast 8 characters long.</p>
+       <form action="" id="PwrdChange">
+        <div>
+           <label for="">Type your current password <i class="fa fa-star" ></i></label>
+            <input type="password" name="Currentpwrd" id="" required>
+        </div>
+          <div>
+           <label for="">Type your new password <i class="fa fa-star" ></i></label>
+            <input type="password" name="Currentpwrd" id="" required>
+        </div>
+          <div>
+           <label for="">Retype your new password <i class="fa fa-star" ></i></label>
+            <input type="password" name="Currentpwrd" id="" required>
+        </div>
+            <button type="submit">Submit</button>
+       </form>
+  </div>
+
+    </div>
+
+  </div>
+
 
   <script>
+
+  function openPopup1() {
+    document.getElementById("demographicPopup").style.display = 'block';
+
+  }
+ function openPopup2() {
+        document.getElementById("verificationPopup").style.display = 'block';
+
+  }
+
+   function openPopup3() {
+        document.getElementById("LanguagePopup").style.display = 'block';
+
+  }
+
+  function openPopup5(){
+    document.getElementById("SecurityPopUp").style.display ="block";
+  }
+
+  function openPopupV(){
+    document.getElementById("VisibilityPopUp").style.display="block";
+  }
+
+   function openPopupP(){
+    document.getElementById("PageVPopUp").style.display="block";
+  }
+
+  function openPopupF(){
+    document.getElementById("FollowMPopUp").style.display="block";
+  }
+
+  function closePopup(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+
     function openPopup(){
 
       document.getElementById("profilePopup").style.display='block'
@@ -129,5 +483,16 @@
     function closePopup(id) {
   document.getElementById(id).style.display = 'none';
 }
+
+//setting
+ function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.settings-section').forEach(sec => {
+      sec.style.display = "none";
+    });
+
+    // Show clicked one
+    document.getElementById(sectionId).style.display = "block";
+  }
   </script>
 </body>
