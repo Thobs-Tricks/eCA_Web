@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="StyleProfile.css">
+    <link rel="stylesheet" href="NoticsStyle.css">
+    <script src="Script.js"></script>
+
+    
+</head>
+<body>
+      
+        <!-- Toggle button visible only on small screens -->
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="mini-container" id="sidebar">
+  <header>
+    <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="Jobs.html"> <i class="fa fa-briefcase"></i> Jobs</a></li>
+      <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
+      <li><a class="nav-profile" href="Company.html"><img src="Image/company.webp" alt="pic"></a></li>
+      <li class="dropdown">
+        <div class="dropdown-toggle" onclick="toggleDropdown()">Company Ltd <i class="fa fa-caret-down"></i></div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="#" onclick="logout()">Log out</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
+     <!---->
+
+     <div class="NoticsContainer">
+             <div class="InnerNotics">
+                <div>
+                    <label for="">
+                        <img src="Image/news2.webp" alt="pictire " > Exposure Alert
+                    </label>
+                </div>
+
+                <div class="X2">
+                     <i class="fa fa-times"></i>
+                </div>
+            </div>
+
+         <div>
+            <a href="#">
+            <p>You have a notifiaction of this kind. dshc sjc sda cjc ajhsda jbhs daj js dhfd ajfd </p>
+            </a>
+        </div>
+
+
+     </div>
+
+      <div class="NoticsContainer">
+             <div class="InnerNotics">
+                <div>
+                    <label for="">
+                        <img src="Image/news2.webp" alt="pictire " > Exposure Alert
+                    </label>
+                </div>
+
+                <div class="X2">
+                     <i class="fa fa-times"></i>
+                </div>
+            </div>
+
+         <div>
+             <a href="#">
+            <p>You have a notifiaction of this kind. dshc sjc sda cjc ajhsda jbhs daj js dhfd ajfd </p>
+            </a>
+         </div>
+
+
+     </div>
+
+
+  
+    
+</body>
+</html>

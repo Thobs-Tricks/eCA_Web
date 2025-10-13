@@ -1,0 +1,48 @@
+.NoticsContainer{
+    background-color: white;
+    margin: 50px auto;
+    max-width:100%;
+    width: 50%;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 5px rgb(247, 231, 200);
+
+}
+
+.NoticsContainer:hover{
+    box-shadow: 10px 5px orange;
+}
+
+.NoticsContainer p{
+ text-align: start;
+ padding: 20px 0;
+ word-break: break-all;
+ font-family:'Times New Roman', Times, serif;
+}
+
+.NoticsContainer a{
+    text-decoration: none;
+    color: black;
+}
+
+.InnerNotics{
+  display:flex;
+  justify-content:space-between;
+}
+
+.InnerNotics label{
+    color: rgb(4, 4, 61);
+ font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.InnerNotics img{
+    max-width: 100px;
+    width:30px;
+    border-radius: 10px;
+}
+
+.X2{
+    color:rgb(241, 36, 36);
+    cursor: pointer;
+}
+

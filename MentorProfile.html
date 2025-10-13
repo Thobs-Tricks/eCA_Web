@@ -1,280 +1,627 @@
-
-
-</head>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mentor list</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentor Profile</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f5f8;
+}
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="StyleProfile.css">
-<link rel="stylesheet" href="MentorProfileStyle.css">
+/* Navbar */
+nav {
+  background: darkblue;
+  padding: 10px 30px;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 
-<script src="Script.js"></script>
+}
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+color:white;
+list-style-type: none;
+
+}
+
+nav ul li a{
+    color:white;
+text-decoration: none;
+}
+
+nav .search input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.LogoImg{
+margin-top:-20px ;
+padding: 0;
+width: 100px;
+
+}
+/*Dropdown*/
+ .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  .dropdown-menu a {
+    color: black;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+  }
+
+  .dropdown-toggle{
+    margin-left: -10px;
+}
+
+
+
+/* Profile Header */
+.profile-header {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  background: url('cover.jpg') no-repeat center center/cover;
+}
+
+
+
+.profile-info {
+  position: absolute;
+  bottom: -60px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile-info img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+.profile-info .details {
+  background: rgba(255,255,255,0.9);
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-info .details a{
+text-decoration: none;
+color: white;
+}
+.profile-info h2 {
+  margin: 0;
+}
+.profile-info p {
+  margin: 5px 0;
+  color: #555;
+}
+.profile-info button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Main Layout */
+.container {
+  display: grid;
+  grid-template-columns: 65% 33%;
+  gap: 2%;
+  padding: 100px 50px 50px;
+}
+
+/* Left Column */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* About Card */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.card h3 {
+  margin-bottom: 10px;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skill {
+  background: #007bff;
+  color: white;
+  border-radius: 20px;
+  padding: 6px 15px;
+  font-size: 14px;
+}
+
+/* Post Style */
+.post {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 70px;
+}
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.post-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.post-content {
+  margin: 10px 0;
+}
+.post-media img, .post-media video {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+  max-height: 350px;
+  object-fit: cover;
+}
+.post-actions {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+.post-actions i {
+  cursor: pointer;
+}
+
+
+/* Post Box */
+.post-box {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 40%;
+  margin: 40px auto 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.post-box textarea {
+  width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  padding: 10px;
+  font-family: inherit;
+outline-color: lightblue;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.post-actions .left .plus-btn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f97316;
+}
+
+.plus-btn {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.plus-btn.rotate {
+  transform: rotate(45deg);
+}
+
+.extra-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.extra-options.show {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.extra-options button {
+  background: #b1b4bb;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.extra-options button:hover {
+  background: #c9d7e6;
+}
+
+.post-actions .post-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.post-actions .post-btn:hover {
+  background: #0056b3;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content:left;
+  margin: 100px 0 -20px 50px;
+  gap: 20px;
+}
+
+.tabs button {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.tab-content {
+  width: 80%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Right Column */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Stats Card */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.stats div {
+  text-align: center;
+}
+.stats div h4 {
+  margin: 5px 0;
+  color: #007bff;
+}
+
+/* Endorsements */
+.endorsement {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.endorsement h4 {
+  margin-bottom: 10px;
+}
+.endorsement .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.endorsement img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Responsive */
+@media(max-width: 900px){
+  .container{
+    grid-template-columns: 1fr;
+    padding: 330px 20px;
+  }
+  .profile-info {
+    left: 20px;
+    bottom: -300px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-info .post-box{
+    width: 90%;
+  }
+
+  .tabs{
+    padding: 230px 20px ;
+    margin-bottom: -480px;
+  }
+ 
+}
+</style>
 </head>
-
-
-
 <body>
 
-       <div class="mini-container">
-        <header>
-              <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
-        </header>
-      <nav>
-            <ul>
+<nav>
+    
+      <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
+
+  <div class="icons">
+    <ul>   
+                  <li><a href="Home.html"> <i class="fa fa-home"></i> Feed</a></li>
                 <li><a href="Jobs.html"> <i class="fa fa-briefcase"></i> Jobs</a></li>
                 <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                 <li><a href="Company.html"><i class="fa fa-users"></i> Company</a></li>
-                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
-                          <li> <a class="nav-profile" href="MentorProfile.html"><img src="Image/bob.webp" alt="pic"></a></li>
+                 <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
+                <li><a href="Notification.html"><i class="fa fa-bell"></i> Notification</a></li>
 <li class="dropdown"> 
-  <div class="dropdown-toggle" onclick="toggleDropdown()">Mike Dot<i class="fa fa-caret-down"></i>
+  <div class="dropdown-toggle" onclick="toggleDropdown()">  
+    <a href="MentorProfile.html">  <img src="Image/bob.webp" alt="Profile" style="width:40px;height:40px;border-radius:50%;">
+          </a>   Mike Dot<i class="fa fa-caret-down"></i>
+    
   </div>
   <div class="dropdown-menu" id="dropdownMenu">
     <a href="#" onclick="logout()">Log out</a>
   </div>
 </li>               
             </ul>
-        </nav>  
-     </div>
+  </div>
+</nav>
 
-
-     <!--BackgrounImage-->
-    <div class="ProfileContainer">
-
-        <div class="BackgroundImage">
-           <img src="Image/landbackground.jpeg" alt="picture"  >
-        </div>
-
-          <div class="PictureLabel">
-            <label for=""> <input type="file" name="Change" id="" > </label>
-         </div>
-
-         <div class="ProfileView">
-            <img src="Image/bob.webp" alt="">
-         
-             
-              
-                <div class="TheDescritionss">
-                   
-                        <div class="AboutProfile">
-                            <h2>Mike Dot</h2>
-                            <h4>Teacher</h4>
-                            <span>3 years in experince || 200 followers ||5 following </span>
-                           <span></span>
-
-                        </div>
-                  
-                 </div>
-
-
-                   <div class="PostandSetting" > 
-                    <a style="width: 40px;text-decoration: none;background-color: rgb(11, 70, 146); padding:8px;" href="AccountSetting.html">Setting</a> 
-                    <button style=" padding: 8px 14px;margin-top: -27px; cursor: pointer; border: 2px solid #d36907;background: white;" onclick="PostFeature()">Post</button>
-               
-                    <div class="PopupPost" id="PostForm" >
-                     
-                        <input style="  border: 2px solid rgb(86, 86, 143); margin-left: 400px;  background-color: rgb(86, 86, 143);color: white; cursor: pointer;  padding: 4px 10px;" type="submit" value="Post" >
-                        <button style="float:right;  border: 2px solid rgb(86, 86, 143); cursor: pointer; padding: 4px 10px;" onclick="ClosePopUp()"> <b>X</b></button>
-                        <textarea name="" placeholder="Share your thoughts.." id=""></textarea>
-                        
-                        <button onclick="MoreOptions()" class="Plus-btn">+</button>
-                         
-                        <!--The inner popUp-->
-                         <div class="popup1" id="popup1" >
-                            <div class="popup-item"><i class="fas fa-image"></i><span>Media</span></div>
-                            <div class="popup-item"><i class="fas fa-calendar-alt"></i><span>Event</span></div>
-                            <div class="popup-item"><i class="fas fa-award"></i><span>Celebrate</span></div>
-                            <div class="popup-item"><i class="fas fa-briefcase"></i><span>Job</span></div>
-                            <div class="popup-item"><i class="fas fa-poll"></i><span>Poll</span></div>
-                            <div class="popup-item"><i class="fas fa-file-alt"></i><span>Document</span></div>
-                            <div class="popup-item"><i class="fas fa-tools"></i><span>Services</span></div>
-                        </div>
-                    </div>
-               
-                </div>
-        </div>
-
-                
-                  
-          <div class="ActivitySection">
-     
-             <ul>
-              <li><a href="#" onclick="openFile('FeedID');return false;">Feed</a></li>
-              <li><a href="#" onclick="openFile('information');return false;">Info</a></li>
-              <li><a href="">Post</a></li>
-             </ul>
-          </div>
+<!-- Profile Header -->
+<div class="profile-header">
+  <div class="profile-info">
+    <img src="Image/bob.webp" alt="Mentor Photo">
+    <div class="details">
+      <h2>Alex Mentor</h2>
+      <p>Senior Web Developer | Career Coach | Tech Speaker</p>
+       <button><a href=""><i class="fa fa-cog"></i> Settings</a></button>
 
     </div>
 
-      
-    <div class="SuggestionsGroup">
-      <h3>Suggested group</h3>
-
-      <div class="SuggestGroup">
-
-      <div class="ThePicture">
-        <a href=""> <img src="Image/Ally.jpg" alt=""></a>
-      </div>
-
-      <div class="TheWords">
-        <a href="#"><span>Name Surname</span></a>
-         <span>What they do</span>
-      </div>
-     <!-- <div class="Thefollow">
-        <span><i class="fas fa-plus"></i></span>
-      </div>-->
-      </div>
-
-        <div class="SuggestGroup">
-
-          <div class="ThePicture">
-            <a href="Company.html"> <img src="Image/company.webp" alt=""></a>
-          </div>
-
-            <div class="TheWords">
-              <a href="Company.html"><span>Company ltd</span></a>
-              <span>What they do</span>
-            </div>
-      </div>
-
-
-          <div class="SuggestGroup">
-
-           <div class="ThePicture">
-             <a href=""> <img src="Image/companyprofile.webp" alt=""></a>
-            </div>
-
-            <div class="TheWords">
-               <a href="#"><span>Name Surname</span></a>
-               <span>What they do</span>
-            </div>
-      </div>
-       
-      <div class="More2">
-       <a href=""><span>See more</span><i style="margin-right: 18vh;" class="fa fa-arrow-right"></i></a>
-       </div>
-      </div>
-
-     
-  <!--The feed section-->
-
-  <div class="tab-content" id="FeedID">
-   <div class="FeedGroup" >
-
-        <div class="Activity-Container">
-            <img src="Image/cBackground.webp" alt="picture">
-            <div style="margin:-20px 0px 0 20px;">
-            <span style="margin-top: 10px; font-size: 17px;"> <b>CompanyN</b> </span>
-            <span>Internship & Job Opportunities For You</span>
-            <span>2hr</span>
-
-            <div class="inner-ActContainer" style="margin-left: -60px;">
-             <p >Stuff with it hs hd h dsj shj sjh shgf hs hs jhds u dhv shzjsc szhj sjzv czjh cjz jchvzz ...more</p>
-            
-             <img src="Image/news3.webp" alt="">
-                 <div class="actions">
-                        <button onclick="OnLikeBtn();" id ="like-btn"><i class="fa fa-thumbs-up"></i> Like</button>
-                        <button class="comment-btn"><i class="fa fa-commenting"></i> Comment</button>
-                        <button><i class="fa fa-retweet"></i> Repost</button>
-                        <button><i class="fa fa-paper-plane"></i> Send</button>
-                    </div>
-            </div>
-            
-            </div> 
-        </div>
+    <!-- Post Box -->
+<div class="post-box">
+  <textarea rows="3" placeholder="Share your thoughts..."></textarea>
+  <div class="post-actions">
+    <div class="left">
+      <button class="plus-btn" id="toggleBtn"><i class="fa fa-plus"></i></button>
     </div>
-</div>
-
-
-    <!--User Information -->
- <div class="tab-content"  id="information" >
-<section class="ContainerX"  >
-   
-  <div class="user-profile" >
-     <div  class="ExperinceC">
-      <h3 >Experince</h3> <hr>
-      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
-
-      <div class="TheExperinceGroup">
-      <h4>1. Web developer</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. 
-         Vivamus consectetur aliquam lectus commodo viverra.</p>
-    </div>
-
-           <div class="TheExperinceGroup">
-              <h4>2. Leadership</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt.
-                Vivamus consectetur aliquam lectus commodo viverra.
-              </p>
-           </div>
-        </div>
-
-
-         <div  class="EducationD">
-      <h3 >Education</h3> <hr>
-      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
-
-      <div>
-      <h4>University of Cape Town</h4>
-      <label for="user-date">Select a date:
-        <input type="date" id="user-date" name="user-date">
-      2022-2025
-      </label>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna efficitur tincidunt. 
-         Vivamus consectetur aliquam lectus commodo viverra.</p>
-    </div>
-
-        
-        </div>
-
-
-         <div  class="SkillsC">
-      <h3 >Skills</h3> <hr>
-      <button class="Btn-pencil" > <i class="fa fa-pencil"></i> </button>
-                   
-     
-                       <ul>
-												<li><a href="#" title=""></a>HTML</li>
-												<li><a href="#" title=""></a>PHP</li>
-												<li><a href="#" title=""></a>CSS</li>
-												<li><a href="#" title=""></a>Javascript</li>
-												<li><a href="#" title=""></a>Wordpress</li>
-												<li><a href="#" title=""></a>Photoshop</li>
-												<li><a href="#" title=""></a>Illustrator</li>
-                        
-											</ul>
-                 
-        </div>
+    <button class="post-btn">Post</button>
   </div>
 
-</section>
-
+  <div class="extra-options" id="extraOptions">
+    <button><i class="fa fa-image"></i> Media</button>
+    <button><i class="fa fa-calendar"></i> Event</button>
+    <button><i class="fa fa-gift"></i> Celebrate</button>
+    <button><i class="fa fa-briefcase"></i> Job</button>
+    <button><i class="fa fa-chart-pie"></i> Poll</button>
+    <button><i class="fa fa-file"></i> Document</button>
+    <button><i class="fa fa-tools"></i> Service</button>
+  </div>
 </div>
+  </div>
+</div>
+
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="active" onclick="openFile('feed')">Post</button>
+  <button onclick="openFile('info')">Info</button>
+  <!--<button onclick="showTab('posts')">Posts</button>-->
+</div>
+
+<!-- Profile Content -->
+<div class="container">
+  <!-- Left -->
+  <div class="left-section">
+
+   
+    <div class="card"  id="info">
+      <h3>About</h3>
+      <p>I'm a passionate web developer and mentor with 10+ years of experience in helping young developers build meaningful careers. My focus areas include web development, API integration, and professional growth coaching.</p>
+    </div>
+
+    <div class="card"  id="info">
+      <h3>Skills & Expertise</h3>
+      <div class="skills">
+        <div class="skill">JavaScript</div>
+        <div class="skill">React</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Career Coaching</div>
+        <div class="skill">Web Design</div>
+      </div>
+    </div>
     
+
+    <div class="card" id="feed">
+      <h3>Recent Posts</h3>
+
+      <div class="post">
+        <div class="post-header">
+          <img src="mentor.jpg" alt="">
+          <div>
+            <b>Alex Mentor</b><br><small>2h ago</small>
+          </div>
+        </div>
+        <div class="post-content">
+          Excited to share my new workshop on API development! 🚀
+        </div>
+        <div class="post-media">
+          <img src="api-workshop.jpg" alt="Workshop Image">
+        </div>
+        <div class="post-actions">
+          <i class="fa fa-thumbs-up"></i> Like
+          <i class="fa fa-comment"></i> Comment
+          <i class="fa fa-share"></i> Share
+        </div>
+      </div>
+
+      <div class="post">
+        <div class="post-header">
+          <img src="mentor.jpg" alt="">
+          <div>
+            <b>Alex Mentor</b><br><small>1d ago</small>
+          </div>
+        </div>
+        <div class="post-content">
+          A short video snippet from my latest talk on frontend optimization techniques.
+        </div>
+        <div class="post-media">
+          <video controls>
+            <source src="frontend-talk.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="post-actions">
+          <i class="fa fa-thumbs-up"></i> Like
+          <i class="fa fa-comment"></i> Comment
+          <i class="fa fa-share"></i> Share
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right -->
+  <div class="right-section">
+    <div class="card">
+      <h3>Stats</h3>
+      <div class="stats">
+        <div><h4>250</h4><small>Followers</small></div>
+        <div><h4>48</h4><small>Mentees</small></div>
+        <div><h4>35</h4><small>Posts</small></div>
+      </div>
+    </div>
+
+    <div class="endorsement">
+      <h4>Endorsements</h4>
+      <div class="item">
+        <img src="mentee1.jpg" alt="">
+        <div><b>John Doe</b><br><small>"An amazing mentor who helped me get my first dev job!"</small></div>
+      </div>
+      <div class="item">
+        <img src="mentee2.jpg" alt="">
+        <div><b>Sarah Lee</b><br><small>"His workshops are practical and inspiring!"</small></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-  openFile('FeedID');
+const toggleBtn = document.getElementById('toggleBtn');
+const extraOptions = document.getElementById('extraOptions');
+
+toggleBtn.addEventListener('click', () => {
+  extraOptions.classList.toggle('show');
+  toggleBtn.classList.toggle('rotate');
+});
+
+/**function showTab(tab) {
+  const tabContent = document.getElementById('tabContent');
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if (tab === 'feed') {
+    tabContent.innerHTML = '<h3>Feed</h3><p>This is where the mentor’s feed updates will appear.</p>';
+  } else if (tab === 'info') {
+    tabContent.innerHTML = '<h3>Info</h3><p>Mentor details, skills, and expertise will go here.</p>';
+  } else {
+    tabContent.innerHTML = '<h3>Posts</h3><p>List of mentor’s shared posts will show here.</p>';
+  }
+}**/
+
+ document.addEventListener("DOMContentLoaded", () => {
+  openFile('feed');
 });
   //Feed, Info and post
  function openFile(sectionId) {
     // Hide all sections
-    document.querySelectorAll('.tab-content').forEach(sec => {
+    document.querySelectorAll('.card').forEach(sec => {
       sec.style.display = "none";
     });
-
- 
 
     // Show clicked one
     document.getElementById(sectionId).style.display = "block";
   }
-
 </script>
 
 </body>

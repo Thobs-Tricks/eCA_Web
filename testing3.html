@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentor Profile</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f4f5f8;
+}
+
+/* Navbar */
+nav {
+  background: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Profile Header */
+.profile-header {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: url('cover.jpg') no-repeat center center/cover;
+}
+
+.profile-info {
+  position: absolute;
+  bottom: -50px;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-info img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.details {
+  background: rgba(255,255,255,0.95);
+  padding: 15px 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.details h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.details .buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.details button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.details button:hover {
+  background: #0056b3;
+}
+
+/* Post Box */
+.post-box {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  margin: 80px auto 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.post-box textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: none;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.post-actions .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.plus-btn {
+  background: #f97316;
+  color: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.plus-btn.rotate {
+  transform: rotate(45deg);
+}
+
+.extra-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.extra-options.show {
+  opacity: 1;
+  max-height: 200px;
+}
+
+.extra-options button {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.extra-options button:hover {
+  background: #e2e6ea;
+}
+
+.post-actions .post-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.post-actions .post-btn:hover {
+  background: #0056b3;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.tabs button {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.tab-content {
+  width: 80%;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media(max-width: 768px){
+  .post-box, .tab-content { width: 95%; }
+  .profile-info { flex-direction: column; left: 20px; bottom: -80px; }
+  .details { padding: 10px 15px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>MentorConnect</h2>
+  <div><i class="fa fa-bell"></i> &nbsp; <i class="fa fa-envelope"></i></div>
+</nav>
+
+<div class="profile-header">
+  <div class="profile-info">
+    <img src="mentor.jpg" alt="Mentor">
+    <div class="details">
+      <h2>Alex Mentor</h2>
+      <p>Senior Developer | Career Coach</p>
+      <div class="buttons">
+        <button><i class="fa fa-envelope"></i> Message</button>
+        <button><i class="fa fa-cog"></i> Settings</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Post Box -->
+<div class="post-box">
+  <textarea rows="3" placeholder="Share advice, a resource, or an update..."></textarea>
+  <div class="post-actions">
+    <div class="left">
+      <button class="plus-btn" id="toggleBtn"><i class="fa fa-plus"></i></button>
+    </div>
+    <button class="post-btn">Post</button>
+  </div>
+
+  <div class="extra-options" id="extraOptions">
+    <button><i class="fa fa-image"></i> Media</button>
+    <button><i class="fa fa-calendar"></i> Event</button>
+    <button><i class="fa fa-gift"></i> Celebrate</button>
+    <button><i class="fa fa-briefcase"></i> Job</button>
+    <button><i class="fa fa-chart-pie"></i> Poll</button>
+    <button><i class="fa fa-file"></i> Document</button>
+    <button><i class="fa fa-tools"></i> Service</button>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="active" onclick="showTab('feed')">Feed</button>
+  <button onclick="showTab('info')">Info</button>
+  <button onclick="showTab('posts')">Posts</button>
+</div>
+
+<!-- Tab Content -->
+<div class="tab-content" id="tabContent">
+  <h3>Feed</h3>
+  <p>This is where the mentor’s feed updates will appear.</p>
+</div>
+
+<script>
+const toggleBtn = document.getElementById('toggleBtn');
+const extraOptions = document.getElementById('extraOptions');
+
+toggleBtn.addEventListener('click', () => {
+  extraOptions.classList.toggle('show');
+  toggleBtn.classList.toggle('rotate');
+});
+
+function showTab(tab) {
+  const tabContent = document.getElementById('tabContent');
+  const tabs = document.querySelectorAll('.tabs button');
+  tabs.forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+
+  if (tab === 'feed') {
+    tabContent.innerHTML = '<h3>Feed</h3><p>This is where the mentor’s feed updates will appear.</p>';
+  } else if (tab === 'info') {
+    tabContent.innerHTML = '<h3>Info</h3><p>Mentor details, skills, and expertise will go here.</p>';
+  } else {
+    tabContent.innerHTML = '<h3>Posts</h3><p>List of mentor’s shared posts will show here.</p>';
+  }
+}
+</script>
+</body>
+</html>

@@ -4,9 +4,13 @@
 
 .PictureLabel {
     position: absolute;
-    margin-top: -180px;
+   /* margin-top: -180px;
 margin-left: 160vh;
-border: 3px solid darkblue;
+border: 3px solid darkblue;*/
+
+right: 20px; /* instead of margin-left 160vh */
+  top: 20px;
+  border: 3px solid darkblue;
 
 }
 
@@ -28,11 +32,31 @@ border: 3px solid darkblue;
 
 .TheDescritionss{
     background-color: white;
-max-width:900px ;
-    height:35vh;
-    margin:0px 10px 10px 90px 
+width:50%;
+    height:230px;
+    margin:0px 10px 10px 90px ;
 }
 
+.YearsFollowers h4{
+    display: inline-block;
+    color: darkgray;
+   
+}
+.YearsFollowers h4:nth-child(2){
+    display: inline-block;
+    margin-left: 0px;
+   
+}
+.YearsFollowers h4:nth-child(3){
+    display: inline-block;
+    margin-left: 0px;
+   
+}
+
+.PostandSetting{
+    float: right;
+margin-top: -90px;
+}
 
 .profile-Follow span{
     padding: 10px;
@@ -46,11 +70,6 @@ max-width:900px ;
 }
 
 
-
-.AboutProfile span{
-    margin-left: 30vh;
-    
-}
 
 .user-profile h4{
     margin-left: 0;
@@ -66,18 +85,16 @@ max-width:900px ;
     color: gray;
 }
 
-.PostandSetting{
-    margin-left: -40vh;
-    margin-top: 5vh;
 
-}
+
 
 .ActivitySection ul{
  display: flex;
+ flex-wrap: wrap;
  list-style-type: none;
  border-top: 2px solid lightgray;
  padding-top: 10px;
- width: 80vh;
+ width: 490px;
  border-radius: 15px;
 }
 .ActivitySection a{
@@ -87,7 +104,7 @@ max-width:900px ;
 }
 
 .ActivitySection{
-        margin-top: -13vh;
+        margin-top:160px /*-13vh*/;
         margin-left: 20vh;
         font-size: 17px;
         font-family:Georgia, 'Times New Roman', Times, serif;
@@ -97,11 +114,12 @@ max-width:900px ;
 
 
 /*Suggestions*/
-.ThePicture img{
+.SuggestGroup .ThePicture img{
     width:30px;
     height:30px;
-    margin-left: 20px;
+   /* margin-left: 20px;*/
     border-radius: 70px;
+    position:static;
 }
 
 .TheWords span{
@@ -112,10 +130,14 @@ max-width:900px ;
 
 .SuggestionsGroup{
     background-color:rgb(253, 253, 255) ;
-    width:50vh;
-    height:56vh;
-    margin: -30vh 2vh 2vh 150vh;
-    border-radius: 10px;
+    width:26%;
+   /* max-height:90%;
+   margin-left: 900px;
+   margin-top:-190px;
+    border-radius: 10px;*/
+
+   margin:20px;
+  border-radius: 10px;
       
     
 }
@@ -128,6 +150,7 @@ max-width:900px ;
     background-color: darkblue;
     color:white;
     border-radius: 6px;
+    margin-top: 0px;
 
 }
 
@@ -140,9 +163,14 @@ max-width:900px ;
     margin-bottom: 3vh;
 }
 
-.More2 span{
-    color: black;
+.More2 a{
+    color: rgb(129, 127, 127);
     margin-left: 14vh;
+}
+
+.overalMore{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .Thefollow span{
@@ -159,8 +187,8 @@ max-width:900px ;
 
 .FeedGroup{
     background-color:white;
-    width:46%;
-    height: 82%;
+    width:50%;
+    height: 73%;
     float: right;
     margin: -18vh 90vh 0 10vh;
     
@@ -210,45 +238,199 @@ max-width:900px ;
 
 }
 
-@media (max-width: 768px) {
-  .ProfileView img {
-margin-left: -50px; 
-width: 150px;
-height: 150px; }
 
-  nav ul {
-    flex-direction: column;
-    margin-top:-80px;
-    align-items: center;
+/* Container adjustments 
+.ProfileContainer, 
+.SuggestionsGroup, 
+.FeedGroup {
+  box-sizing: border-box;
+}*/
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 1024px) {
+
+.overalMore{
+align-items: center;
+flex-direction: column;
+}
+
+
+    .TheDescritionss {
+        width: 80%;
+        /*margin: 0 50px 10px 70px;*/
+    }
+
+    .AboutProfile{
+         margin-left:-160px;
+    }
+    .FeedGroup {
+    
+    max-width: 90%;
+       width: 60%;
+    float: none;
+    padding:10px;
+    max-height:40%;
+    margin-left:80px;
+    }
+
+    .user-profile{
+        margin-top: -280px;
+        width:130%;
+      margin-left:-30px;
+    }
+
+    .inner-ActContainer{
+          width: 110%;
+          padding-left: 30px;
+    }
+   
+  
+
+  .ActivitySection{
+    margin-left:120px;
+        align-items: center;
   }
-
  
-  .ProfileView {
-    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+.ProfileView{
+    margin-left: 20px;
+}
+
+.ActivitySection{
+     flex-direction: column;
     align-items: center;
+    margin-top: 170px;
+    margin-left:50px;
+  
+}
+
+.TheDescritionss{
+     width: 100%;
+    text-align: center;
+}
+
+ /*.PostandSetting {
+    margin: 20px auto;
+    text-align: center;
+  }*/
+
+  
+  /* .SuggestionsGroup,
+  .FeedGroup {
+    width: 100%;
+    margin: 15px auto;
+  }*/
+  /*
+.AboutProfile h2,h4{
+    align-items: center;
+        margin-left: 100px;
+    margin-bottom: 0px;
+}
+  
+.AboutProfile span{
+  margin:auto;
+text-align: center;
+}
+ 
+.PostandSetting {
+flex-wrap: wrap;
+margin-top: 140px;
   }
 
-  .PostandSetting {
-    position: static;
-    margin: 20px 0;
-  }
+  .PictureLabel{
+    margin-left: 170px;
+     width: 180px;
+    height: 45px;
+    font-size: 8px;
+    word-wrap:break-word;
+    padding: 0;
+ }*/
+  
+ 
 
 }
 
 @media(max-width: 480px){
-    .SuggestGroup{
+     nav ul {
+flex-wrap: wrap;    
+margin-top: -45px;
+    gap:10px;
+    
+  }
+  header{
+    width:100%;
+  }
+
+  .TheDescritionss{
+    margin-left: 10px;
+  }
+
+  .SuggestionsGroup{
+    margin-left:50px;
+    width: 150px;
+  }
+
+.ProfileView img{
+width:20%;
+height:60px;
+
+}
+   /* h2 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 14px;
+  }
+  .actions button {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  .ProfileView{
+max-width:100%;
+margin-left: -10px;
+  }
+   */
+  
+    /*.BackgroundImage img{
+        flex: 1 1 250px;
+    }*/
+
+  /*.ActivitySection  {
         flex-direction: column;
+        gap: 10px;
+        width: 170px;
+        margin-top: -20px;
+            width: 100%;
+    text-align: center;
+        margin-left: -30px;
+    
+
     }
 
-    .BackgroundImage img{
-        flex: 1 1 250px;
+    .SuggestionsGroup, .FeedGroup {
+     width: 95%;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+     height: auto;
+    margin: 10px auto;
     }
- 
+
+    .Activity-Container img{
+        position: static;
+    }
+   */
 }
 
 /*Mentor feed,info and post*/
 
 #FeedID,
 #information {
-  display: none;
+  display:none;
 }

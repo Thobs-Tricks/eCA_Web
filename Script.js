@@ -180,3 +180,10 @@ const PostForm= document.getElementById("PostForm");
     window.location.href = "SignIn.html"; // redirect to login page
   });
 
+//header menu
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+//end

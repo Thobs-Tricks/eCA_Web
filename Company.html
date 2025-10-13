@@ -9,38 +9,40 @@
       <link rel="stylesheet" href="StyleProfile.css">
       <link rel="stylesheet" href="StyleCompany.css">
 
-     <!--<script src="Script.js"></script>-->
+           <script src="Script.js"></script>
+
+
 </head>
 
 
 <body>
-     <div class="mini-container">
-        <header>
-              <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
 
-        </header>
-      <nav>
-            <ul>
-                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
-                <li> <a class="nav-profile" href="Company.html"><img src="Image/company.webp" alt="pic"></a></li>
-    <li class="dropdown"> 
-          <div class="dropdown-toggle" onclick="toggleDropdown()">Company Itd<i class="fa fa-caret-down"></i>
+      <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="mini-container" id="sidebar"> 
+  <header> 
+    <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
+   </header>
+    <nav> 
+      <ul>
+         <!--Header going to change depending on who is logIn-->
+          <li><a href="Home.html"> <i class="fa fa-briefcase"></i> Feed</a></li>
+            <li><a href="Notification.html"><i class="fa fa-bell"></i> Notification</a></li>
+           <li> <a class="nav-profile" href="Company.html"><img src="Image/company.webp" alt="pic"></a></li> 
+           <li class="dropdown"> <div class="dropdown-toggle" onclick="toggleDropdown()">Company Itd<i class="fa fa-caret-down"></i> </div> 
+            <div class="dropdown-menu" id="dropdownMenu"> 
+              <a href="#" onclick="logout()">Log out</a> 
+            </div> 
+          </li> 
+          </ul>
+         </nav> 
         </div>
-      <div class="dropdown-menu" id="dropdownMenu">
-       <a href="#" onclick="logout()">Log out</a>
-      </div>
-    </li>
-            </ul>
-        </nav>  
-     </div>
-
 
       <section class="cover-sec">
       <div class="Top-Image">
             <img src="Image/comp.webp" alt="">
             
-            <button class="changePicture"><input type="file">Change Image</button>
+            <button class="changePicture"><input type="file"  style="display:none">Change Image</button>
                 
             <div class="ProfileView">
                <img src="Image/company.webp" alt=""> 
@@ -85,8 +87,8 @@
                        
                         <li><a id="About" href="#" onclick="openFile('SectionAbout', this);return false;"  > About</a></li>
                         <li><a id="Post" href="#"  onclick="openFile('SugActivity', this);return false;" >Activities</a></li>
-                         <li><a id="Home" href="#" onclick="showSection(this)" >Jobs</a></li>
-                         <li><a id="People" href="#"  onclick="showSection(this)">People</a></li>
+                         <li><a id="Home" href="#" onclick="openFile('SectionPeopless', this); " >Jobs</a></li>
+                         <li><a id="People" href="#"  onclick="openFile('SectionPeople', this);return false; ">People</a></li>
 
 
                     </ul>
@@ -197,6 +199,19 @@
     </div>
 
 
+    <!--The people-->
+        <div class="SectionTittles"  id="SectionPeople">
+
+          <div class="PeopleContainer">
+              <h3>High-end employees</h3>
+
+              <div class="InnerPeopleContainer">
+                
+              </div>
+          </div>
+
+        </div>
+
 
     <script>
          document.addEventListener("DOMContentLoaded", () => {
@@ -222,6 +237,10 @@
   if (clickedLink) {
     clickedLink.classList.add("active");
   }
+}
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
 }
 
     </script>

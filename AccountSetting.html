@@ -21,9 +21,9 @@
     </header>
       <nav>
             <ul>
-                <li><a href="#"><i class="fa fa-briefcase"></i>  Jobs</a></li>
+                <li><a href="Jobs.html"><i class="fa fa-briefcase"></i>  Jobs</a></li>
                 <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                <li><a href="#"><i class="fa fa-bell"></i> Notification</a></li>
+                <li><a href="Notification.html"><i class="fa fa-bell"></i> Notification</a></li>
 
                 <!--Profile and Name change accoding to loggin-->
                 <li> <a class="nav-profile" href="MentorProfile.html"><img src="Image/bob.webp" alt="pic"></a></li>
@@ -81,11 +81,13 @@
             <div class="FormNames">
               <div>
             <label for="">First Name <i class="fa fa-star" ></i></label>
+          
             <input type="text" name="" id="" required>
             </div>
 
             <div>
             <label for="">Last Name <i class="fa fa-star" ></i></label>
+          
             <input type="text" name="" id="" required>
             </div>
             </div>
@@ -93,6 +95,7 @@
             <div class="FormNames2">
             <div>
             <label for="">Additional Name</label>
+            
             <input type="text" name="" id="" required>
             </div>
 
@@ -104,21 +107,23 @@
             </div>
              </div>
            <h3> Current position</h3>
-<div>
+      <div>
            <label for="">Industry<i class="fa fa-star" ></i></label>
            <input type="text">   
- </div>          
+      </div>          
            <h3>Education</h3>
            <div>
            <label for="">School <i class="fa fa-star" ></i></label>
-           <input type="text" name="" id="" required>
+           <input type="text" name="" id="" required style="margin:20px 46px;">
           </div>
-           <button style="border: none; background-color: white;text-align:left;color: blue;cursor:pointer;"> + Add another education</button>
+          <span class="MoreEducation">+ Add another education</span>
+           <!--<button style="border: none; background-color: white;text-align:left;color: blue;cursor:pointer;"> + Add another education</button -->
             
 
            <div>
-           <input type="checkbox" name=""  id="checkboxS" >
-           <label for="">Show school in bio</label>
+             <label  for="">Show school in bio
+           <input type="checkbox" name=""  id="checkboxS"  style="margin: 30px 0px;">
+             </label >
          </div>
          
            <h3>Location</h3>
@@ -314,11 +319,11 @@
                                <label class="Labelcontainer">No one
   <input type="radio" name="radio">
   <span class="checkmark"></span>
-</label><hr class="HR1">
+</label>
 <label class="Labelcontainer">My Connections only
   <input type="radio" checked="checked"  name="radio">
   <span class="checkmark"></span>
-</label><hr>
+</label>
 <label class="Labelcontainer">All CA Pulse Network people
   <input type="radio" name="radio">
   <span class="checkmark"></span>

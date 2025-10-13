@@ -10,6 +10,14 @@
  
 }
 
+.AboutCompany p{
+text-align: start;
+}
+
+
+.changePicture input{
+  border: none;
+}
 
 
 .Section-Descrip a{
@@ -237,5 +245,6 @@ height: 150px; }
     font-size: 10px;
     word-wrap:break-word;
     padding: 0;
+    
   }
 }
