@@ -13,12 +13,12 @@
       <h2 class="SignUpDecore"><b>Sign Up</b></h2>
 
       <select id="roleSelect" class="role-selector">
-        <option value="student">Select role</option>
+        <option value="student" disabled selected>Select role</option>
         <option value="company">Company</option>
         <option value="mentor">Mentor</option>
       </select>
 
-      <form action="#" id="signupForm">
+      <form  id="signupForm">
 
         <div id="dynamicFields">
           <!-- Common Fields -->
@@ -41,7 +41,6 @@
   </div>
 
 
-  
   <script>
   
    
@@ -53,19 +52,30 @@
   function updateFormFields(role) {
     let additionalFields = '';
 
+    
+
     if (role === 'company') {
       additionalFields = `
-        <input type="text" id="companyName" placeholder="Company Name" required>
-        <input type="text" id="industry" placeholder="Industry" required>
-        <input type="text" id="companyReg" placeholder="Company Reg. Number" required>
+       <input type="text" id="comName" placeholder="Company Name" required>
+      <input type="text" id="description" placeholder="Description" required>
+      <input type="text" id="webLink" placeholder="Website Link" required>
+      <input type="text" id="contactNum" placeholder="Contact Number" required>
+       <input type="email" id="contactEmail" placeholder="Company Email" required>
+
       `;
       document.getElementById("container").style.height = "auto";
 
     } else if (role === 'mentor') {
       additionalFields = `
-        <input type="text" id="fullName" placeholder="Full Name" required>
-        <input type="text" id="expertise" placeholder="Expertise Area" required>
-        <input type="text" id="experience" placeholder="Years of Experience" required>
+        <input type="text" id="title" placeholder="Title" required>
+          <input type="text" id="name" placeholder="First Name" required>
+          <input type="text" id="surname" placeholder="Surname" required>
+          <input type="date" id="doB" required>
+          <input type="text" id="gender" placeholder="Gender" required>
+          <input type="text" id="phoneNumber" placeholder="Phone Number" required>
+          <input type="text" id="type" placeholder="Type (e.g. Mentor)" required>
+          <input type="number" id="yrsOfExper" placeholder="Years of Experience" required>
+          <input type="text" id="expertiseArea" placeholder="Expertise Area" required>
       `;
       document.getElementById("container").style.height = "auto";
     }
@@ -82,25 +92,82 @@
     updateFormFields(this.value);
   });
 
-  document.getElementById("signupForm").addEventListener("submit", function (e) {
+
+  document.getElementById("signupForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const role = roleSelect.value;
-    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (role === "student") {
+    /*if (role === "student") {
       alert("Please select a valid role.");
       return;
-    }
+    }*/
 
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       return;
     }
 
-    const userData = { role, email, password };
+    let endpoint=" ";
+    let bodyData={};
+
+    if(role==="mentor"){
+      endpoint="https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/register";
+    
+      bodyData = {
+          title: document.getElementById("title").value,
+          name: document.getElementById("name").value,
+          surname: document.getElementById("surname").value,
+          doB: document.getElementById("doB").value,
+          gender: document.getElementById("gender").value,
+          phoneNumber: document.getElementById("phoneNumber").value,
+           email: document.getElementById("email").value,
+          password: password,
+          type: document.getElementById("type").value,
+          yrsOfExper: parseInt(document.getElementById("yrsOfExper").value),
+          expertiseArea: document.getElementById("expertiseArea").value
+        };
+
+    }else if(role==="company"){
+      endpoint="https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/registerCompany";
+    
+      bodyData={
+      comName: document.getElementById("comName").value,
+      description: document.getElementById("description").value,
+      webLink: document.getElementById("webLink").value,
+      contactNum: document.getElementById("contactNum").value,
+      contactEmail: document.getElementById("contactEmail").value,
+      password: password
+
+      }
+    }
+
+    try{
+      const response= await fetch(endpoint,{
+        method:"POST",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(bodyData)
+      });
+
+      if(response.ok){
+        alert("Account created successfully");
+        window.location.href="SignIn.html";
+      }else {
+        const error= await response.json();
+        alert("Error:"+ (error.message || "Registration failed"));
+      }
+    }catch(error){
+      console.error("Error: ",error);
+      alert("Something went wrong!");
+    }
+
+
+
+    /*const userData = { role, email, password };
 
     if (role === 'company') {
       userData.companyName = document.getElementById("companyName").value;
@@ -116,9 +183,13 @@
     localStorage.setItem("userData", JSON.stringify(userData));
 
     alert("Sign up successful! Please log in.");
-    window.location.href = "SignIn.html"; // redirect to login page
+    window.location.href = "SignIn.html"; // redirect to login page*/
   });
 
+
+  ///
+
+  //
 
   </script>
 

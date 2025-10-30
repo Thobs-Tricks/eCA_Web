@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account page</title>
+    <title>Sign In</title>
 
     <link rel="stylesheet" href="Style.css">
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <aside>
         <h2  class="SignInDecore" > <b>Sign In</b> </h3> 
 
-        <form action="#" id="loginForm">
+        <form  id="loginForm">
 
             <input type="email"  id="loginEmail"  placeholder="Email / Username" required>
            <div>
@@ -45,7 +45,71 @@
     
 
 <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
+
+const LOGIN_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/login";
+
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailOrPhone = document.getElementById("loginEmail").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+     
+
+      if (!emailOrPhone || !password) {
+        alert( "Please enter both fields.");
+        return;
+      }
+
+      // request body according to Swagger
+      const userData = {
+        emailOrPhone: emailOrPhone,
+        password: password
+      };
+
+      try {
+        const response = await fetch(LOGIN_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData)
+        });
+
+        if (!response.ok) {
+         alert("Invalid credentials or server error.");
+          return;
+        }
+
+        const data = await response.json();
+        console.log("Login response:", data);
+
+        // Store token (adjust based on your API response)
+        localStorage.setItem("token", data.token );
+
+        // Determine role - this depends on what your API returns.
+        // Example: If backend returns something like { role: "Company", ... }
+        localStorage.setItem("username", data.username);
+        const role = data.role;
+
+        // Redirect user based on role
+        if (role === "company") {
+          window.location.href = "Company.html";
+        } else if (role === "mentor") {
+          window.location.href = "MentorProfile.html";
+        } else if (role === "student") {
+          window.location.href = "StudentProfile.html";
+        } else {
+          // If role not provided, redirect to a default home page
+          window.location.href = "Home.html";
+        }
+
+      } catch (error) {
+        
+        console.error("Login error:", error);
+        msg.textContent = "Network or connection error.";
+      }
+    });
+
+
+  /*  document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const email = document.getElementById("loginEmail").value;
@@ -60,10 +124,9 @@
       const user = JSON.parse(storedData);
 
       if (user.email === email && user.password === password) {
-        // Save session info (e.g., role)
+       
         localStorage.setItem("userRole", user.role);
 
-        // Redirect based on role
         if (user.role === "mentor") {
           window.location.href = "MentorProfile.html";
         } else if (user.role === "company") {
@@ -72,7 +135,7 @@
       } else {
         alert("Incorrect email or password.");
       }
-    });
+    });*/
   </script>
 
 
