@@ -45,98 +45,84 @@
     
 
 <script>
-
 const LOGIN_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/login";
+const USER_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/UserManagement/GetUserBy";
 
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-      const emailOrPhone = document.getElementById("loginEmail").value.trim();
-      const password = document.getElementById("loginPassword").value.trim();
-     
+  // Step 1: Collect form values
+  const emailOrPhone = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
 
-      if (!emailOrPhone || !password) {
-        alert( "Please enter both fields.");
-        return;
-      }
+  if (!emailOrPhone || !password) {
+    alert("Please enter both email and password.");
+    return;
+  }
 
-      // request body according to Swagger
-      const userData = {
-        emailOrPhone: emailOrPhone,
-        password: password
-      };
+  // Step 2: Create the request body (as Swagger expects)
+  const userData = {
+    emailOrPhone: emailOrPhone,
+    password: password
+  };
 
-      try {
-        const response = await fetch(LOGIN_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(userData)
-        });
-
-        if (!response.ok) {
-         alert("Invalid credentials or server error.");
-          return;
-        }
-
-        const data = await response.json();
-        console.log("Login response:", data);
-
-        // Store token (adjust based on your API response)
-        localStorage.setItem("token", data.token );
-
-        // Determine role - this depends on what your API returns.
-        // Example: If backend returns something like { role: "Company", ... }
-        localStorage.setItem("username", data.username);
-        const role = data.role;
-
-        // Redirect user based on role
-        if (role === "company") {
-          window.location.href = "Company.html";
-        } else if (role === "mentor") {
-          window.location.href = "MentorProfile.html";
-        } else if (role === "student") {
-          window.location.href = "StudentProfile.html";
-        } else {
-          // If role not provided, redirect to a default home page
-          window.location.href = "Home.html";
-        }
-
-      } catch (error) {
-        
-        console.error("Login error:", error);
-        msg.textContent = "Network or connection error.";
-      }
+  try {
+    // Step 3: Send login request
+    const response = await fetch(LOGIN_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData)
     });
 
+    const data = await response.json();
+    console.log("Login response:", data);
 
-  /*  document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+    // Step 4: Validate login success
+    if (!response.ok || !data.token) {
+      alert(data.message || "Invalid email or password.");
+      return;
+    }
 
-      const email = document.getElementById("loginEmail").value;
-      const password = document.getElementById("loginPassword").value;
+    // Step 5: Save token & user ID locally
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("userId", data.value); // value is user ID from login
 
-      const storedData = localStorage.getItem("userData");
-      if (!storedData) {
-        alert("No user found. Please sign up first.");
-        return;
+
+    // Step 6: Fetch user details by ID
+    const userId = data.value;
+    const userDetailsResponse = await fetch(`${USER_URL}${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${data.token}` // include the token for authentication
+      
       }
+      
+    });
 
-      const user = JSON.parse(storedData);
+    const userDetails = await userDetailsResponse.json();
+    console.log("User details:", userDetails);
 
-      if (user.email === email && user.password === password) {
-       
-        localStorage.setItem("userRole", user.role);
+    // Step 7: Check the userType
+    const userType = userDetails.userType?.toLowerCase(); // normalize to lowercase
 
-        if (user.role === "mentor") {
-          window.location.href = "MentorProfile.html";
-        } else if (user.role === "company") {
-          window.location.href = "Company.html";
-        }
-      } else {
-        alert("Incorrect email or password.");
-      }
-    });*/
-  </script>
+    // Step 8: Redirect based on userType
+    if (userType === "company") {
+      window.location.href = "Company.html";
+    } else if (userType === "mentor") {
+      window.location.href = "MentorProfile.html";
+    } else if (userType === "student") {
+      window.location.href = "StudentProfile.html";
+    } else {
+      alert("User type not recognized.");
+    }
+
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Something went wrong while logging in. Please try again.");
+  }
+});
+</script>
 
 
 </body>
