@@ -13,7 +13,7 @@ overflow-x: hidden;
 span{
     color:white;
 }
-
+/*
 .Logo{
     display: inline;
     margin: 30px;
@@ -38,8 +38,7 @@ header{
     color: white;
     
 }
-
-   
+*/
     .fa-user{
         background-color: white;
         color: grey;
@@ -482,11 +481,13 @@ margin-left:370px;
 
  .Side-Infor ul li{
     padding:27px;
+    
 
  }
 
  .Side-Infor ul li a{
     color: rgb(0, 46, 88); 
+    
  }
 
  /*inner setting info*/

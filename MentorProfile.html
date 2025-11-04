@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mentor Profile</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<script src="MasterPage/MasterScript.js"></script>
+<script src="MasterPage/MasterScript.js" defer></script>
 <style>
 body {
   margin: 0;
@@ -455,9 +455,9 @@ outline-color: lightblue;
   <div class="profile-info">
     <img src="Image/bob.webp" alt="Mentor Photo">
     <div class="details">
-      <h2>Alex Mentor</h2>
+      <h2 id="MentName">Alex Mentor</h2>
       <p>Senior Web Developer | Career Coach | Tech Speaker</p>
-       <button><a href=""><i class="fa fa-cog"></i> Settings</a></button>
+       <button><a href="AccountSetting.html"><i class="fa fa-cog"></i> Settings</a></button>
 
     </div>
 
@@ -632,6 +632,9 @@ toggleBtn.addEventListener('click', () => {
     .then(res => res.text())
     .then(data => {
       document.getElementById("Header").innerHTML = data;
+       
+   
+    
     });
 </script>
 

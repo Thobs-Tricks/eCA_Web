@@ -18,9 +18,7 @@
 
 <body>
 
-      <include src="MasterPage/Header.html"></include>
-
-
+<div id="Header"></div>
 
      <!--Top jobs picked for you-->
      <div class="Job-Tab">
@@ -75,7 +73,14 @@
         </div>
      </div>
 
-
+<script>
+    fetch("MasterPage/Header.html")
+        .then(res => res.text())
+        .then(data => {
+             document.getElementById("Header").innerHTML = data;
+     
+    });
+ </script>
 
 </body>
 </html>

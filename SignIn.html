@@ -95,13 +95,25 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${data.token}` // include the token for authentication
-      
+
       }
       
     });
 
     const userDetails = await userDetailsResponse.json();
     console.log("User details:", userDetails);
+
+    //store use display name
+  const displayName = 
+  userDetails.name
+    ? `${userDetails.name} ${userDetails.surname || ""}`.trim()
+    : userDetails.companyName || "User";
+
+    localStorage.setItem("userId", userDetails.userId);
+
+localStorage.setItem("userName", displayName);
+localStorage.setItem("userRole", userDetails.userType);
+
 
     // Step 7: Check the userType
     const userType = userDetails.userType?.toLowerCase(); // normalize to lowercase

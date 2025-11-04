@@ -12,7 +12,7 @@
 </head>
 <body>
 
-   <include src="MasterPage/Header.html"></include>
+<div id="Header"></div>
 
 <div class="container">
 
@@ -160,6 +160,15 @@ upload.addEventListener('change', () => {
   };
   reader.readAsDataURL(file);
 });
+
+ fetch("MasterPage/Header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("Header").innerHTML = data;
+       
+   
+    
+    });
 </script>
 
 </body>

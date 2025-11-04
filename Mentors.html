@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-          <script src="Script.js"></script>
-          <link rel="stylesheet" href="StyleProfile.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="FeedStyle.css">
+ <link rel="stylesheet" href="StyleProfile.css">
+<script src="MasterPage/MasterScript.js" defer></script>
 
       <style>
 
@@ -118,9 +119,6 @@ input:hover{
     
 }
 
-
-
-       
 .Cards{
     margin-top: 60px;
     display: flex;
@@ -169,9 +167,9 @@ input:hover{
     color: white;
 }
  
-       hr{
-        margin: 40px 0 14px 0;
-       }
+  hr{
+    margin: 40px 0 14px 0;
+  }
 
 
        
@@ -216,11 +214,6 @@ input:hover{
     margin-left: -10px;
 }
 
-
- 
- 
-
-
 @media (max-width: 768px) {
 
   .mini-container {
@@ -234,8 +227,6 @@ input:hover{
 
   }
 
-  
-
   nav ul {
     flex-direction: column;
     margin-top: 0;
@@ -245,7 +236,6 @@ input:hover{
 
   }
 
- 
 }
 
     @media (max-width: 480px) {
@@ -256,39 +246,14 @@ input:hover{
  }
 
 } 
-      </style>
+ </style>
 </head>
 
 <body>
 
-  <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+<div id="Header"></div>
 
-    <div class="mini-container" id="sidebar">
-    <header>
-       <img src="Image/LogoCA-white.png" alt="" class="LogoImg">      
-    </header>
-      <nav>
-            <ul>
-                <li><a href="Jobs.html"><i class="fa fa-briefcase"></i>  Jobs</a></li>
-                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                  <li><a href="Company.html"><i class="fa fa-building"></i> Company</a></li>
-                 <li><a href="Notification.html"><i class="fa fa-bell"></i> Notification</a></li>
-                  <li> <a class="nav-profile" href="Profile.html"><img src="Image/Ally.jpg" alt="pic"></a></li>
-              <!--  <li> <a c href="profile.html" ><i class="fa fa-user"></i> Ally</a></li>-->
-                <li class="dropdown"> 
-  <div class="dropdown-toggle" onclick="toggleDropdown()">Student Name<i class="fa fa-caret-down"></i>
-  </div>
-  <div class="dropdown-menu" id="dropdownMenu">
-    <a href="#" onclick="logout()">Log out</a>
-  </div>
-</li>
-            </ul>
-
-        </nav>
-       
-        </div>
-
-        <div class="Search-Bar">
+<div class="Search-Bar">
             <form action="#">
                <input type="search" name="search"  placeholder="Search..">
               <button>Submit</button>    
@@ -333,5 +298,15 @@ input:hover{
         
         
     </div>
+
+    <script>
+        fetch("MasterPage/Header.html")
+        .then(res => res.text())
+        .then(data => {
+             document.getElementById("Header").innerHTML = data;
+     
+    });
+ </script>
+
 </body>
 </html>
