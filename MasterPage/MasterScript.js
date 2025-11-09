@@ -146,3 +146,4 @@ function logout() {
 
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", loadHeader);
+

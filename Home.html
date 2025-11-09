@@ -31,48 +31,8 @@
   </div>
 
     <!-- Post Example with Image -->
-    <div class="post">
-      <div class="post-header">
-        <img src="mentor2.jpg" alt="">
-        <div>
-          <b>Dr. Collins</b><br><small>3h ago</small>
-        </div>
-      </div>
-      <div class="post-content">
-        Proud of my mentee who just landed their first tech internship! 🎉
-      </div>
-      <div class="post-media">
-        <img src="achievement.jpg" alt="Post Image">
-      </div>
-      <div class="post-actions">
-        <i class="fa fa-thumbs-up"></i> Like
-        <i class="fa fa-comment"></i> Comment
-        <i class="fa fa-share"></i> Share
-      </div>
-    </div>
+    <div  id="feedContent">Loading feed...</div>
 
-    <!-- Post Example with Video -->
-    <div class="post">
-      <div class="post-header">
-        <img src="student1.jpg" alt="">
-        <div>
-          <b>Sarah Lee</b><br><small>6h ago</small>
-        </div>
-      </div>
-      <div class="post-content">
-        Here’s a short clip from my presentation today — thanks for the feedback mentor! 🙌
-      </div>
-      <div class="post-media">
-        <video controls>
-          <source src="presentation.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="post-actions">
-        <i class="fa fa-thumbs-up"></i> Like
-        <i class="fa fa-comment"></i> Comment
-        <i class="fa fa-share"></i> Share
-      </div>
-    </div>
   </div>
 
 
@@ -137,7 +97,7 @@
 </div>
 
 <script>
-const upload = document.getElementById('uploadImg');
+/*const upload = document.getElementById('uploadImg');
 const preview = document.getElementById('preview');
 
 upload.addEventListener('change', () => {
@@ -159,16 +119,89 @@ upload.addEventListener('change', () => {
     }
   };
   reader.readAsDataURL(file);
-});
+});*/
 
  fetch("MasterPage/Header.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("Header").innerHTML = data;
-       
-   
-    
+      
     });
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const feedContainer = document.getElementById("feedContent");
+  feedContainer.innerHTML = "<p>Loading posts...</p>";
+
+  try {
+    const response = await fetch("https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/FeedManagement/GetAllFeeds");
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error("Error loading feeds:", error);
+      feedContainer.innerHTML = "<p>Failed to load feed.</p>";
+      return;
+    }
+
+    const feeds = await response.json();
+    feedContainer.innerHTML = "";
+
+    if (!feeds || feeds.length === 0) {
+      feedContainer.innerHTML = "<p>No posts available.</p>";
+      return;
+    }
+
+    feeds.forEach(feed => {
+      const text = feed.data || "(No content)";
+      const postedDate = feed.date_Posted
+        ? new Date(feed.date_Posted).toLocaleString()
+        : "Recently";
+
+      // Determine author name (company or mentor)
+      const authorName = feed.companyName || feed.mentorName || "Unknown User";
+
+      // Handle media if your API later adds media paths
+      let mediaHTML = "";
+      if (feed.mediaPath) {
+        const fileExt = feed.mediaPath.split('.').pop().toLowerCase();
+        if (["jpg", "jpeg", "png", "gif"].includes(fileExt)) {
+          mediaHTML = `<img src="${feed.mediaPath}" alt="Post Image" style="width:100%;border-radius:10px;margin-top:10px;">`;
+        } else if (["mp4", "mov", "avi"].includes(fileExt)) {
+          mediaHTML = `<video controls style="width:100%;border-radius:10px;margin-top:10px;">
+                         <source src="${feed.mediaPath}" type="video/${fileExt}">
+                       </video>`;
+        } else {
+          mediaHTML = `<p><i class="fa fa-file"></i> ${feed.mediaPath}</p>`;
+        }
+      }
+
+      const postHTML = `
+        <div class="post">
+          <div class="post-header">
+            <img src="Image/bob.webp" alt="Profile">
+            <div>
+              <b>${authorName}</b><br>
+              <small>${postedDate}</small>
+            </div>
+          </div>
+          <div class="post-content">${text}</div>
+          <div class="post-media">${mediaHTML}</div>
+          <div class="post-actions">
+            <i class="fa fa-thumbs-up"></i> Like
+            <i class="fa fa-comment"></i> Comment
+            <i class="fa fa-share"></i> Share
+          </div>
+        </div>
+      `;
+      feedContainer.insertAdjacentHTML("beforeend", postHTML);
+    });
+
+  } catch (err) {
+    console.error(err);
+    feedContainer.innerHTML = "<p>Failed to connect to the server.</p>";
+  }
+});
+
+
 </script>
 
 </body>

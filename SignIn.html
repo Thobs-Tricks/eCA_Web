@@ -109,7 +109,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     ? `${userDetails.name} ${userDetails.surname || ""}`.trim()
     : userDetails.companyName || "User";
 
-    localStorage.setItem("userId", userDetails.userId);
+    localStorage.setItem("userId", userDetails.userID);
 
 localStorage.setItem("userName", displayName);
 localStorage.setItem("userRole", userDetails.userType);

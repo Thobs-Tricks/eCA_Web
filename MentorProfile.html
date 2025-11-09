@@ -463,23 +463,32 @@ outline-color: lightblue;
 
     <!-- Post Box -->
 <div class="post-box">
-  <textarea rows="3" placeholder="Share your thoughts..."></textarea>
+  <textarea rows="3" id="postText" placeholder="Share your thoughts..."></textarea>
   <div class="post-actions">
     <div class="left">
       <button class="plus-btn" id="toggleBtn"><i class="fa fa-plus"></i></button>
     </div>
-    <button class="post-btn">Post</button>
+    <button class="post-btn" id="submitPost">Post</button>
   </div>
 
   <div class="extra-options" id="extraOptions">
-    <button><i class="fa fa-image"></i> Media</button>
+    <label>
+      <input type="file" id="mediaInput" accept="image/*,video/*" style="display:none;">
+      <button type="button"><i class="fa fa-image"></i> Media</button>
+    </label>
+
+    <label>
+      <input type="file" id="documentInput" accept=".pdf,.doc,.docx,.txt" style="display:none;">
+      <button type="button"><i class="fa fa-file"></i> Document</button>
+    </label>
     <button><i class="fa fa-calendar"></i> Event</button>
     <button><i class="fa fa-gift"></i> Celebrate</button>
     <button><i class="fa fa-briefcase"></i> Job</button>
-    <button><i class="fa fa-chart-pie"></i> Poll</button>
-    <button><i class="fa fa-file"></i> Document</button>
+    <button><i id="pollBtn" class="fa fa-chart-pie"></i> Poll</button>
     <button><i class="fa fa-tools"></i> Service</button>
   </div>
+     <div class="preview" id="preview"></div>
+
 </div>
   </div>
 </div>
@@ -496,8 +505,7 @@ outline-color: lightblue;
 <div class="container">
   <!-- Left -->
   <div class="left-section">
-
-   
+ 
     <div class="card"  id="info">
       <h3>About</h3>
       <p>I'm a passionate web developer and mentor with 10+ years of experience in helping young developers build meaningful careers. My focus areas include web development, API integration, and professional growth coaching.</p>
@@ -514,7 +522,6 @@ outline-color: lightblue;
       </div>
     </div>
     
-
     <div class="card" id="feed">
       <h3>Recent Posts</h3>
 
@@ -589,14 +596,14 @@ outline-color: lightblue;
 
 
 <script>
-const toggleBtn = document.getElementById('toggleBtn');
+/*const toggleBtn = document.getElementById('toggleBtn');
 const extraOptions = document.getElementById('extraOptions');
 
 toggleBtn.addEventListener('click', () => {
   extraOptions.classList.toggle('show');
   toggleBtn.classList.toggle('rotate');
 });
-
+*/
 /**function showTab(tab) {
   const tabContent = document.getElementById('tabContent');
   const tabs = document.querySelectorAll('.tabs button');
@@ -626,16 +633,119 @@ toggleBtn.addEventListener('click', () => {
     document.getElementById(sectionId).style.display = "block";
   }
 
-
-
    fetch("MasterPage/Header.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("Header").innerHTML = data;
        
-   
-    
     });
+
+    
+    document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById('toggleBtn');
+  const extraOptions = document.getElementById('extraOptions');
+  const mediaInput = document.getElementById('mediaInput');
+  const documentInput = document.getElementById('documentInput');
+  const preview = document.getElementById('preview');
+  const postBtn = document.getElementById('submitPost');
+  const postText = document.getElementById('postText');
+  const feedSection = document.querySelector('#feed');
+  
+  let selectedFile = null;
+
+
+
+  // Toggle options open/close
+  toggleBtn.addEventListener('click', () => {
+    extraOptions.classList.toggle('show');
+    toggleBtn.classList.toggle('rotate');
+  });
+
+  // Handle Media Preview (image/video)
+  mediaInput.addEventListener('click', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    selectedFile = file;
+    const fileURL = URL.createObjectURL(file);
+    preview.innerHTML = '';
+
+    if (file.type.startsWith('image')) {
+      preview.innerHTML = `<img src="${fileURL}" style="width:100%;border-radius:10px;margin-top:10px;">`;
+    } else if (file.type.startsWith('video')) {
+      preview.innerHTML = `<video controls style="width:100%;border-radius:10px;margin-top:10px;"><source src="${fileURL}" type="${file.type}"></video>`;
+    }
+  });
+
+
+  // Handle Document Preview
+  documentInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    selectedFile = file;
+    preview.innerHTML = `<p><i class="fa fa-file"></i> ${file.name}</p>`;
+  });
+
+
+
+  // --- Handle POST button ---
+  postBtn.addEventListener('click', async () => {
+    const text = postText.value.trim();
+    if (!text && !selectedFile) {
+      alert("Please write something or attach a file.");
+      return;
+    }
+
+
+    
+  const userId = localStorage.getItem("userID"); // note: userID from login
+  const role = localStorage.getItem("userRole")?.toLowerCase();
+
+  if (!userId || !role) {
+    alert("User not found in local storage. Please log in again.");
+    console.error("Missing userId or role:", { userId, role });
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("data", text);
+  formData.append("isPublic", true);
+
+  // ✅ Only append the correct ID field
+  if (role === "mentor") {
+    formData.append("mentorID", userId);
+  } else if (role === "company") {
+    formData.append("companyID", userId);
+  }
+
+  // If there's a selected file
+  if (selectedFile) formData.append("Media", selectedFile);
+
+  try {
+    const res = await fetch("https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/FeedManagement/PostFeed", {
+      method: "POST",
+      body: formData
+    });
+
+    if (res.ok) {
+      alert("Post uploaded successfully!");
+      postText.value = "";
+      preview.innerHTML = "";
+      selectedFile = null;
+    } else {
+      const error = await res.text();
+      console.error("Server error:", error);
+      alert("Error posting: " + error);
+    }
+  } catch (err) {
+    console.error("Connection error:", err);
+    alert("Failed to connect to server.");
+  }
+
+
+  });
+});
+
+
 </script>
 
 </body>
