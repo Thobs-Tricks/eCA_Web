@@ -506,12 +506,12 @@ outline-color: lightblue;
   <!-- Left -->
   <div class="left-section">
  
-    <div class="card"  id="info">
+    <div class="card"  id="about">
       <h3>About</h3>
       <p>I'm a passionate web developer and mentor with 10+ years of experience in helping young developers build meaningful careers. My focus areas include web development, API integration, and professional growth coaching.</p>
     </div>
 
-    <div class="card"  id="info">
+    <div class="card"  id="skills">
       <h3>Skills & Expertise</h3>
       <div class="skills">
         <div class="skill">JavaScript</div>
@@ -521,7 +521,7 @@ outline-color: lightblue;
         <div class="skill">Web Design</div>
       </div>
     </div>
-    
+ 
     <div class="card" id="feed">
       <h3>Recent Posts</h3>
 
@@ -625,11 +625,15 @@ toggleBtn.addEventListener('click', () => {
   //Feed, Info and post
  function openFile(sectionId) {
     // Hide all sections
-    document.querySelectorAll('.card').forEach(sec => {
+    document.querySelectorAll('.left-section .card').forEach(sec => {
       sec.style.display = "none";
     });
 
     // Show clicked one
+     if (sectionId === 'info') {
+    document.getElementById('about').style.display = 'block';
+    document.getElementById('skills').style.display = 'block';
+  }
     document.getElementById(sectionId).style.display = "block";
   }
 

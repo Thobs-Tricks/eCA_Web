@@ -45,7 +45,8 @@
     
 
 <script>
-const LOGIN_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/login";
+  
+/*const LOGIN_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/login";
 const USER_URL = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/UserManagement/GetUserBy";
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
@@ -65,6 +66,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     emailOrPhone: emailOrPhone,
     password: password
   };
+
 
   try {
     // Step 3: Send login request
@@ -111,12 +113,12 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
     localStorage.setItem("userId", userDetails.userID);
 
-localStorage.setItem("userName", displayName);
-localStorage.setItem("userRole", userDetails.userType);
+    localStorage.setItem("userName", displayName);
+    localStorage.setItem("userRole", userDetails.userType);
 
 
     // Step 7: Check the userType
-    const userType = userDetails.userType?.toLowerCase(); // normalize to lowercase
+    const userType = userDetails.userType?.toLowerCase(); 
 
     // Step 8: Redirect based on userType
     if (userType === "company") {
@@ -133,7 +135,73 @@ localStorage.setItem("userRole", userDetails.userType);
     console.error("Login error:", error);
     alert("Something went wrong while logging in. Please try again.");
   }
+});*/
+
+
+
+document.getElementById("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const emailOrPhone = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  try {
+    // Step 1: Login API call
+    const loginResponse = await fetch("https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/Authentication/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ emailOrPhone, password })
+    });
+
+    if (!loginResponse.ok) {
+      alert("Login failed. Please check your credentials.");
+      return;
+    }
+
+    const loginData = await loginResponse.json();
+    console.log("Login success:", loginData);
+
+    // Save token & userID for later use
+    localStorage.setItem("token", loginData.token);
+    localStorage.setItem("userId", loginData.value);
+
+    // Step 2: Get user details by ID
+    const userResponse = await fetch(`https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/UserManagement/GetUserBy/${loginData.value}`, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${loginData.token}`,
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!userResponse.ok) {
+      alert("Failed to fetch user details.");
+      return;
+    }
+
+    const userDetails = await userResponse.json();
+    console.log("User details:", userDetails);
+
+
+
+    // Step 3: Redirect based on userType
+    if (userDetails.userType.toLowerCase() === "mentor") {
+      window.location.href = "MentorProfile.html";
+    } else if (userDetails.userType.toLowerCase() === "company") {
+      window.location.href = "Company.html";
+    } else {
+      alert("User type not recognized.");
+    }
+
+  } catch (error) {
+    console.error("Login error:", error);
+    alert("Something went wrong while logging in. Please try again.");
+  }
 });
+
+
 </script>
 
 
