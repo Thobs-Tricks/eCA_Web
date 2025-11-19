@@ -6,9 +6,8 @@
     <title>Sign In</title>
 
     <link rel="stylesheet" href="Style.css">
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-   
 </head>
 <body>
 
@@ -27,7 +26,7 @@
                <input type="password" id="loginPassword"  placeholder="Password" required> 
            </div>
           
-           <input style="background-color: darkblue; color: white; margin-top: 20px; "  type="submit" name="Submit" id="">
+           <input  type="submit" name="Submit" id="Submitbtn">
         
            <div class="ForgotP">
              <a href="#"><span>Forgot your password? </span></a> 
@@ -35,7 +34,7 @@
 
           <div class="SignU" >
           
-          <a href="SignUp.html"><span>New to <i>LogoName</i> ? Create here. </span>  </a> 
+          <a href="SignUp.html"><span>New to <i>CA Pulse Network</i> ? Create here. </span>  </a> 
           </div>
         
         </form>
@@ -184,13 +183,14 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     const userDetails = await userResponse.json();
     console.log("User details:", userDetails);
 
-
+   localStorage.setItem("userName", `${userDetails.name} ${userDetails.surname}`);
+localStorage.setItem("userRole", userDetails.userType);
 
     // Step 3: Redirect based on userType
     if (userDetails.userType.toLowerCase() === "mentor") {
       window.location.href = "Home.html";
     } else if (userDetails.userType.toLowerCase() === "company") {
-      window.location.href = "Company.html";
+      window.location.href = "Home.html";
     } else {
       alert("User type not recognized.");
     }

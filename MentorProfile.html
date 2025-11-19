@@ -325,7 +325,7 @@ outline-color: lightblue;
 .tabs {
   display: flex;
   justify-content:left;
-  margin: 100px 0 -20px 50px;
+  margin: 50px 0 -20px 50px;
   gap: 20px;
 }
 
@@ -455,7 +455,7 @@ outline-color: lightblue;
   <div class="profile-info">
     <img src="Image/bob.webp" alt="Mentor Photo">
     <div class="details">
-      <h2 id="MentName">Alex Mentor</h2>
+      <h2 id="MentName">User</h2>
       <p>Senior Web Developer | Career Coach | Tech Speaker</p>
        <button><a href="AccountSetting.html"><i class="fa fa-cog"></i> Settings</a></button>
 
@@ -496,8 +496,8 @@ outline-color: lightblue;
 
 <!-- Tabs -->
 <div class="tabs">
-  <button class="active" onclick="openFile('feed')">Post</button>
-  <button onclick="openFile('info')">Info</button>
+  <button class="active" onclick="openFile('feed')">Posts</button>
+  <button onclick="openFile('info')">User Info</button>
   <!--<button onclick="showTab('posts')">Posts</button>-->
 </div>
 
@@ -507,13 +507,13 @@ outline-color: lightblue;
   <div class="left-section">
  
     <div class="card"  id="about">
-      <h3>About</h3>
-      <p>I'm a passionate web developer and mentor with 10+ years of experience in helping young developers build meaningful careers. My focus areas include web development, API integration, and professional growth coaching.</p>
+      <h3>About <i class="fa fa-pen"  id="editAbout"></i></h3>
+      <p id="aboutText">I'm a passionate web developer and mentor with 10+ years of experience in helping young developers build meaningful careers. My focus areas include web development, API integration, and professional growth coaching.</p>
     </div>
 
     <div class="card"  id="skills">
-      <h3>Skills & Expertise</h3>
-      <div class="skills">
+      <h3>Skills & Expertise <i class="fa fa-pen" id="editSkills"></i></h3>
+      <div class="skills" id="skillsList">
         <div class="skill">JavaScript</div>
         <div class="skill">React</div>
         <div class="skill">Node.js</div>
@@ -596,6 +596,112 @@ outline-color: lightblue;
 
 
 <script>
+
+
+const editSkillsBtn = document.getElementById("editSkills");
+const skillsList = document.getElementById("skillsList");
+
+editSkillsBtn.addEventListener("click", () => {
+
+    const currentSkills = [...skillsList.querySelectorAll(".skill")]
+        .map(s => s.innerText);
+
+    skillsList.innerHTML = `
+      <textarea id="skillsInput" style="width:100%; height:80px;">${currentSkills.join(", ")}</textarea>
+      <button id="saveSkillsBtn" style="
+        margin-top:10px;
+        background: darkblue;
+        color:white;
+        padding:6px 10px;
+        border-radius:6px;
+        border:none;
+        cursor:pointer;
+      ">Save</button>
+    `;
+
+    document.getElementById("saveSkillsBtn").addEventListener("click", async () => {
+
+        const inputValue = document.getElementById("skillsInput").value;
+        const skillArray = inputValue.split(",").map(s => s.trim()).filter(s => s.length > 0);
+
+        skillsList.innerHTML = skillArray.map(skill => `<div class="skill">${skill}</div>`).join("");
+
+        let userId = localStorage.getItem("userId");
+        if (!userId) return alert("No user is logged in!");
+
+        for (let skill of skillArray) {
+            try {
+                await fetch(`https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/ProfileManagement/AddSkill/${userId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    body: JSON.stringify({
+                        skillName: skill,
+                        skillPerc: 0,
+                        userID: userId
+                    })
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        alert("Skills saved!");
+    });
+
+});
+
+
+//handles the about section
+const editAboutBtn = document.getElementById("editAbout");
+const aboutCard = document.getElementById("about");
+const aboutText = document.getElementById("aboutText");
+
+editAboutBtn.addEventListener("click", () => {
+  
+  // Replace the <p> with a textarea and save button
+  const currentText = aboutText.innerText;
+
+  aboutCard.innerHTML = `
+    <h3>About <i class="fa fa-pen"></i></h3>
+
+    <textarea id="aboutInput" style="
+      width:100%;
+      height:120px;
+      padding:10px;
+      font-size:14px;
+      line-height:1.4;
+    ">${currentText}</textarea>
+
+    <button id="saveAboutBtn" style="
+      margin-top:10px;
+      background: darkblue;
+      color:white;
+      padding:6px 10px;
+      border-radius:6px;
+      border:none;
+      cursor:pointer;
+    ">Save</button>
+  `;
+
+  // When clicking Save → restore the paragraph with updated text
+  document.getElementById("saveAboutBtn").addEventListener("click", () => {
+    const newText = document.getElementById("aboutInput").value;
+
+    aboutCard.innerHTML = `
+      <h3>About <i class="fa fa-pen" id="editAbout"></i></h3>
+      <p id="aboutText">${newText}</p>
+    `;
+
+    // Reattach the event listener so editing still works
+    document.getElementById("editAbout").addEventListener("click", editAboutBtn.onclick);
+  });
+
+});
+
+
 /*const toggleBtn = document.getElementById('toggleBtn');
 const extraOptions = document.getElementById('extraOptions');
 
@@ -644,8 +750,13 @@ toggleBtn.addEventListener('click', () => {
        
     });
 
-    
-    document.addEventListener("DOMContentLoaded", () => {
+     // Toggle options open/close
+  toggleBtn.addEventListener('click', () => {
+    extraOptions.classList.toggle('show');
+    toggleBtn.classList.toggle('rotate');
+  });
+   
+   /* document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById('toggleBtn');
   const extraOptions = document.getElementById('extraOptions');
   const mediaInput = document.getElementById('mediaInput');
@@ -659,11 +770,7 @@ toggleBtn.addEventListener('click', () => {
 
 
 
-  // Toggle options open/close
-  toggleBtn.addEventListener('click', () => {
-    extraOptions.classList.toggle('show');
-    toggleBtn.classList.toggle('rotate');
-  });
+ 
 
   // Handle Media Preview (image/video)
   mediaInput.addEventListener('click', (e) => {
@@ -747,8 +854,7 @@ toggleBtn.addEventListener('click', () => {
 
 
   });
-});
-
+});*/
 
 </script>
 

@@ -32,8 +32,8 @@
         </label>
 
         <div class="SubCancel">
-          <input style="background-color: darkblue; color: white; margin-top: 20px;" type="submit" name="Submit">
-          <input style="background-color: rgb(241, 0, 0); color: white; cursor: pointer;" type="button" value="Cancel">
+          <input type="submit" name="Submit" id="Submitbtn">
+          <input type="button" value="Cancel" id="Cancelbtn">
         </div>
 
       </form>
@@ -43,7 +43,11 @@
 
   <script>
   
-   
+   const btnCancel= document.getElementById("Cancelbtn");
+
+   btnCancel.addEventListener('click',function(){
+     window.location.href="SignIn.html";
+   })
 
    
   const roleSelect = document.getElementById('roleSelect');

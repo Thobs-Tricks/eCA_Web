@@ -1,23 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const includes = document.querySelectorAll("include[src]" );
-  
-  includes.forEach(el => {
-    const file = el.getAttribute("src");
-    fetch(file)
-      .then(res => res.text())
-      .then(data => {
-        el.outerHTML = data; // replace <include> tag with loaded HTML
-      })
-      .catch(err => console.error("Error loading include:", err));
-  });
-});
-
 
 //Drop Down and log out 
- function toggleDropdown() {
+ /*function toggleDropdown() {
     const menu = document.getElementById("dropdownMenu");
     menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }
+  }*/
 
 
 //hide tabs for certain user
@@ -66,20 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });*/
 
 
-
-
-
-
-
-
-
-
-//use when GET is there on swagger
-/*function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("username");
-  window.location.href = "login.html";
-}*/
 
 // Load header and update profile info
 function loadHeader() {
@@ -147,3 +119,16 @@ function logout() {
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", loadHeader);
 
+//Tab color change change
+
+let colorBtn = document.querySelectorAll(".tabs button");
+
+colorBtn.forEach(btn => {
+  btn.addEventListener("click", function () {
+    // Remove active from all buttons
+    colorBtn.forEach(b => b.classList.remove("active"));
+
+    // Add active only to clicked button
+    this.classList.add("active");
+  });
+});

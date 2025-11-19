@@ -133,6 +133,8 @@ input:hover{
   text-align: center;
   padding: 15px;
   border-radius: 10px;
+  margin-bottom: 50px;
+
 }
 
 .mini-card img{
@@ -259,7 +261,7 @@ input:hover{
               <button>Submit</button>    
         </form>
         </div>
-    <div class="Cards">
+    <div class="Cards" id="Mentorscards">
         <div class="mini-card">
             <img src="Image/bob.webp" alt="">
             <h3>Mike Dot</h3>
@@ -269,34 +271,6 @@ input:hover{
             <a href="MentorProfile.html">View Profile</a>
         </div>
 
-          <div class="mini-card">
-            <img src="" alt="">
-            <h3>john Brick</h3>
-            <h4>CA</h4>
-            <button class="Follow">Follow</button>
-            <button class="hires">Hire</button> <hr>
-            <a href="MentorProfile.html">View Profile</a>
-        </div> 
-        
-        <div class="mini-card">
-            <img src="" alt="">
-            <h3>Bob B</h3>
-            <h4>softwere Enginer</h4>
-            <button class="Follow">Follow</button>
-          <button class="hires">Hire</button> <hr>
-            <a href="MentorProfile.html">View Profile</a>
-        </div>
-
-         <div class="mini-card">
-            <img src="" alt="">
-            <h3>Hope Dot</h3>
-            <h4>CA</h4>
-            <button class="Follow">Follow</button>
-            <button class="hires">Hire</button> <hr>
-            <a href="MentorProfile.html">View Profile</a>
-        </div>
-        
-        
     </div>
 
     <script>
@@ -306,6 +280,51 @@ input:hover{
              document.getElementById("Header").innerHTML = data;
      
     });
+
+    //get all mentors
+
+    document.addEventListener('DOMContentLoaded', async ()=>{
+      let MenteesContent = document.getElementById("Mentorscards");
+        MenteesContent.innerHTML = "<p>Loading mentors...</p>";
+
+        try{
+          const response = await fetch("https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/UserManagement/GetAllMentors");
+           if (!response.ok) {
+           const error = await response.text();
+           console.error("Error loading feeds:", error);
+            MenteesContent.innerHTML = "<p>Failed to load feed.</p>";
+            return;
+           }
+
+  const mentors = await response.json();
+    MenteesContent.innerHTML = "";
+
+    if (!mentors || mentors.length === 0) {
+      MenteesContent.innerHTML = "<p>No mentors available.</p>";
+      return;
+    }
+
+    // Create mentor cards
+    mentors.forEach(m => {
+      MenteesContent.innerHTML += `
+        <div class="mini-card">
+            <img src="Image/default-avatar.png">
+            <h3>${m.mentorName}</h3>
+            <h4>${m.expertiseArea}</h4>
+
+            <button class="Follow">Follow</button>
+            <button class="hires">Request</button> 
+            <hr>
+            <a href="MentorProfile.html?id=${m.userID}">View Profile</a>
+        </div>
+      `;
+    });
+
+        }catch (err){
+           console.error(err);
+           MenteesContent.innerHTML = "<p>Failed to connect to the server.</p>";
+        }
+    })
  </script>
 
 </body>
