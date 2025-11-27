@@ -1,48 +1,89 @@
-.NoticsContainer{
+.notifications-container{
     background-color: white;
-    margin: 50px auto;
-    max-width:100%;
-    width: 50%;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 10px 5px 5px rgb(247, 231, 200);
+    max-width: 800px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+
+.tabs{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 40px;
+  padding-top: 40px;
 
 }
 
-.NoticsContainer:hover{
-    box-shadow: 10px 5px orange;
+.tabs .tab-btn{
+    padding: 8px 30px;
+    width: auto;
+    background-color: rgb(0, 139, 127);/* rgb(2, 52, 95);*/
+    color: white;
+    border-radius: 5px;
+     cursor: pointer;
+    font-weight: bold;
+    border: none;
+    flex:1;
+   
 }
 
-.NoticsContainer p{
- text-align: start;
- padding: 20px 0;
- word-break: break-all;
- font-family:'Times New Roman', Times, serif;
+
+
+.tabs .tab-btn:nth-child(1){
+    padding: 8px 70px;
 }
 
-.NoticsContainer a{
-    text-decoration: none;
-    color: black;
-}
-
-.InnerNotics{
-  display:flex;
-  justify-content:space-between;
-}
-
-.InnerNotics label{
-    color: rgb(4, 4, 61);
- font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.Card{
+    display: flex;
+    justify-content:space-between;
+    max-width: 500px;
+    margin: auto;
+   background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 
 }
-.InnerNotics img{
-    max-width: 100px;
-    width:30px;
-    border-radius: 10px;
+
+.title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-.X2{
-    color:rgb(241, 36, 36);
+.Card-contant .title img{
+    max-width: 100%;
+    width: 10%;
+    border-radius: 20px;
+
+}
+
+.Card .Message-content{
+    display: inline;
+}
+
+.btn {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 13px;
 }
 
+.accept {
+    background: #10b981;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.decline {
+    background: #ef4444;
+    color: white;
+}
+
+.hidden{
+    display: none;
+}

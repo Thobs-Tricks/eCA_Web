@@ -15,50 +15,39 @@
       
 <div id="Header"></div>
 
-     <div class="NoticsContainer">
-             <div class="InnerNotics">
-                <div>
-                    <label for="">
-                        <img src="Image/news2.webp" alt="pictire " > Exposure Alert
-                    </label>
-                </div>
+<div class="notifications-container">
 
-                <div class="X2">
-                     <i class="fa fa-times"></i>
-                </div>
-            </div>
+    <div class="tabs" id="Tabs">
+        <button class="tab-btn active" id="requestsTab">Requests <span class="badge" id="reqCount">(1)</span></button>
+        <button class="tab-btn" id="normalTab">Normal Notifications <span class="badge" id="normCount">(2)</span></button>
+    </div>
 
-         <div>
-            <a href="#">
-            <p>You have a notifiaction of this kind. dshc sjc sda cjc ajhsda jbhs daj js dhfd ajfd </p>
-            </a>
+    <!-- REQUESTS SECTION -->
+    <div class="Card" id="requestsContent">
+        <div class="Card-contant">
+            <div class="title"> <img src="Image/Ally.jpg" alt="picture"> Name and Surname</div>
+            <div class="profession">💼 Accounted</div>
+            <div class="dates">📅 5 minutes ago</div>
         </div>
+        <div class="decisions">
+            <button class="btn accept">ACCEPT</button>
+            <button class="btn decline">DECLINE</button>
+        </div>
+    </div>
 
+    <!-- NORMAL NOTIFICATIONS SECTION -->
+    <div class="hidden"  id="normalContent">
+      <div class="Card ">
+          <div class="Message">💬 New Message</div>
+          <div class="Message-content">"Message from : user"</div>
+      </div>
 
-     </div>
-
-      <div class="NoticsContainer">
-             <div class="InnerNotics">
-                <div>
-                    <label for="">
-                        <img src="Image/news2.webp" alt="pictire " > Exposure Alert
-                    </label>
-                </div>
-
-                <div class="X2">
-                     <i class="fa fa-times"></i>
-                </div>
-            </div>
-
-         <div>
-             <a href="#">
-            <p>You have a notifiaction of this kind. dshc sjc sda cjc ajhsda jbhs daj js dhfd ajfd </p>
-            </a>
-         </div>
-
-
-     </div>
-
+      <div class="Card ">
+        <div class="Message">📢 System Update</div>
+        <div class="Message-content">We added new features to your dashboard</div>
+      </div>
+    </div>
+</div>
 
 <script>
     fetch("MasterPage/Header.html")
@@ -67,6 +56,23 @@
              document.getElementById("Header").innerHTML = data;
      
     });
+
+    const requestsTab = document.getElementById("requestsTab");
+    const requestsContent =document.getElementById("requestsContent");
+
+    const normalTab =document.getElementById("normalTab")
+    const normalContent =document.getElementById("normalContent")
+    
+    requestsTab.addEventListener('click', ()=>{
+      requestsContent.classList.remove("hidden");
+      normalContent.classList.add("hidden")
+    });
+
+      normalTab.addEventListener('click', ()=>{
+      requestsContent.classList.add("hidden");
+      normalContent.classList.remove("hidden");
+    });
+    
  </script>
     
 </body>

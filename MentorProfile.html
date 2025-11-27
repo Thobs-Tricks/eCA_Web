@@ -177,11 +177,37 @@ color: white;
   gap: 10px;
 }
 .skill {
+ /* background: #007bff;
+  color: white;
+  border-radius: 20px;
+  padding: 6px 15px;
+  font-size: 14px;*/
+   position: relative;           /* for delete button placement */
   background: #007bff;
   color: white;
   border-radius: 20px;
   padding: 6px 15px;
   font-size: 14px;
+  margin: 6px 6px 0 0;
+  display: inline-flex;
+  align-items: center;
+}
+.skill .delete-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff4d4f;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 /* Post Style */
@@ -514,13 +540,18 @@ outline-color: lightblue;
     <div class="card"  id="skills">
       <h3>Skills & Expertise <i class="fa fa-pen" id="editSkills"></i></h3>
       <div class="skills" id="skillsList">
-        <div class="skill">JavaScript</div>
-        <div class="skill">React</div>
-        <div class="skill">Node.js</div>
-        <div class="skill">Career Coaching</div>
-        <div class="skill">Web Design</div>
+        <!--<div class="skill">JavaScript</div>
+        <div class="skill">React</div>-->
       </div>
-    </div>
+
+        <!-- editor (hidden until you click pen) -->
+  <div id="skillsEditor" style="margin-top:12px; display:none;">
+    <input id="skillsInputText" type="text" placeholder="Type a new skill (e.g. JavaScript)" style="width:70%; padding:8px; border-radius:6px; border:1px solid #ccc;">
+    <button id="saveOneSkillBtn" style="margin-left:8px; padding:8px 12px; background:darkblue; color:#fff; border:none; border-radius:6px; cursor:pointer;">Save</button>
+    <button id="cancelSkillBtn" style="margin-left:8px; padding:8px 12px; background:#ddd; color:#333; border:none; border-radius:6px; cursor:pointer;">Cancel</button>
+  </div>
+  </div>
+   <!-- </div>-->
  
     <div class="card" id="feed">
       <h3>Recent Posts</h3>
@@ -596,62 +627,206 @@ outline-color: lightblue;
 
 
 <script>
-
-
+// --- Elements ---
 const editSkillsBtn = document.getElementById("editSkills");
 const skillsList = document.getElementById("skillsList");
+const skillsEditor = document.getElementById("skillsEditor");
+const skillsInputText = document.getElementById("skillsInputText");
+const saveOneSkillBtn = document.getElementById("saveOneSkillBtn");
+const cancelSkillBtn = document.getElementById("cancelSkillBtn");
 
-editSkillsBtn.addEventListener("click", () => {
+// API base (use your full URL)
+const API_BASE = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/ProfileManagement";
 
-    const currentSkills = [...skillsList.querySelectorAll(".skill")]
-        .map(s => s.innerText);
+// helper to get auth info
+function getAuth() {
+  return {
+    userId: localStorage.getItem("userId"),
+    token: localStorage.getItem("token")
+  };
+}
 
-    skillsList.innerHTML = `
-      <textarea id="skillsInput" style="width:100%; height:80px;">${currentSkills.join(", ")}</textarea>
-      <button id="saveSkillsBtn" style="
-        margin-top:10px;
-        background: darkblue;
-        color:white;
-        padding:6px 10px;
-        border-radius:6px;
-        border:none;
-        cursor:pointer;
-      ">Save</button>
-    `;
+// ---------- RENDER ----------
+function renderSkills(skills) {
+  skillsList.innerHTML = ""; // clear
+  if (!Array.isArray(skills)) return;
 
-    document.getElementById("saveSkillsBtn").addEventListener("click", async () => {
+  skills.forEach(s => {
+    // create chip
+    const chip = document.createElement("div");
+    chip.className = "skill";
+    chip.dataset.skillId = s.skillID; // store id for delete
+    chip.innerText = s.skillName;
 
-        const inputValue = document.getElementById("skillsInput").value;
-        const skillArray = inputValue.split(",").map(s => s.trim()).filter(s => s.length > 0);
-
-        skillsList.innerHTML = skillArray.map(skill => `<div class="skill">${skill}</div>`).join("");
-
-        let userId = localStorage.getItem("userId");
-        if (!userId) return alert("No user is logged in!");
-
-        for (let skill of skillArray) {
-            try {
-                await fetch(`https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/ProfileManagement/AddSkill/${userId}`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": "Bearer " + localStorage.getItem("token")
-                    },
-                    body: JSON.stringify({
-                        skillName: skill,
-                        skillPerc: 0,
-                        userID: userId
-                    })
-                });
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        alert("Skills saved!");
+    // delete button
+    const del = document.createElement("div");
+    del.className = "delete-btn";
+    del.title = "Delete skill";
+    del.innerHTML = "&times;";
+    del.addEventListener("click", (e) => {
+      e.stopPropagation();
+      deleteSkill(s.skillID);
     });
 
+    chip.appendChild(del);
+    skillsList.appendChild(chip);
+  });
+}
+
+// ---------- LOAD ----------
+async function loadSkills() {
+  const { userId, token } = getAuth();
+  if (!userId) {
+    skillsList.innerHTML = `<div style="color:#666">Please login to see skills.</div>`;
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE}/GetSkills/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      }
+    });
+
+    if (!res.ok) {
+      console.error("Failed to load skills:", res.status);
+      skillsList.innerHTML = `<div style="color:#666">No skills found.</div>`;
+      return;
+    }
+
+    const skills = await res.json();
+    renderSkills(skills);
+  } catch (err) {
+    console.error("Error loading skills:", err);
+  }
+}
+
+// ---------- ADD ONE SKILL ----------
+async function addSkill(skillName) {
+  const { userId, token } = getAuth();
+  if (!userId) {
+    alert("You must be logged in to add skills.");
+    return false;
+  }
+
+  // Basic sanity
+  if (!skillName || skillName.trim().length === 0) {
+    alert("Please enter a skill.");
+    return false;
+  }
+  skillName = skillName.trim();
+
+  // Prevent duplicates client-side: check currently loaded skills (case-insensitive)
+  const existing = [...skillsList.querySelectorAll(".skill")]
+    .map(ch => ch.firstChild?.nodeValue?.trim?.() || ch.textContent.trim())
+    .map(n => n.toLowerCase());
+
+  if (existing.includes(skillName.toLowerCase())) {
+    alert("That skill already exists.");
+    return false;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE}/AddSkill/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({
+        skillName: skillName,
+        skillPerc: 0,
+        userID: Number(userId)
+      })
+    });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      console.error("Failed to add skill:", res.status, txt);
+      alert("Failed to add skill.");
+      return false;
+    }
+
+    // success -> reload list from API
+    await loadSkills();
+    return true;
+  } catch (err) {
+    console.error("Error adding skill:", err);
+    alert("Error adding skill.");
+    return false;
+  }
+}
+
+// ---------- DELETE ----------
+async function deleteSkill(skillID) {
+  const { userId, token } = getAuth();
+  if (!userId) { alert("Not logged in."); return; }
+
+  if (!confirm("Delete this skill?")) return;
+
+  try {
+    const res = await fetch(`${API_BASE}/DeleteSkill/${skillID}`, {
+      method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + token,
+        "Content-Type": "application/json"
+      }
+    });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      console.error("Failed to delete skill:", res.status, txt);
+      alert("Delete failed.");
+      return;
+    }
+
+    // reload after delete
+    await loadSkills();
+  } catch (err) {
+    console.error("Error deleting skill:", err);
+    alert("Error deleting skill.");
+  }
+}
+
+// ---------- UI: editor open/close ----------
+editSkillsBtn.addEventListener("click", () => {
+  skillsEditor.style.display = "block";
+  skillsInputText.value = "";
+  skillsInputText.focus();
 });
+
+// cancel
+cancelSkillBtn.addEventListener("click", () => {
+  skillsEditor.style.display = "none";
+  skillsInputText.value = "";
+});
+
+// save one skill button
+saveOneSkillBtn.addEventListener("click", async () => {
+  const val = skillsInputText.value;
+  const ok = await addSkill(val);
+  if (ok) {
+    skillsEditor.style.display = "none";
+    skillsInputText.value = "";
+  }
+});
+
+// also allow Enter key to save
+skillsInputText.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    saveOneSkillBtn.click();
+  }
+});
+
+// ---------- initial load ----------
+document.addEventListener("DOMContentLoaded", () => {
+  loadSkills();
+});
+
+
 
 
 //handles the about section
