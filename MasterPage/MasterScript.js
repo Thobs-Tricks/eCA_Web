@@ -65,7 +65,7 @@ function loadHeader() {
 
       // Update profile name & image
       const userName = localStorage.getItem("userName");
-      const userImg = localStorage.getItem("profileImage");
+      const userImg = localStorage.getItem("profileImageUrl") || "Image/default-avatar.png";
       const nameElement = headerDiv.querySelector(".dropdown-toggle");
       const MainnameElent = document.getElementById("MentName");
 
@@ -100,6 +100,8 @@ function loadHeader() {
       } else if (role === "student") {
         studentItems.forEach(item => item.style.display = "block");
       }
+
+      /*applyHeaderProfileImage();*/
     })
     .catch(err => console.error("Error loading header:", err));
 }
@@ -112,7 +114,15 @@ function toggleDropdown() {
 
 // Logout
 function logout() {
-  localStorage.clear(); // remove all user data
+ const profileImage = localStorage.getItem("profileImageUrl");
+
+  localStorage.clear(); // clear auth 
+
+  //  restore image cache
+  if (profileImage) {
+    localStorage.setItem("profileImageUrl", profileImage);
+  }
+  
   window.location.href = "SignIn.html";
 }
 
@@ -132,3 +142,65 @@ colorBtn.forEach(btn => {
     this.classList.add("active");
   });
 });
+
+  //-----------Profile Image Uplaod part1
+
+/*function updateAllProfileImages(imageUrl) {
+  // Save for reuse across pages
+  localStorage.setItem("profileImageUrl", imageUrl);
+
+  // Update profile page image
+  const profileImg = document.getElementById("profileImg");
+  if (profileImg) profileImg.src = imageUrl;
+
+  // Update header image
+  const headerImg = document.getElementById("profileHeaderImg");
+  if (headerImg) headerImg.src = imageUrl;
+}*/
+
+/* =============================
+   PROFILE IMAGE STATE MANAGER
+   ============================= */
+
+function updateAllProfileImages(imageUrl) {
+  if (!imageUrl) return;
+
+  localStorage.setItem("profileImageUrl", imageUrl);
+
+  const profileImg = document.getElementById("profileImg");
+  if (profileImg) profileImg.src = imageUrl;
+
+  const headerImg = document.getElementById("profileHeaderImg");
+  if (headerImg) headerImg.src = imageUrl;
+}
+
+/**function applyHeaderProfileImage() {
+ /* const img = document.getElementById("profileHeaderImg");
+  const saved = localStorage.getItem("profileImageUrl");
+  if (img && saved) img.src = saved;*/
+ /* const img = document.getElementById("profileHeaderImg");
+  if (!img) return; 
+
+  const saved = localStorage.getItem("profileImageUrl");
+  if (saved) img.src = saved;
+
+  
+}*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadHeader();
+
+  // Apply cached image immediately if exists
+  const saved = localStorage.getItem("profileImageUrl");
+  if (saved) updateAllProfileImages(saved);
+});
+
+/* =============================
+   TAB SYNC (OPTIONAL)
+   ============================= 
+window.addEventListener("storage", e => {
+  if (e.key === "profileImageUrl") {
+    applyHeaderProfileImage();
+  }
+});*/
+

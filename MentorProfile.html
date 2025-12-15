@@ -116,6 +116,26 @@ width: 100px;
   border-radius: 50%;
   border: 5px solid white;
 }
+.Image-Change {
+    position: relative;
+}
+/* Camera Icon */
+#cameraBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background:rgb(250, 164, 6);
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Optional hover effect */
+#cameraBtn:hover {
+    background: rgba(255, 174, 0, 0.8);
+}
 .profile-info .details {
   background: rgba(255,255,255,0.9);
   padding: 15px 25px;
@@ -445,41 +465,23 @@ outline-color: lightblue;
   }
  
 }
+
+
+
 </style>
 </head>
 <body>
-
-<!--<nav>
-    
-      <img src="Image/LogoCA-white.png" alt="" class="LogoImg">
-
-  <div class="icons">
-    <ul>   
-                  <li><a href="Home.html"> <i class="fa fa-home"></i> Feed</a></li>
-                <li><a href="Jobs.html"> <i class="fa fa-briefcase"></i> Jobs</a></li>
-                <li><a href="Mentors.html"><i class="fa fa-users"></i> Mentors</a></li>
-                 <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
-                <li><a href="Notification.html"><i class="fa fa-bell"></i> Notification</a></li>
-<li class="dropdown"> 
-  <div class="dropdown-toggle" onclick="toggleDropdown()">  
-    <a href="MentorProfile.html">  <img src="Image/bob.webp" alt="Profile" style="width:40px;height:40px;border-radius:50%;">
-          </a>   Mike Dot<i class="fa fa-caret-down"></i>
-    
-  </div>
-  <div class="dropdown-menu" id="dropdownMenu">
-    <a href="#" onclick="logout()">Log out</a>
-  </div>
-</li>               
-            </ul>
-  </div>
-</nav>-->
 
 <div id="Header"></div>
 
 <!-- Profile Header -->
 <div class="profile-header">
   <div class="profile-info">
-    <img src="Image/bob.webp" alt="Mentor Photo">
+    <div class="Image-Change">
+     <img id="profileImg" src=" " alt="Mentor Photo">
+     <i class="fa fa-camera" id="cameraBtn"></i>
+     <input type="file" id="uploadImage" accept="image/*" hidden>
+    </div>
     <div class="details">
       <h2 id="MentName">User</h2>
       <p>Senior Web Developer | Career Coach | Tech Speaker</p>
@@ -635,7 +637,25 @@ const skillsInputText = document.getElementById("skillsInputText");
 const saveOneSkillBtn = document.getElementById("saveOneSkillBtn");
 const cancelSkillBtn = document.getElementById("cancelSkillBtn");
 
-// API base (use your full URL)
+const cameraBtn = document.getElementById("cameraBtn");
+const uploadImage = document.getElementById("uploadImage");
+const profileImg = document.getElementById("profileImg");
+
+cameraBtn.addEventListener("click", ()=>{
+  uploadImage.click();
+})
+
+uploadImage.addEventListener("change", function(){
+  if(this.files && this[0]){
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+      profileImage.src = e.target.result;
+    }
+    reader.readAsDataURL(this.files[0]);
+  }
+})
+
 const API_BASE = "https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/ProfileManagement";
 
 // helper to get auth info
@@ -702,6 +722,75 @@ async function loadSkills() {
     console.error("Error loading skills:", err);
   }
 }
+
+// ----------PostImAGE------
+
+
+cameraBtn.addEventListener("click", () => uploadImage.click());
+
+uploadImage.addEventListener("change", async function () {
+  if (!this.files || !this.files[0]) return;
+
+  const file = this.files[0];
+
+  // Preview immediately
+  const reader = new FileReader();
+  reader.onload = e => {
+    profileImg.src = e.target.result;
+    updateAllProfileImages(e.target.result); //  sync header 
+  };
+  reader.readAsDataURL(file);
+
+  const userId = localStorage.getItem("userId");
+  const token = localStorage.getItem("token");
+
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    await fetch(
+      `${API_BASE}/User/UploadProfileImage/${userId}`,
+      {
+        method: "POST",
+        headers: { "Authorization": "Bearer " + token },
+        body: formData
+      }
+    );
+  } catch (err) {
+    console.error("Upload failed:", err);
+  }
+});
+
+
+//---------GetTheImage-----
+
+async function getProfileImageFromServer() {
+   const img = document.getElementById("profileHeaderImg");
+  if (!img) return;
+
+  const userId = localStorage.getItem("userId");
+  if (!userId) return;
+
+  try{ 
+  const res = await fetch(
+    `${API_BASE}/ProfileManagement/GetUserProfileImage/${userId}`
+  );
+
+  if (!res.ok) return;
+
+  const blob = await res.blob();
+  const imageUrl = URL.createObjectURL(blob);
+  updateAllProfileImages(imageUrl);
+  //  refresh cache
+    localStorage.setItem("profileImageUrl", imageUrl);
+
+
+  } catch (err) {
+    console.error("Failed to load profile image", err);
+  }
+
+}
+
 
 // ---------- ADD ONE SKILL ----------
 async function addSkill(skillName) {
@@ -918,12 +1007,14 @@ toggleBtn.addEventListener('click', () => {
     document.getElementById(sectionId).style.display = "block";
   }
 
-   fetch("MasterPage/Header.html")
+ 
+  /*fetch("MasterPage/Header.html")
     .then(res => res.text())
     .then(data => {
       document.getElementById("Header").innerHTML = data;
-       
-    });
+       applyHeaderProfileImage();
+    });*/
+
 
      // Toggle options open/close
   toggleBtn.addEventListener('click', () => {
@@ -931,105 +1022,6 @@ toggleBtn.addEventListener('click', () => {
     toggleBtn.classList.toggle('rotate');
   });
    
-   /* document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById('toggleBtn');
-  const extraOptions = document.getElementById('extraOptions');
-  const mediaInput = document.getElementById('mediaInput');
-  const documentInput = document.getElementById('documentInput');
-  const preview = document.getElementById('preview');
-  const postBtn = document.getElementById('submitPost');
-  const postText = document.getElementById('postText');
-  const feedSection = document.querySelector('#feed');
-  
-  let selectedFile = null;
-
-
-
- 
-
-  // Handle Media Preview (image/video)
-  mediaInput.addEventListener('click', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    selectedFile = file;
-    const fileURL = URL.createObjectURL(file);
-    preview.innerHTML = '';
-
-    if (file.type.startsWith('image')) {
-      preview.innerHTML = `<img src="${fileURL}" style="width:100%;border-radius:10px;margin-top:10px;">`;
-    } else if (file.type.startsWith('video')) {
-      preview.innerHTML = `<video controls style="width:100%;border-radius:10px;margin-top:10px;"><source src="${fileURL}" type="${file.type}"></video>`;
-    }
-  });
-
-
-  // Handle Document Preview
-  documentInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    selectedFile = file;
-    preview.innerHTML = `<p><i class="fa fa-file"></i> ${file.name}</p>`;
-  });
-
-
-
-  // --- Handle POST button ---
-  postBtn.addEventListener('click', async () => {
-    const text = postText.value.trim();
-    if (!text && !selectedFile) {
-      alert("Please write something or attach a file.");
-      return;
-    }
-
-
-    
-  const userId = localStorage.getItem("userID"); // note: userID from login
-  const role = localStorage.getItem("userRole")?.toLowerCase();
-
-  if (!userId || !role) {
-    alert("User not found in local storage. Please log in again.");
-    console.error("Missing userId or role:", { userId, role });
-    return;
-  }
-
-  const formData = new FormData();
-  formData.append("data", text);
-  formData.append("isPublic", true);
-
-  // ✅ Only append the correct ID field
-  if (role === "mentor") {
-    formData.append("mentorID", userId);
-  } else if (role === "company") {
-    formData.append("companyID", userId);
-  }
-
-  // If there's a selected file
-  if (selectedFile) formData.append("Media", selectedFile);
-
-  try {
-    const res = await fetch("https://ca-palse-h5cjhqb3bmbddkeu.southafricanorth-01.azurewebsites.net/api/FeedManagement/PostFeed", {
-      method: "POST",
-      body: formData
-    });
-
-    if (res.ok) {
-      alert("Post uploaded successfully!");
-      postText.value = "";
-      preview.innerHTML = "";
-      selectedFile = null;
-    } else {
-      const error = await res.text();
-      console.error("Server error:", error);
-      alert("Error posting: " + error);
-    }
-  } catch (err) {
-    console.error("Connection error:", err);
-    alert("Failed to connect to server.");
-  }
-
-
-  });
-});*/
 
 </script>
 
