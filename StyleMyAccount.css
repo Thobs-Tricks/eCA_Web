@@ -2,14 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 span{
     color:white;
 }
-
-
-
 
 input
 {
@@ -38,15 +36,16 @@ nav ul li a{
 }
 
 header{
-    height:9vh;
+    height:50px;
 }
 
 .InButton{
      color: rgb(0, 0, 0);
     background-color: rgb(32, 2, 204);
      cursor: pointer; 
-    padding:3px 0 3px 0;
+    padding:5px 0 5px 0;
     border: none;
+    border-radius: 5px;
 
 }
 .InButton:hover{
@@ -56,8 +55,8 @@ header{
 
 
 nav ul{
-
-      list-style-type: none;
+  font-family: 'Poppins', sans-serif;
+  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -116,10 +115,37 @@ nav ul{
 
 .span2{
    color:  rgb(130, 137, 240) ;
+   font-size: 100px;
+}
+.span3{
+  color: rgb(245, 177, 50);
 }
 
-/*About Section*/
 
+.ArrowUp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #049e96;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  display: none; /* hidden by default */
+  z-index: 1000;
+}
+
+
+.ArrowUp:hover {
+  background-color: #e6af19;
+}
+
+
+/*About Section*/
 
 .About{
     margin: 10px 0px  70px 0px;
@@ -139,20 +165,12 @@ nav ul{
   justify-content: center;
   gap: 40px;
   margin-top: 100px;
+
 }
 
 .miniServices{
-   
-   /* padding: 20px 20px;
-     width: 250px;
-     height: 50%;
-    font-size: 20px;
-    margin: 130px 20px 0px 20px;
-    display:inline-block;
-    background-color:    wheat;
-     border-radius: 15px;*/
-
-       flex: 1 1 250px;  /*<flex-grow> <flex-shrink> <flex-basis>;*/
+ 
+  flex: 1 1 250px;  /*<flex-grow> <flex-shrink> <flex-basis>;*/
   max-width: 300px;
   padding: 20px;
   background-color: wheat;
@@ -160,7 +178,6 @@ nav ul{
   text-align: center;
      color: rgb(85, 55, 1);
      margin-bottom: 30px;
-
 }
 
 .miniServices img{

@@ -6,8 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="StyleMyAccount.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -20,9 +19,9 @@
     </header>
       <nav>
             <ul>
-                <li><a href="#"> <i class="fa fa-home"></i>  Home</a></li>
-                 <li><a href="#"> <i class="fa fa-question"></i>  About</a></li>
-                  <li><a href=""><i class="fa fa-cogs"></i> Services</a></li>
+                <li><a href="#" > <i class="fa fa-home"></i>  Home</a></li>
+                 <li><a id="About"> <i class="fa fa-question"></i>  About</a></li>
+                  <li><a id="Services"><i class="fa fa-cogs"></i> Services</a></li>
                 <li><button class="InButton"><a  href="SignIn.html"><i class="fa fa-user"></i> Sign In</a></button></li>
             </ul>
 
@@ -34,27 +33,33 @@
        
         <div >
           <marquee behavior="alternate" direction="">
-            <h3 class="firstWords">Welcome to <br> <span class="span2">  CA <br> PulseNetwork</span></h3>
-             </marquee>
+            <h3 class="firstWords"> <span class="span2">  CA <br> <span class="span3">Pulse</span> <br>Network</span></h3>
+          </marquee>            
             <p style="font-size: 24px; margin-top: 44px;"> <i>Explore and be connected!</i> </p>
            
+        </div>
+        
+        <div class="ArrowUp">
+         <i class="fa-solid fa-arrow-up"></i>
         </div>
 
          <div>
           <img class="HomeImage" src="Image/Media.jpeg" alt="">
         </div>
+
+        
       </section>
 
       <section class="AboutContainer">
 
-        <div class="About">
+        <div class="About" id="about">
           <h2 style="margin-bottom: 98px; margin-top: -30px;">About <hr style="width: 190px;margin-left: 510px;"></h2>
 <p>This organization will function as a non-profit organization aimed at giving back to the community and ensuring that South Africa continues to produce CA’s that are globally recognised and in demand. <br>
    As an organisation, we wish to contribute to the creation of extraordinary professionals.</p>
         </div>
 
-        <h3 style="text-align: center; font-size: 30px;   color: rgb(99, 67, 8); ">Services<hr style="width: 190px;margin-left: 570px; height: 2px; background-color: wheat;"></h3>  
-        <div class="Services">
+        <h3 id="services" style="text-align: center; font-size: 30px;   color: rgb(99, 67, 8); ">Services<hr style="width: 190px;margin-left: 570px; height: 2px; background-color: wheat;"></h3>  
+        <div class="Services" >
           
         <!--  <marquee behavior="alternate" direction="" scrollamount="5" >-->
            <div class="miniServices">
@@ -155,3 +160,9 @@
             <h4 style="margin-top: 30px;">Subscribe to get latest  news update and informations</h4>
           </div>
         
+        </div>
+      </footer>
+</body>
+</html>
+
+<script src="ScriptIndex.js"></script>
