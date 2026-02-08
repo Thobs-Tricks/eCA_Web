@@ -256,8 +256,8 @@ input:hover{
 <div id="Header"></div>
 
 <div class="Search-Bar">
-            <form action="#">
-               <input type="search" name="search"  placeholder="Search..">
+         <form id="searchForm">
+               <input type="search" name="search" id="searchInput" placeholder="Search..">
               <button>Submit</button>    
         </form>
         </div>
@@ -325,6 +325,24 @@ input:hover{
            MenteesContent.innerHTML = "<p>Failed to connect to the server.</p>";
         }
     })
+
+
+    //the search engine
+
+ 
+  document.getElementById("searchForm").addEventListener("input", function (e) {
+    e.preventDefault();
+
+    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+    const services = document.querySelectorAll(".mini-card");
+
+    services.forEach(service => {
+      const text = service.textContent.toLowerCase();
+      service.style.display = text.includes(searchValue) ? "block" : "none";
+    });
+  });
+
+
  </script>
 
 </body>

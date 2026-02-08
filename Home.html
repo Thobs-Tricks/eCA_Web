@@ -24,8 +24,8 @@
   <!-- Feed Section -->
   <div class="feed">
    <div class="search-container">
-    <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+    <form id="Search">
+      <input type="text" id="inputSearch" placeholder="Search.." name="search">
       <button type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
@@ -120,6 +120,22 @@ upload.addEventListener('change', () => {
   };
   reader.readAsDataURL(file);
 });*/
+
+//search engine
+document.getElementById("inputSearch").addEventListener("input", function () {
+
+  const wordSearch = this.value.toLowerCase();
+  const posts = document.querySelectorAll("#feedContent .post");
+
+  posts.forEach(post => {
+    const text = post.textContent.toLowerCase();
+    post.style.display = text.includes(wordSearch) ? "block" : "none";
+  });
+
+});
+
+
+//
 
  fetch("MasterPage/Header.html")
     .then(res => res.text())

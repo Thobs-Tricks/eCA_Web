@@ -156,7 +156,6 @@ nav ul{
   font-size: 20px;
 }
 
-
 /*Services*/
 
 .Services{
@@ -199,7 +198,7 @@ list-style-type: none;
 }
 
 li{
-        margin-bottom: 15px;
+   margin-bottom: 15px;
 
 }
 
@@ -237,6 +236,18 @@ li{
     padding: 10px ;
 }
 
+.section-title {
+  text-align: center;
+}
+
+.section-hr {
+  width: 180px;
+  height: 3px;
+  background-color: wheat;
+  border: none;
+  margin: 12px auto 0 auto; /* centers the HR */
+}
+
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -262,5 +273,12 @@ li{
   .miniServices {
     flex: 1 1 100%;
   }
+
 }
+@media (max-width: 480px) {
+  .section-hr {
+    width: 120px;
+  }
+}
+
 

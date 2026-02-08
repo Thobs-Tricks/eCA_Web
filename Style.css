@@ -96,3 +96,40 @@ body{
   border-style: hidden;
   outline-color: rgb(130, 137, 240);
 }
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    height: auto;
+    margin: 40px auto;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  aside {
+    margin-left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .LogoImg {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+
+  input,
+  .role-selector {
+    width: 100%;
+  }
+
+  #Submitbtn,
+  #Cancelbtn {
+    width: 100%;
+  }
+}
