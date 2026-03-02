@@ -49,6 +49,7 @@
     </div>
 </div>
 
+
 <script>
     fetch("MasterPage/Header.html")
         .then(res => res.text())
@@ -72,6 +73,23 @@
       requestsContent.classList.add("hidden");
       normalContent.classList.remove("hidden");
     });
+
+
+    requestsTab.addEventListener('click', ()=>{
+  requestsContent.classList.remove("hidden");
+  normalContent.classList.add("hidden");
+
+  requestsTab.classList.add("active");
+  normalTab.classList.remove("active");
+});
+
+normalTab.addEventListener('click', ()=>{
+  requestsContent.classList.add("hidden");
+  normalContent.classList.remove("hidden");
+
+  normalTab.classList.add("active");
+  requestsTab.classList.remove("active");
+});
     
  </script>
     

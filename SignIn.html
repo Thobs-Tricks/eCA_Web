@@ -176,6 +176,7 @@ document.getElementById("loginForm").addEventListener("submit", async function (
     });
 
     if (!userResponse.ok) {
+        console.log("Status:", userResponse.status);
       alert("Failed to fetch user details.");
       return;
     }

@@ -141,8 +141,10 @@ document.getElementById("inputSearch").addEventListener("input", function () {
     .then(res => res.text())
     .then(data => {
       document.getElementById("Header").innerHTML = data;
+         highlightActiveNav();
       
     });
+ 
 
 document.addEventListener("DOMContentLoaded", async () => {
   const feedContainer = document.getElementById("feedContent");

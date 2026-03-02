@@ -1,75 +1,130 @@
 .notifications-container{
-    max-width: 800px;
+    max-width: 900px;
     margin: auto;
-    border-radius: 5px;
+    padding: 20px;
 }
 
+/* ---------------- TABS ---------------- */
 
 .tabs{
-  text-align: center;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 60px;
   margin-bottom: 40px;
-  padding-top: 40px;
-
 }
 
 .tabs .tab-btn{
-    padding: 8px 30px;
-    width: auto;
-    background-color: rgb(0, 139, 127);/* rgb(2, 52, 95);*/
-    color: white;
-    border-radius: 5px;
-     cursor: pointer;
-    font-weight: bold;
+    padding: 10px 30px;
+    background: #f1f5f9;
+    color: #334155;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
     border: none;
-    flex:1;
-   
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-
-
-.tabs .tab-btn:nth-child(1){
-    padding: 8px 70px;
+.tabs .tab-btn:hover{
+    background: #0f766e;
+    color: white;
+    transform: translateY(-2px);
 }
+
+.tabs .tab-btn.active{
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    color: white;
+    box-shadow: 0 6px 18px rgba(20, 184, 166, 0.3);
+}
+
+/* Badge */
+.badge{
+    background: white;
+    color: #0f766e;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    font-weight: bold;
+}
+
+/* ---------------- CARDS ---------------- */
 
 .Card{
     display: flex;
-    justify-content:space-between;
-    max-width: 500px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
     margin: auto;
-   background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
 
+.Card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+/* Left content */
+.Card-contant{
+    display: flex;
+    flex-direction: column;
 }
 
 .title {
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    font-size: 15px;
 }
 
+/* Avatar */
 .Card-contant .title img{
-    max-width: 100%;
-    width: 10%;
-    border-radius: 20px;
-
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #14b8a6;
 }
 
-.Card .Message-content{
-    display: inline;
+/* Small details */
+.profession,
+.dates{
+    font-size: 13px;
+    color: #64748b;
+    margin-left: 57px;
 }
+
+/* ---------------- MESSAGE CARDS ---------------- */
+
+.Message{
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #0f172a;
+}
+
+.Message-content{
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ---------------- BUTTONS ---------------- */
 
 .btn {
-    padding: 6px 10px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .accept {
@@ -78,11 +133,22 @@
     margin-bottom: 10px;
 }
 
+.accept:hover{
+    background: #059669;
+    transform: scale(1.05);
+}
+
 .decline {
     background: #ef4444;
     color: white;
 }
 
+.decline:hover{
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Hidden */
 .hidden{
     display: none;
 }

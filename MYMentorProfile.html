@@ -11,42 +11,32 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #f4f5f8;
-}
+    margin-left: 220px;
 
-.bodyContainer{
-  display: flex;
 }
-
 
 /* Navbar */
-nav {
+/*nav {
   background: darkblue;
   padding: 10px 30px;
- /* display: flex;
+  display: flex;
   justify-content:space-between;
-  align-items: center;*/
+  align-items: center;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width: 210px;
-  height: 100%;
-  font-size: 18px;
 
 }
-
-
-
 nav ul {
-    /*display: flex;*/
+    display: flex;
     flex-wrap: wrap;
-    /*gap: 50px;*/
+    gap: 50px;
 color:white;
 list-style-type: none;
+
 }
 
 nav ul li a{
     color:white;
 text-decoration: none;
-  display:block;
-  margin-bottom: 50px;
 }
 
 nav .search input {
@@ -64,14 +54,59 @@ width: 100px;
 
 .LogoText{
   color:white;
-  font-size: 40px;
-  margin-bottom: 60px;
-
+  font-size: 30px;
 }
 
 .LogoText span{
-  color: goldenrod;
+  color:lightblue;
+}*/
+
+/* Sidebar Navbar */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background: darkblue;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
+
+/* Logo */
+.LogoText {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.LogoText span {
+  color: lightblue;
+}
+
+/* Menu List */
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
 /*Dropdown*/
  .dropdown {
     position: relative;
@@ -85,12 +120,6 @@ width: 100px;
     gap: 5px;
     color: white;
     text-decoration: none;
-        margin-top: -12px;
-  }
-
-  .dropdown-toggle a{
-      margin-bottom: 0px;
-
   }
 
   .dropdown-menu {
@@ -109,7 +138,6 @@ width: 100px;
     color: black;
     text-decoration: none;
     display: block;
-
   }
 
   .dropdown-menu a:hover {
@@ -118,7 +146,7 @@ width: 100px;
 
   .dropdown-toggle{
     margin-left: -10px;
-
+    margin-top: -12px;
 }
 
 
@@ -127,14 +155,14 @@ width: 100px;
 .profile-header {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 270px;
   background: url('cover.jpg') no-repeat center center/cover;
   margin-top:-50px;
 }
 
 
 
-/*.profile-info {
+.profile-info {
   position: absolute;
   bottom: -60px;
   left: 50px;
@@ -150,67 +178,7 @@ width: 100px;
 }
 .Image-Change {
     position: relative;
-}*/
-
-/* ===== PROFILE INFO LAYOUT FIX ===== */
-
-.profile-info {
-  position: absolute;
-  bottom: -70px;
-  left: 50px;
-  width: calc(100% - 100px);
-  display: flex;
-  align-items: stretch; /* makes children same height */
-  gap: 10px;
 }
-
-/* IMAGE WRAPPER */
-.Image-Change {
-  flex: 0 0 150px; /* fixed size */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-
-}
-
-.profile-info img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 5px solid white;
-  object-fit: cover;
-}
-
-/* DETAILS CARD */
-.profile-info .details {
-  flex: 1; /* take equal space */
-  background: rgba(255,255,255,0.95);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* POST BOX */
-.post-box {
-  flex: 1; /* equal size to details */
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-
-
-
-
 /* Camera Icon */
 #cameraBtn {
     position: absolute;
@@ -228,14 +196,12 @@ width: 100px;
 #cameraBtn:hover {
     background: rgba(255, 174, 0, 0.8);
 }
-/*.profile-info .details {
+.profile-info .details {
   background: rgba(255,255,255,0.9);
   padding: 15px 25px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  width:60%;
-  height: 142px;
-}*/
+}
 
 .profile-info .details a{
 text-decoration: none;
@@ -291,11 +257,7 @@ color: white;
   gap: 10px;
 }
 .skill {
- /* background: #007bff;
-  color: white;
-  border-radius: 20px;
-  padding: 6px 15px;
-  font-size: 14px;*/
+
    position: relative;           /* for delete button placement */
   background: #007bff;
   color: white;
@@ -364,15 +326,15 @@ color: white;
 
 
 /* Post Box */
-/*.post-box {
+.post-box {
   background: white;
   border-radius: 10px;
   padding: 20px;
   width: 40%;
-  margin: 20px auto 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 70px auto 10px;
 }
-*/
+
 .post-box textarea {
   width: 95%;
   border: 1px solid #ccc;
@@ -387,7 +349,7 @@ outline-color: lightblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 .post-actions .left .plus-btn{
@@ -397,113 +359,18 @@ outline-color: lightblue;
   background-color: #f97316;
 }
 
-.plus-btn {
-  background-color: #f97316;
-  color: white;
-  border: none;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
 
-.plus-btn.rotate {
-  transform: rotate(45deg);
-}
-
-/* ===== POPUP MODAL ===== */
-
-.modal-overlay{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s ease;
-}
-
-.modal-overlay.show{
-  opacity: 1;
-  visibility: visible;
-}
-
-.extra-options{
-  background: white;
-  padding: 25px;
-  border-radius: 16px;
-  width: 350px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  transform: scale(0.8);
-  transition: 0.3s ease;
-}
-
-.modal-overlay.show .extra-options{
-  transform: scale(1);
-}
-
-/* option buttons */
-.extra-options button{
-  background: lightblue;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  justify-content: center;
-  font-weight: 500;
-  transition: 0.2s ease;
-    color:white;
-
-}
-
-.extra-options button:hover{
-  background: #e2e8f0;
-}
-
-/* Close button */
-.close-modal{
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-/*.extra-options {
+.extra-options {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 15px;
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.extra-options.show {
   opacity: 1;
-  max-height: 200px;
+  max-height: none;
 }
 
 .extra-options button {
-  background: #b1b4bb;
+  background: #b5c8f7;
   border: none;
   border-radius: 10px;
   padding: 10px 15px;
@@ -519,7 +386,7 @@ outline-color: lightblue;
 }
 
 .post-actions .post-btn {
-  background: #007bff;
+  background: #ffee00;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -530,14 +397,13 @@ outline-color: lightblue;
 
 .post-actions .post-btn:hover {
   background: #0056b3;
-}*/
-
+}
 
 /* Tabs */
 .tabs {
   display: flex;
   justify-content:left;
-  margin: 100px 0 -50px 50px;
+  margin: 50px 0 -20px 50px;
   gap: 20px;
 }
 
@@ -638,9 +504,7 @@ outline-color: lightblue;
 </head>
 <body>
 
-  <div class="bodyContainer">
 <div id="Header"></div>
-<div class="outerContainer">
 
 <!-- Profile Header -->
 <div class="profile-header">
@@ -660,16 +524,9 @@ outline-color: lightblue;
     <!-- Post Box -->
 <div class="post-box">
   <textarea rows="3" id="postText" placeholder="Share your thoughts..."></textarea>
-  <div class="post-actions">
-    <div class="left">
-      <button class="plus-btn" id="toggleBtn"><i class="fa fa-plus"></i></button>
-    </div>
-    <button class="post-btn" id="submitPost">Post</button>
-  </div>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="extra-options">
-    <i class="fa fa-times close-modal" id="closeModal"></i>    <label>
+  
+  <div class="extra-options" id="extraOptions">
+    <label>
       <input type="file" id="mediaInput" accept="image/*,video/*" style="display:none;">
       <button type="button"><i class="fa fa-image"></i> Media</button>
     </label>
@@ -684,7 +541,8 @@ outline-color: lightblue;
     <button><i id="pollBtn" class="fa fa-chart-pie"></i> Poll</button>
     <button><i class="fa fa-tools"></i> Service</button>
   </div>
-</div>
+    <button class="post-btn" id="submitPost">Post</button>
+
      <div class="preview" id="preview"></div>
 
 </div>
@@ -796,8 +654,8 @@ outline-color: lightblue;
     </div>
   </div>
 </div>
-</div>
-</div>
+
+
 <script>
 // --- Elements ---
 const editSkillsBtn = document.getElementById("editSkills");
@@ -1177,30 +1035,15 @@ toggleBtn.addEventListener('click', () => {
     document.getElementById(sectionId).style.display = "block";
   }
 
+ 
+  /*fetch("MasterPage/Header.html")
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById("Header").innerHTML = data;
+       applyHeaderProfileImage();
+    });*/
 
 
-     // Toggle options open/close
-const toggleBtn = document.getElementById("toggleBtn");
-const modalOverlay = document.getElementById("modalOverlay");
-const closeModal = document.getElementById("closeModal");
-
-// open popup
-toggleBtn.addEventListener("click", () => {
-  modalOverlay.classList.add("show");
-});
-
-// close with X
-closeModal.addEventListener("click", () => {
-  modalOverlay.classList.remove("show");
-});
-
-// close when clicking outside
-modalOverlay.addEventListener("click", (e) => {
-  if(e.target === modalOverlay){
-    modalOverlay.classList.remove("show");
-  }
-});
-   
 
 </script>
 

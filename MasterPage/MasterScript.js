@@ -1,56 +1,13 @@
 
-//Drop Down and log out 
- /*function toggleDropdown() {
-    const menu = document.getElementById("dropdownMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  }*/
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
 
-
-//hide tabs for certain user
-/*  document.addEventListener("DOMContentLoaded", function () {
-    const role = localStorage.getItem("userRole");
-
-    // Select all role-based menu items
-    const companyItems = document.querySelectorAll(".company-only");
-    const mentorItems = document.querySelectorAll(".mentor-only");
-    const studentItems = document.querySelectorAll(".student-only");
-
-    // Hide all by default
-    companyItems.forEach(item => item.style.display = "none");
-    mentorItems.forEach(item => item.style.display = "none");
-    studentItems.forEach(item => item.style.display = "none");
-
-    // Show depending on role
-    if (role === "Company" || role === "company") {
-      companyItems.forEach(item => item.style.display = "inline-block");
-    } else if (role === "Mentor" || role === "mentor") {
-      mentorItems.forEach(item => item.style.display = "inline-block");
-    } else if (role === "Student" || role === "student") {
-      studentItems.forEach(item => item.style.display = "inline-block");
-    }
-
- 
-  });
-*/
-
-  //display stored user nameand/surname
-
-  /*document.addEventListener("DOMContentLoaded", () => {
-  const userName = localStorage.getItem("userName");
-  const userImg = localStorage.getItem("profileImage");
-  const nameElement = document.querySelector(".dropdown-toggle");
-  
-  if (userName && nameElement) {
-    nameElement.innerHTML = `
-      <a href="MentorProfile.html">
-        <img src="${userImg || 'Image/default-avatar.png'}" 
-             alt="Profile" style="width:40px;height:40px;border-radius:50%;">
-      </a>
-      ${userName} <i class="fa fa-caret-down"></i>
-    `;
-  }
-});*/
-
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
 
 
 // Load header and update profile info
@@ -102,6 +59,7 @@ function loadHeader() {
       }
 
       /*applyHeaderProfileImage();*/
+      highlightActiveNav();
     })
     .catch(err => console.error("Error loading header:", err));
 }
@@ -131,7 +89,7 @@ document.addEventListener("DOMContentLoaded", loadHeader);
 
 //Tab color change change
 
-let colorBtn = document.querySelectorAll(".tabs button");
+/*let colorBtn = document.querySelectorAll(".tabs button");
 
 colorBtn.forEach(btn => {
   btn.addEventListener("click", function () {
@@ -141,7 +99,7 @@ colorBtn.forEach(btn => {
     // Add active only to clicked button
     this.classList.add("active");
   });
-});
+});*/
 
   //-----------Profile Image Uplaod part1
 
@@ -204,3 +162,18 @@ window.addEventListener("storage", e => {
   }
 });*/
 
+
+   function highlightActiveNav() {
+  const currentPage = window.location.pathname.split("/").pop();
+
+  const navItems = document.querySelectorAll(".nav-item");
+
+  navItems.forEach(item => {
+    const link = item.querySelector("a");
+    const linkPage = link.getAttribute("href");
+
+    if (linkPage === currentPage) {
+      item.classList.add("active");
+    }
+  });
+}
